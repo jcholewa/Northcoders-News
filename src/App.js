@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Home from './Components/Home';
+import Topics from './Components/Topics';
 import Article from './Components/Article';
 import Comments from './Components/Comments';
 import User from './Components/User';
