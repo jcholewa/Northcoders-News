@@ -13,6 +13,7 @@ class App extends Component {
         <Router>
           <Home path='/' />
           <Home path='/articles' />
+          <Topics path='/topics' />
           <Article path='/articles/:article_id' />
           <Comments path='/comments/:comment_id' />
           <User path='/users/username' />
