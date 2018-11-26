@@ -12,6 +12,7 @@ class TopicArticles extends Component {
     return (
       this.state.loading ? <p>Loading...</p> :
         <div>
+          <h2>Articles about {this.props.topic_slug}</h2>
           <ul>
             {this.state.articles.map(article => {
               return (

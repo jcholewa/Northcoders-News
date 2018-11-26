@@ -9,6 +9,7 @@ class Article extends Component {
   }
 
   render() {
+    console.log(this.state.article)
     return (
       this.state.loading === true ? <p>Loading...</p> :
         <div>
@@ -18,8 +19,7 @@ class Article extends Component {
           <button>Add a comment</button>
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
-          <p>Comment 1</p>
-          <p>Comment 2</p>
+          <p>View comments</p>
         </div >
     );
   }
