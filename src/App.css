@@ -1,5 +1,5 @@
 p {
-  border: black solid 2px;
+  /* border: black solid 2px; */
 }
  
 .App {
@@ -15,24 +15,24 @@ p {
 }
 
 header {
-  border: red solid 2px;
+  /* border: red solid 2px; */
   grid-area: header;
 }
 
 nav {
-  border: green solid 2px;
+  /* border: green solid 2px; */
   grid-area: nav;
   padding-top: 0.5%;
   text-align: center;
 }
 
 .articles {
-  border: blue solid 2px;
+  /* border: blue solid 2px; */
   grid-area: articles;
 }
 
 footer {
-  border: hotpink solid 2px;
+  /* border: hotpink solid 2px; */
   grid-area: footer;
 } 
 
