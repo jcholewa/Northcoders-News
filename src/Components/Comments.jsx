@@ -1,16 +1,18 @@
 import React from 'react';
-import {Link} from '@reach/router';
+import { Link } from '@reach/router';
 
-const Comments = () => {
+const Comments = ({ comments, article }) => {
   return (
     <div>
       <Link to='/articles/:article_id'>Back to article</Link>
-      <h2>Comments for [Article Name]</h2>
-      <button>Add a comment</button>
-      <p>Comment count</p>
-      <p>Comment 1</p>
-      <p>Comment 2</p>
-      <p>Comment 3</p>
+      <h4>Comments for {article.title}</h4>
+      <ul className='commentsList'>
+        {comments.map(comment => {
+          return <li className='commentsLI' key={comment._id}>{comment.body} <br />
+            Votes: {comment.votes}
+          </li>
+        })}
+      </ul>
     </div>
   );
 };

@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import { getArticle } from '../api';
-import {Link} from '@reach/router';
+import { getArticle, getComments } from '../api';
+import { Link } from '@reach/router';
+import Comments from './Comments';
+import '../Comments.css'
 
 class Article extends Component {
   state = {
     article: [],
+    comments: [],
     loading: true
   }
 
   render() {
-    console.log(this.state.article)
     return (
       this.state.loading === true ? <p>Loading...</p> :
         <div>
           <h1>{this.state.article.title}</h1>
           Author: <Link to={`/users/${this.state.article.created_by.username}`}> {this.state.article.created_by.username}</Link>
           <h4>Topic: {this.state.article.belongs_to}</h4>
-          <button>Add a comment</button>
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
+          <button>Add a comment</button>
           <p>View comments</p>
+          <Comments comments={this.state.comments}article={this.state.article} />
           <Link to={'/'}>Back to Home</Link>
         </div >
     );
@@ -29,12 +32,18 @@ class Article extends Component {
     console.log('mounting');
     getArticle(this.props.article_id)
       .then(article => {
-        console.log(article)
         this.setState({
           article,
           loading: false
         })
       })
+      .then(getComments(this.props.article_id)
+        .then(comments => {
+          this.setState({
+            comments,
+          })
+        })
+      )
       .catch(console.log)
   }
 

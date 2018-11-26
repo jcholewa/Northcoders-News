@@ -1,0 +1,11 @@
+.commentsList {
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.commentsLI {
+  border: solid black 1px;
+  width: 50%;
+  height: auto;
+}

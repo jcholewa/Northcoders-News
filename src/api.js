@@ -20,3 +20,8 @@ export const getUser = async (username) => {
   const { data } = await axios.get(`${BASE_URL}/users/${username}`);
   return data.user;
 }
+
+export const getComments = async (id) => {
+  const {data} = await axios.get(`${BASE_URL}/articles/${id}/comments`);
+  return data.comments;
+}
