@@ -12,20 +12,20 @@ import { Router } from '@reach/router';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <Nav />
-        <div className="parent">
-          <Router>
-            <Home path='/' />
-            <Home path='/articles' />
-            <Topics path='/topics' />
-            <Articles path='/topics/:topic_slug/articles' />
-            <Article path='/articles/:article_id' />
-            <Comments path='/comments/:comment_id' />
-            <User path='/users/:username' />
-          </Router>
+        <div className="App">
+        <Router>
+          <Home path='/' />
+          <Home path='/articles' />
+          <Topics path='/topics' />
+          <Articles path='/topics/:topic_slug/articles' />
+          <Article path='/articles/:article_id' />
+          <Comments path='/comments/:comment_id' />
+          <User path='/users/:username' />
+        </Router>
         </div>
-      </div>
+      </div >
     );
   }
 }

@@ -1,40 +1,37 @@
-.App {
-  text-align: center;
-}
-
 p {
   border: black solid 2px;
 }
  
-.parent {
+.App {
   text-align: center;
-  /* display: grid;
+  display: grid;
   height: 200vh;
   grid-template-rows: 1fr 10fr 1fr;
   grid-template-columns: 4fr 1fr;
   grid-template-areas:
     'header header'
     'articles .'
-    'footer footer' */
+    'footer footer'
 }
 
 header {
   border: red solid 2px;
-  /* grid-area: header; */
+  grid-area: header;
 }
 
 nav {
   border: green solid 2px;
-  /* grid-area: nav; */
+  grid-area: nav;
   padding-top: 0.5%;
+  text-align: center;
 }
 
 .articles {
   border: blue solid 2px;
-  /* grid-area: articles; */
+  grid-area: articles;
 }
 
 footer {
   border: hotpink solid 2px;
-  /* grid-area: footer; */
+  grid-area: footer;
 } 
