@@ -8,7 +8,8 @@ class Article extends Component {
   state = {
     article: [],
     comments: [],
-    loading: true
+    loading: true,
+    showComments: false
   }
 
   render() {
@@ -21,8 +22,8 @@ class Article extends Component {
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
           <button>Add a comment</button>
-          <p>View comments</p>
-          <Comments comments={this.state.comments}article={this.state.article} />
+          {this.state.showComments ?
+            <Comments comments={this.state.comments} article={this.state.article} /> : <p onClick={displayComments}>View comments</p>}
           <Link to={'/'}>Back to Home</Link>
         </div >
     );
@@ -45,6 +46,12 @@ class Article extends Component {
         })
       )
       .catch(console.log)
+  }
+
+  displayComments = () => {
+    this.setState({
+      showComments: true
+    })
   }
 
 }
