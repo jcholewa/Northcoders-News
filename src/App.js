@@ -20,7 +20,7 @@ class App extends Component {
           <Topics path='/topics' />
           <Article path='/articles/:article_id' />
           <Comments path='/comments/:comment_id' />
-          <User path='/users/username' />
+          <User path='/users/:username' />
         </Router>
         </div>
       </div>

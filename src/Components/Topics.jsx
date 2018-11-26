@@ -7,6 +7,8 @@ class Topics extends Component {
         <header>
           <h1>Topics</h1>
         </header>
+        <p>Topic 1</p>
+        <p>Topic 2</p>
       </div>
     );
   }
