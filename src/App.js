@@ -13,6 +13,7 @@ class App extends Component {
         </header>
         <Nav />
         <Articles />
+        <footer>Footer</footer>
       </div>
     );
   }
