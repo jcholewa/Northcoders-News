@@ -14,7 +14,7 @@ class Home extends Component {
       this.state.loading === true ? <p>Loading...</p> :
         <div className="home">
           <header>
-            <h1>Homepage</h1>
+            <h1>Northcoder's News</h1>
           </header>
           <Articles articles={this.state.articles} />
           <footer>Footer</footer>
