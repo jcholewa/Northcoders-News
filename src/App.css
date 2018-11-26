@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   display: grid;
-  height: 100vh;
+  height: 200vh;
   grid-template-rows: 1fr 1fr 10fr;
   grid-template-columns: 4fr 1fr;
   grid-template-areas:
@@ -11,17 +11,18 @@
 }
 
 header {
-  border: green solid 2px;
+  border: red solid 2px;
   grid-area: header;
 }
 
 .nav {
-  border: red solid 2px;
+  border: green solid 2px;
   grid-area: nav;
+  padding-top: 0.5%;
 }
 
 .articles {
-  border: hotpink solid 2px;
+  border: blue solid 2px;
   grid-area: 'articles'
 }
 
