@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+}
+
+.home {
   display: grid;
   height: 200vh;
   grid-template-rows: 1fr 1fr 10fr 1fr;

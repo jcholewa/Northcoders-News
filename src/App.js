@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Nav from './Components/Nav';
-import Articles from './Components/Articles';
+import Home from './Components/Home';
 import Article from './Components/Article';
 import Comments from './Components/Comments';
 import User from './Components/User';
@@ -11,11 +10,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>Homepage</h1>
-        </header>
-        <Nav />
-        <Articles />
         <Router>
           <Home path='/' />
           <Home path='/articles' />
@@ -23,7 +17,6 @@ class App extends Component {
           <Comments path='/comments/:comment_id' />
           <User path='/users/username' />
         </Router>
-        <footer>Footer</footer>
       </div>
     );
   }
