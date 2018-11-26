@@ -20,6 +20,7 @@ class Article extends Component {
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
           <p>View comments</p>
+          <Link to={'/'}>Back to Home</Link>
         </div >
     );
   }
