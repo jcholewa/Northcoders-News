@@ -3,12 +3,12 @@
 }
 
 .parent {
+  text-align: center;
   display: grid;
   height: 200vh;
-  grid-template-rows: 1fr 1fr 10fr 1fr;
+  grid-template-rows: 1fr 10fr 1fr;
   grid-template-columns: 4fr 1fr;
   grid-template-areas:
-    'nav nav'
     'header header'
     'articles .'
     'footer footer'
@@ -19,7 +19,7 @@ header {
   grid-area: header;
 }
 
-.nav {
+nav {
   border: green solid 2px;
   grid-area: nav;
   padding-top: 0.5%;

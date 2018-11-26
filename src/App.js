@@ -11,8 +11,9 @@ import { Router } from '@reach/router';
 class App extends Component {
   render() {
     return (
-      <div className="parent">
+      <div className="App">
         <Nav />
+        <div className="parent">
         <Router>
           <Home path='/' />
           <Home path='/articles' />
@@ -21,6 +22,7 @@ class App extends Component {
           <Comments path='/comments/:comment_id' />
           <User path='/users/username' />
         </Router>
+        </div>
       </div>
     );
   }

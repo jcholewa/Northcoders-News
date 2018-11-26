@@ -4,7 +4,9 @@ class Topics extends Component {
   render() {
     return (
       <div className='parent'>
-      <h1>Topics</h1>
+        <header>
+          <h1>Topics</h1>
+        </header>
       </div>
     );
   }
