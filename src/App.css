@@ -7,10 +7,10 @@ p {
   display: grid;
   height: 200vh;
   grid-template-rows: 1fr 10fr 1fr;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 4fr;
   grid-template-areas:
     'header header'
-    'articles .'
+    'articles articles'
     'footer footer'
 }
 
@@ -35,3 +35,21 @@ footer {
   border: hotpink solid 2px;
   grid-area: footer;
 } 
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+li {
+  width: 20%;
+  border-style: solid;
+  margin-bottom: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  height: 80px;
+}
