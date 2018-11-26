@@ -4,19 +4,21 @@ import { getArticles } from '../api';
 
 class Home extends Component {
   state = {
-    articles: []
+    articles: [],
+    loading: true
   }
 
   render() {
     console.log('rendering')
     return (
-      <div className="home">
-        <header>
-          <h1>Homepage</h1>
-        </header>
-        <Articles articles={this.state.articles} />
-        <footer>Footer</footer>
-      </div>
+      this.state.loading === true ? <p>Loading...</p> :
+        <div className="home">
+          <header>
+            <h1>Homepage</h1>
+          </header>
+          <Articles articles={this.state.articles} />
+          <footer>Footer</footer>
+        </div>
     );
   }
 
@@ -25,7 +27,8 @@ class Home extends Component {
     getArticles()
       .then(articles => {
         this.setState({
-          articles
+          articles,
+          loading: false
         })
       })
       .catch(console.log)
