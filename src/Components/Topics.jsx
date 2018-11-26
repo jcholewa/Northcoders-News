@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { getTopics } from '../api';
+import { Link } from '@reach/router';
 import '../Topics.css';
 
 class Topics extends Component {
   state = {
     topics: [],
-    loading: true
+    loading: true,
+    articles: []
   }
 
   render() {
@@ -17,7 +19,9 @@ class Topics extends Component {
           </header>
           <ul className="topicsList">
             {this.state.topics.map(topic => {
-              return <li className="topicsLI">{topic.title}</li>
+              return <li className="topicsLI">
+                <Link to={`/topics/${topic.slug}/articles`}>{topic.title}</Link>
+              </li>
             })}
           </ul>
         </div>
