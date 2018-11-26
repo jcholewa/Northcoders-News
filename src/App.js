@@ -18,6 +18,7 @@ class App extends Component {
           <Home path='/' />
           <Home path='/articles' />
           <Topics path='/topics' />
+          <Articles path='/topics/:topic_slug/articles' />
           <Article path='/articles/:article_id' />
           <Comments path='/comments/:comment_id' />
           <User path='/users/:username' />
