@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Topics from './Components/Topics';
 import Article from './Components/Article';
@@ -10,7 +11,8 @@ import { Router } from '@reach/router';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="parent">
+        <Nav />
         <Router>
           <Home path='/' />
           <Home path='/articles' />
