@@ -8,6 +8,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log('rendering')
     return (
       <div className="home">
         <header>
@@ -20,6 +21,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    console.log('mounting')
     getArticles()
       .then(articles => {
         this.setState({
