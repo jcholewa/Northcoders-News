@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Nav from './Nav';
 import Articles from './Articles';
 
 class Home extends Component {
@@ -9,7 +8,6 @@ class Home extends Component {
         <header>
           <h1>Homepage</h1>
         </header>
-        <Nav />
         <Articles />
         <footer>Footer</footer>
       </div>
