@@ -15,9 +15,9 @@ class Topics extends Component {
           <header>
             <h1>Topics</h1>
           </header>
-          <ul>
+          <ul className="topicsList">
             {this.state.topics.map(topic => {
-              return <li>{topic.title}</li>
+              return <li className="topicsLI">{topic.title}</li>
             })}
           </ul>
         </div>
