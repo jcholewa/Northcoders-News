@@ -3,7 +3,6 @@ import './App.css';
 import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Article from './Components/Article';
-import TopicArticles from './Components/TopicArticles';
 import User from './Components/User';
 import Login from './Components/Login'
 import { Router } from '@reach/router';
