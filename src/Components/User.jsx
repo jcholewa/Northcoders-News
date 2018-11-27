@@ -13,8 +13,8 @@ class User extends Component {
     return (
       this.state.loading ? <p>Loading...</p> :
         <div>
-          <h2>Username: {this.state.user.username}</h2>
           <img src={this.state.user.avatar_url} alt="user's avatar"></img>
+          <p>Username: {this.state.user.username}</p>
           <p>Name: {this.state.user.name}</p>
           <section>
             User's feed, displaying their latest articles written, comments made etc.
