@@ -4,7 +4,6 @@ import { Link } from '@reach/router';
 const Comments = ({ comments }) => {
   return (
     <div>
-      <Link to='/articles/:article_id'>Back to article</Link>
       <h4>Comments</h4>
       <ul className='commentsList'>
         {comments.map(comment => {
