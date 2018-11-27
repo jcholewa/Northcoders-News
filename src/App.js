@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Nav from './Components/Nav';
 import Home from './Components/Home';
-import Topics from './Components/Topics';
 import Article from './Components/Article';
 import TopicArticles from './Components/TopicArticles';
 import User from './Components/User';
@@ -24,7 +23,6 @@ class App extends Component {
             <Router>
               <Home path='/' user={this.state.user} />
               <Home path='/articles' user={this.state.user} />
-              <Topics path='/topics' />
               <TopicArticles path='/topics/:topic_slug/articles' />
               <Article path='/articles/:article_id/*' user={this.state.user} />
               <User path='/users/:username' />
