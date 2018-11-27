@@ -22,11 +22,16 @@ export const getUser = async (username) => {
 }
 
 export const getComments = async (id) => {
-  const {data} = await axios.get(`${BASE_URL}/articles/${id}/comments`);
+  const { data } = await axios.get(`${BASE_URL}/articles/${id}/comments`);
   return data.comments;
 }
 
 export const postComment = async (comment, id) => {
-  const {data} = await axios.post(`${BASE_URL}/articles/${id}/comments`, {body: comment, belongs_to: id, created_by: '5be85a535d030509c9e9ca8e'});
+  const { data } = await axios.post(`${BASE_URL}/articles/${id}/comments`, { body: comment, belongs_to: id, created_by: '5be85a535d030509c9e9ca8e' });
+  return data.comment;
+}
+
+export const alterVotes = async (id, direction) => {
+  const { data } = await axios.patch(`${BASE_URL}/comments/${id}?${direction}`);
   return data.comment;
 }

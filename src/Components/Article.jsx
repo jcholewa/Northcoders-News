@@ -25,7 +25,6 @@ class Article extends Component {
           <ul className='commentsList'>
             <input type='text' placeholder='Add a comment...' onChange={this.handleChange} value={this.state.comment} />
             <button onClick={this.handleSubmit}>Post comment</button>
-            {/* <input type="submit" value="Submit" id="submit" onSubmit={this.handleSubmit}/> */}
 
             {this.state.showComments ?
               <Comments comments={this.state.comments} /> :
