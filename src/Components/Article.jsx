@@ -86,10 +86,12 @@ class Article extends Component {
     const currentComment = this.state.comments[event]
     alterVotes(this.state.comments[event]._id, 'up')
       .then(comment => {
+        console.log(comment)
         this.setState({
           [currentComment]: comment
         })
       })
+      .catch(console.log)
   }
 
 }
