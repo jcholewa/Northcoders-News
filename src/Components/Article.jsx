@@ -62,7 +62,6 @@ class Article extends Component {
   }
 
   handleChange = event => {
-    console.log(event.target.value)
     this.setState({
       comment: event.target.value
     })
@@ -70,7 +69,6 @@ class Article extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.state.comment)
     postComment(this.state.comment, this.state.article._id)
       .then(comment => {
         this.setState(state => {
