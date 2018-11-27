@@ -26,8 +26,8 @@ export const getComments = async (id) => {
   return data.comments;
 }
 
-export const postComment = async (comment, id) => {
-  const { data } = await axios.post(`${BASE_URL}/articles/${id}/comments`, { body: comment, belongs_to: id, created_by: '5be85a535d030509c9e9ca8e' });
+export const postComment = async (comment, id, userID) => {
+  const { data } = await axios.post(`${BASE_URL}/articles/${id}/comments`, { body: comment, belongs_to: id, created_by: userID });
   return data.comment;
 }
 

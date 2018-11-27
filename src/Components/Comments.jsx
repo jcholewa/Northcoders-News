@@ -9,6 +9,7 @@ const Comments = ({ comments, handleUpvote }) => {
           return <li className='commentsLI' key={comment._id}>{comment.body} <br />
             Votes: {comment.votes} <br />
             {/* <button>Upvote</button> <button>Downvote</button> */}
+            Author: {comment.created_by.username} <br />
             <button onClick={() => handleUpvote(index)}>Upvote</button>
             <button>Downvote</button>
           </li>

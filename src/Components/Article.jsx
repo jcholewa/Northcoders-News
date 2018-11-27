@@ -69,7 +69,7 @@ class Article extends Component {
 
   submitComment = event => {
     event.preventDefault()
-    postComment(this.state.comment, this.state.article._id)
+    postComment(this.state.comment, this.state.article._id, this.props.user._id)
       .then(comment => {
         this.setState(state => {
           return { comments: [comment, ...state.comments], showComments: true }
