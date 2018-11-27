@@ -35,29 +35,19 @@ class App extends Component {
     );
   }
 
-//   componentDidMount() {
-//     login(this.state.user)
-//       .then(() =>
-//         this.setState({
-//           user
-//         })
-//     )
-// }
+  componentDidMount() {
+    login(this.state.user)
+  }
 
-// componentDidUpdate() {
-//   login(this.state.user)
-//       .then(() =>
-//         this.setState({
-//           user
-//         })
-//     )
+  componentDidUpdate() {
+    login(this.state.user)
+  }
 
-login = (user) => {
-  this.setState({
+  login = (user) => {
+    this.setState({
       user
-  })
-
-}
+    })
+  }
 
 }
 

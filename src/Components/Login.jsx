@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {login} from '../api';
+import { login } from '../api';
 
 class Login extends Component {
   state = {
-    username: ''
+    username: 'jessjelly'
   }
 
   render() {
@@ -22,7 +22,7 @@ class Login extends Component {
   }
 
   handleChange = event => {
-    const {id, value} = event.target;
+    const { id, value } = event.target;
     this.setState({
       [id]: value
     })
@@ -31,9 +31,9 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     login(this.state.username)
-    .then(user => {
-      this.props.login(user)
-    })
+      .then(user => {
+        this.props.login(user)
+      })
   }
 }
 
