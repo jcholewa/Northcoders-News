@@ -7,7 +7,8 @@ const Comments = ({ comments }) => {
       <ul className='commentsList'>
         {comments.map(comment => {
           return <li className='commentsLI' key={comment._id}>{comment.body} <br />
-            Votes: {comment.votes}
+            Votes: {comment.votes} <br/>
+            <button>Upvote</button> <button>Downvote</button>
           </li>
         })}
       </ul>
