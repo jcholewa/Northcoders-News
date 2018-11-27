@@ -20,11 +20,15 @@ class Article extends Component {
           <h4>Topic: {this.state.article.belongs_to}</h4>
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
-          <button>Add a comment</button>
-          {this.state.showComments ?
-            <Comments comments={this.state.comments} /> :
-            <button onClick={this.displayComments}>View comments</button>}
-          <Link to={'/'}>Back to Home</Link>
+          <ul className='commentsList'>
+            <input type='text' placeholder='Add a comment...' />
+            <button>Post comment</button>
+
+            {this.state.showComments ?
+              <Comments comments={this.state.comments} /> :
+              <button onClick={this.displayComments}>View comments</button>}
+            <Link to={'/'}>Back to Home</Link>
+          </ul>
         </div >
     );
   }
