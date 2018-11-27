@@ -1,19 +1,21 @@
 import React from 'react';
 
-const Comments = ({ comments }) => {
+const Comments = ({ comments, handleUpvote }) => {
   return (
     <div>
       <h4>Comments</h4>
       <ul className='commentsList'>
         {comments.map(comment => {
           return <li className='commentsLI' key={comment._id}>{comment.body} <br />
-            Votes: {comment.votes} <br/>
+            Votes: {comment.votes} <br />
             <button>Upvote</button> <button>Downvote</button>
+            {/* <button onClick={handleUpvote(comment._id)}>Upvote</button> <button>Downvote</button> */}
           </li>
         })}
       </ul>
     </div>
   );
+
 };
 
 export default Comments;

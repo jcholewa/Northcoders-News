@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getArticle, getComments, postComment } from '../api';
+import { getArticle, getComments, postComment, alterVotes } from '../api';
 import { Link } from '@reach/router';
 import '../Comments.css'
 import Comments from './Comments'
@@ -24,7 +24,7 @@ class Article extends Component {
           <p>Comment count: {this.state.article.comment_count}</p>
           <ul className='commentsList'>
             <input type='text' placeholder='Add a comment...' onChange={this.handleChange} value={this.state.comment} />
-            <button onClick={this.handleSubmit}>Post comment</button>
+            <button onClick={this.submitComment} id='postComment'>Post comment</button>
 
             {this.state.showComments ?
               <Comments comments={this.state.comments} /> :
@@ -66,7 +66,7 @@ class Article extends Component {
     })
   }
 
-  handleSubmit = event => {
+  submitComment = event => {
     event.preventDefault()
     postComment(this.state.comment, this.state.article._id)
       .then(comment => {
@@ -81,6 +81,7 @@ class Article extends Component {
       })
       .catch(console.log)
   }
+
 }
 
 export default Article;
