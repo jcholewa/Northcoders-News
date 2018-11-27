@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getArticle, postComment } from '../api';
+import { getArticle} from '../api';
 import { Link } from '@reach/router';
 import '../Comments.css'
 import Comments from './Comments'
@@ -9,7 +9,6 @@ class Article extends Component {
     article: [],
     loading: true,
     showComments: false,
-    comment: '',
   }
 
   render() {
@@ -22,15 +21,11 @@ class Article extends Component {
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
 
-          <ul className='commentsList'>
-            <input type='text' placeholder='Add a comment...' onChange={this.handleChange} value={this.state.comment} />
-            <button onClick={this.submitComment} id='postComment'>Post comment</button>
+          {this.state.showComments ?
+            <Comments article_id={this.state.article._id} comment={this.state.comment} user={this.props.user}/> :
+            <button onClick={this.displayComments}>View comments</button>}
+          <Link to={'/'}>Back to Home</Link>
 
-            {this.state.showComments ?
-              <Comments article_id={this.state.article._id}/> :
-              <button onClick={this.displayComments}>View comments</button>}
-            <Link to={'/'}>Back to Home</Link>
-          </ul>
         </div >
     );
   }
@@ -52,30 +47,6 @@ class Article extends Component {
       showComments: true
     })
   }
-
-  handleChange = event => {
-    this.setState({
-      comment: event.target.value
-    })
-  }
-
-  submitComment = event => {
-    event.preventDefault()
-    postComment(this.state.comment, this.state.article._id, this.props.user._id)
-      .then(comment => {
-        this.setState(state => {
-          return { comments: [comment, ...state.comments], showComments: true }
-        })
-      })
-      .then(() => {
-        this.setState({
-          comment: ''
-        })
-      })
-      .catch(console.log)
-  }
-
-  
 
 }
 
