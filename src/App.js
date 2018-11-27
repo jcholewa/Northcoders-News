@@ -22,8 +22,8 @@ class App extends Component {
         <div className="App">
           <Login login={this.login} user={this.state.user}>
             <Router>
-              <Home path='/' />
-              <Home path='/articles' />
+              <Home path='/' user={this.state.user} />
+              <Home path='/articles' user={this.state.user} />
               <Topics path='/topics' />
               <TopicArticles path='/topics/:topic_slug/articles' />
               <Article path='/articles/:article_id/*' user={this.state.user} />

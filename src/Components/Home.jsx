@@ -57,7 +57,7 @@ class Home extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    postArticle(this.state.newArticleTitle, this.state.newArticle, this.state.topic)
+    postArticle(this.state.newArticleTitle, this.state.newArticle, this.state.topic, this.props.user._id)
       .then(article => {
         this.setState(state => {
           return { articles: [article, ...state.articles] }

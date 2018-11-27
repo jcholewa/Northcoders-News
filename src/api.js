@@ -36,8 +36,8 @@ export const alterVotes = async (id, direction) => {
   return data.comment;
 }
 
-export const postArticle = async (title, article, slug) => {
-  const { data } = await axios.post(`${BASE_URL}/topics/${slug}/articles`, { title: title, body: article, belongs_to: slug.toLowerCase(), created_by: '5be85a535d030509c9e9ca8e' });
+export const postArticle = async (title, article, slug, userID) => {
+  const { data } = await axios.post(`${BASE_URL}/topics/${slug}/articles`, { title: title, body: article, belongs_to: slug.toLowerCase(), created_by: userID });
   return data.article;
 }
 
