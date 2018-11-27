@@ -22,7 +22,7 @@ class Article extends Component {
           <p>Comment count: {this.state.article.comment_count}</p>
           <button>Add a comment</button>
           {this.state.showComments ?
-            <Comments comments={this.state.comments} article={this.state.article} /> :
+            <Comments comments={this.state.comments} /> :
             <button onClick={this.displayComments}>View comments</button>}
           <Link to={'/'}>Back to Home</Link>
         </div >
