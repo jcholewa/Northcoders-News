@@ -23,7 +23,7 @@ class App extends Component {
             <Router>
               <Home path='/' user={this.state.user} />
               <Home path='/articles' user={this.state.user} />
-              <TopicArticles path='/topics/:topic_slug/articles' />
+              <Home path='/topics/:topic_slug/articles' />
               <Article path='/articles/:article_id/*' user={this.state.user} />
               <User path='/users/:username' />
             </Router>

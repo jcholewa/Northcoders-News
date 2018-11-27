@@ -13,12 +13,17 @@ class Home extends Component {
 
   render() {
     console.log('rendering')
+    console.log(this.props.topic_slug)
     return (
       this.state.loading === true ? <p>Loading...</p> :
         <div className="home">
+        {this.props.topic_slug !== undefined ?
+        <header>
+          <h1>News about {this.props.topic_slug}</h1>
+          </header> :
           <header>
             <h1>Northcoders News</h1>
-          </header>
+          </header>}
           <Articles articles={this.state.articles} newArticle={this.state.newArticle} newArticleTitle={this.state.newArticleTitle} topic={this.state.topic} handleChange={this.handleChange} handleChangeTitle={this.handleChangeTitle} handleSubmit={this.handleSubmit} changeTopic={this.changeTopic} />
           <footer>Footer</footer>
         </div>
