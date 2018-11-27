@@ -11,7 +11,6 @@ class Article extends Component {
     showComments: false,
     comments: [],
     comment: '',
-    postedComment: false
   }
 
   render() {
