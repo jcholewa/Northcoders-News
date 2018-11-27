@@ -15,9 +15,12 @@ class Nav extends Component {
         <div className="nav">
           <nav>
             <Link to='/'>Home</Link>
-            {'   |   '}
+            {'     |     '}
             {this.state.topics.map((topic, index) => {
-              return <Link to={`/topics/${topic.slug}/articles`} key={index}>{topic.title}</Link>
+              if (index !== this.state.topics.length - 1)
+                return <Link to={`/topics/${topic.slug}/articles`} key={index}>{topic.title}
+                  {'     |     '} </Link>
+              else return <Link to={`/topics/${topic.slug}/articles`} key={index}>{topic.title} </Link>
             })}
           </nav>
         </div>
