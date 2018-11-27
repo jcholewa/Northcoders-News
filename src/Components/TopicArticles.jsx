@@ -35,6 +35,7 @@ class TopicArticles extends Component {
           loading: false
         })
       })
+      .catch(console.log)
   }
 }
 

@@ -34,6 +34,7 @@ class Login extends Component {
       .then(user => {
         this.props.userLogin(user.username)
       })
+      .catch(console.log)
   }
 }
 

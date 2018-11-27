@@ -31,6 +31,7 @@ class User extends Component {
           loading: false
         })
       })
+      .catch(console.log)
   }
 }
 
