@@ -8,22 +8,21 @@ class Home extends Component {
     loading: true,
     newArticle: '',
     newArticleTitle: '',
-    topic: ''
+    topic: '',
   }
 
   render() {
     console.log('rendering')
-    console.log(this.props.topic_slug)
     return (
       this.state.loading === true ? <p>Loading...</p> :
         <div className="home">
-        {this.props.topic_slug !== undefined ?
-        <header>
-          <h1>News about {this.props.topic_slug}</h1>
-          </header> :
-          <header>
-            <h1>Northcoders News</h1>
-          </header>}
+          {this.props.topic_slug !== undefined ?
+            <header>
+              <h1>News about {this.props.topic_slug}</h1>
+            </header> :
+            <header>
+              <h1>Northcoders News</h1>
+            </header>}
           <Articles articles={this.state.articles} newArticle={this.state.newArticle} newArticleTitle={this.state.newArticleTitle} topic={this.state.topic} handleChange={this.handleChange} handleChangeTitle={this.handleChangeTitle} handleSubmit={this.handleSubmit} changeTopic={this.changeTopic} />
           <footer>Footer</footer>
         </div>
@@ -32,7 +31,7 @@ class Home extends Component {
 
   componentDidMount() {
     console.log('mounting')
-    getArticles()
+    getArticles(this.props.topic_slug)
       .then(articles => {
         this.setState({
           articles,
@@ -40,6 +39,19 @@ class Home extends Component {
         })
       })
       .catch(console.log)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.topic_slug !== this.props.topic_slug) {
+      getArticles(this.props.topic_slug)
+        .then(articles => {
+          this.setState({
+            articles,
+            loading: false
+          })
+        })
+        .catch(console.log)
+    }
   }
 
   handleChange = event => {
