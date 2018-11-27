@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.userLogin(this.state.user)
+    if (this.state.user.username) this.userLogin(this.state.user.username)
   }
 
   componentDidUpdate() {

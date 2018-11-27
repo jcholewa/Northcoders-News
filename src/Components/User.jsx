@@ -9,7 +9,6 @@ class User extends Component {
   }
 
   render() {
-    console.log(this.state.user)
     return (
       this.state.loading ? <p>Loading...</p> :
         <div>
