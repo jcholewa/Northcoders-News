@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getArticle, getComments } from '../api';
+import { getArticle, getComments, postComment } from '../api';
 import { Link } from '@reach/router';
 import '../Comments.css'
 import Comments from './Comments'
@@ -8,7 +8,9 @@ class Article extends Component {
   state = {
     article: [],
     loading: true,
-    showComments: false
+    showComments: false,
+    comments: [],
+    comment: ''
   }
 
   render() {
@@ -21,8 +23,9 @@ class Article extends Component {
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
           <ul className='commentsList'>
-            <input type='text' placeholder='Add a comment...' />
-            <button>Post comment</button>
+            <input type='text' placeholder='Add a comment...' onChange={this.handleChange} value={this.state.comment} />
+            <button onClick={this.handleSubmit}>Post comment</button>
+            {/* <input type="submit" value="Submit" id="submit" onSubmit={this.handleSubmit}/> */}
 
             {this.state.showComments ?
               <Comments comments={this.state.comments} /> :
@@ -58,6 +61,29 @@ class Article extends Component {
     })
   }
 
+  handleChange = event => {
+    console.log(event.target.value)
+    this.setState({
+      comment: event.target.value
+    })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    console.log(this.state.comment)
+    postComment(this.state.comment, this.state.article._id)
+      .then(comment => {
+        this.setState(state => {
+          return { comments: [comment, ...state.comments] }
+        })
+      })
+      .then(() => {
+        this.setState({
+          comment: ''
+        })
+      })
+      .catch(console.log)
+  }
 }
 
 export default Article;
