@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { login } from '../api';
+import '../Login.css'
 
 class Login extends Component {
   state = {
@@ -9,12 +10,16 @@ class Login extends Component {
   render() {
     if (this.props.user.username) return this.props.children
     return (
-      <div>
+      <div className='login'>
         <form onSubmit={this.handleSubmit} >
-          <label htmlFor='username'>Username: </label>
-          <input type='text' id='username' onChange={this.handleChange} value={this.state.username} />
-          <label htmlFor='password'>Password: </label>
-          <input type='password' id='password' onChange={this.handleChange} />
+          <div>
+            <label htmlFor='username'>Username: </label>
+            <input type='text' id='username' onChange={this.handleChange} value={this.state.username} />
+          </div>
+          <div>
+            <label htmlFor='password'>Password: </label>
+            <input type='password' id='password' onChange={this.handleChange} />
+          </div>
           <button>Log in</button>
         </form>
       </div >
