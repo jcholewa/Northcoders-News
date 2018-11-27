@@ -19,7 +19,7 @@ class Home extends Component {
           <header>
             <h1>Northcoders News</h1>
           </header>
-          <Articles articles={this.state.articles} newArticle={this.state.newArticle} handleChange={this.handleChange} handleChangeTitle={this.handleChangeTitle} handleSubmit={this.handleSubmit} changeTopic={this.changeTopic} />
+          <Articles articles={this.state.articles} newArticle={this.state.newArticle} newArticleTitle={this.state.newArticleTitle} topic={this.state.topic} handleChange={this.handleChange} handleChangeTitle={this.handleChangeTitle} handleSubmit={this.handleSubmit} changeTopic={this.changeTopic} />
           <footer>Footer</footer>
         </div>
     );
@@ -49,10 +49,14 @@ class Home extends Component {
     })
   }
 
+  changeTopic = event => {
+    this.setState({
+      topic: event.target.value
+    })
+  }
+
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log('add article clicked')
-    console.log(this.state.topic)
     postArticle(this.state.newArticleTitle, this.state.newArticle, this.state.topic)
       .then(article => {
         this.setState(state => {
@@ -61,18 +65,13 @@ class Home extends Component {
       })
       .then(() => {
         this.setState({
-          newArticle: ''
+          newArticle: '',
+          newArticleTitle: '',
+          topic: null
         })
       })
+      .catch(console.log)
   }
-
-  changeTopic= event => {
-    this.setState({
-      topic: event.target.value
-    })
-  }
-
-
 }
 
 export default Home;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from '@reach/router';
 
-const Articles = ({ articles, newArticle, newArticleTitle, handleSubmit, handleChange, handleChangeTitle, changeTopic }) => {
+const Articles = ({ articles, newArticle, newArticleTitle, handleSubmit, handleChange, handleChangeTitle, changeTopic, topic }) => {
   return (
     <div className='articles'>
-      <select onChange={changeTopic}>
-        <option value=''>Choose a topic...</option>
+      <select onChange={changeTopic} defaultValue=''>
+        <option value={topic}>Choose a topic...</option>
         <option value='coding'>Coding</option>
         <option value='football'>Football</option>
         <option value='cooking'>Cooking</option>
