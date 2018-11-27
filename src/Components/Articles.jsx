@@ -19,10 +19,15 @@ const Articles = ({ articles, newArticle, newArticleTitle, handleSubmit, handleC
 
       <ul>
         {articles.map(article => {
+          let date = new Date(article.created_at)
+          let day = date.getDay()
+          let month = date.getMonth()
+          let year = date.getFullYear()
           return (
             <li key={article._id}>
               <Link to={`/articles/${article._id}`}>{article.title}</Link>
               <p>by {article.created_by.name}</p>
+              <p>Posted on: {day}/{month}/{year}</p>
               <p>{article.body.substring(0, 160)}...</p>
             </li>
           )
