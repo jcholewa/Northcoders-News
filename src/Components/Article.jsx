@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { getArticle, getComments } from '../api';
 import { Link } from '@reach/router';
-import Comments from './Comments';
 import '../Comments.css'
+import Comments from './Comments'
 
 class Article extends Component {
   state = {
     article: [],
-    comments: [],
     loading: true,
     showComments: false
   }
@@ -23,7 +22,8 @@ class Article extends Component {
           <p>Comment count: {this.state.article.comment_count}</p>
           <button>Add a comment</button>
           {this.state.showComments ?
-            <Comments comments={this.state.comments} article={this.state.article} /> : <p onClick={displayComments}>View comments</p>}
+            <Comments comments={this.state.comments} article={this.state.article} /> :
+            <button onClick={this.displayComments}>View comments</button>}
           <Link to={'/'}>Back to Home</Link>
         </div >
     );
