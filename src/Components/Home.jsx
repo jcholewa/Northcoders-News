@@ -7,7 +7,8 @@ class Home extends Component {
     articles: [],
     loading: true,
     newArticle: '',
-    newArticleTitle: ''
+    newArticleTitle: '',
+    topic: ''
   }
 
   render() {
@@ -18,7 +19,7 @@ class Home extends Component {
           <header>
             <h1>Northcoders News</h1>
           </header>
-          <Articles articles={this.state.articles} newArticle={this.state.newArticle} handleChange={this.handleChange} handleChangeTitle={this.handleChangeTitle} handleSubmit={this.handleSubmit} />
+          <Articles articles={this.state.articles} newArticle={this.state.newArticle} handleChange={this.handleChange} handleChangeTitle={this.handleChangeTitle} handleSubmit={this.handleSubmit} changeTopic={this.changeTopic} />
           <footer>Footer</footer>
         </div>
     );
@@ -51,7 +52,8 @@ class Home extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     console.log('add article clicked')
-    postArticle(this.state.newArticleTitle, this.state.newArticle, this.state.articles.belongs_to)
+    console.log(this.state.topic)
+    postArticle(this.state.newArticleTitle, this.state.newArticle, this.state.topic)
       .then(article => {
         this.setState(state => {
           return { articles: [article, ...state.articles] }
@@ -62,6 +64,12 @@ class Home extends Component {
           newArticle: ''
         })
       })
+  }
+
+  changeTopic= event => {
+    this.setState({
+      topic: event.target.value
+    })
   }
 
 
