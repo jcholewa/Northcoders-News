@@ -5,11 +5,12 @@ const Comments = ({ comments, handleUpvote }) => {
     <div>
       <h4>Comments</h4>
       <ul className='commentsList'>
-        {comments.map(comment => {
+        {comments.map((comment, index) => {
           return <li className='commentsLI' key={comment._id}>{comment.body} <br />
             Votes: {comment.votes} <br />
-            <button>Upvote</button> <button>Downvote</button>
-            {/* <button onClick={handleUpvote(comment._id)}>Upvote</button> <button>Downvote</button> */}
+            {/* <button>Upvote</button> <button>Downvote</button> */}
+            <button onClick={() => handleUpvote(index)}>Upvote</button>
+            <button>Downvote</button>
           </li>
         })}
       </ul>

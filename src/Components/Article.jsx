@@ -27,7 +27,7 @@ class Article extends Component {
             <button onClick={this.submitComment} id='postComment'>Post comment</button>
 
             {this.state.showComments ?
-              <Comments comments={this.state.comments} /> :
+              <Comments comments={this.state.comments} handleUpvote={this.handleUpvote} /> :
               <button onClick={this.displayComments}>View comments</button>}
             <Link to={'/'}>Back to Home</Link>
           </ul>
@@ -80,6 +80,16 @@ class Article extends Component {
         })
       })
       .catch(console.log)
+  }
+
+  handleUpvote = event => {
+    const currentComment = this.state.comments[event]
+    alterVotes(this.state.comments[event]._id, 'up')
+      .then(comment => {
+        this.setState({
+          [currentComment]: comment
+        })
+      })
   }
 
 }
