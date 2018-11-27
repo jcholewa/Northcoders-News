@@ -21,7 +21,6 @@ class App extends Component {
             <Topics path='/topics' />
             <TopicArticles path='/topics/:topic_slug/articles' />
             <Article path='/articles/:article_id/' />
-            <Comments path='/articles/:article_id/comments' />
             <Comments path='/comments/:comment_id' />
             <User path='/users/:username' />
           </Router>

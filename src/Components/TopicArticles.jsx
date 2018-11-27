@@ -16,8 +16,10 @@ class TopicArticles extends Component {
           <ul>
             {this.state.articles.map(article => {
               return (
-                <li key={article._id}>
+                <li key={article._id} >
                   <Link to={`/articles/${article._id}`}>{article.title}</Link>
+                  <p>by {article.created_by.name}</p>
+                  <p>{article.body.substring(0, 160)}...</p>
                 </li>
               )
             })}
