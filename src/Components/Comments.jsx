@@ -20,7 +20,7 @@ class Comments extends Component {
           {this.state.comments.map(comment => {
             return <li className='commentsLI' key={comment._id}>{comment.body} <br />
               Author: {comment.created_by.username} <br />
-              <Votes comment_id={comment._id} votes={comment.votes} />
+              <Votes id={comment._id} votes={comment.votes} />
             </li>
           })}
         </ul>

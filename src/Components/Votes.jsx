@@ -17,9 +17,8 @@ class Votes extends Component {
   }
 
   handleVote = event => {
-    alterVotes(this.props.comment_id, event.value)
+    alterVotes(this.props.id, event.value)
       .then(comment => {
-        console.log(comment)
         this.setState({
           votes: comment.votes
         })
