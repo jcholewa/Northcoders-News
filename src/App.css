@@ -7,22 +7,34 @@
   grid-template-columns: 4fr 1fr;
   grid-template-areas:
     'header header'
-    'articles .'
+    'articles add-article'
     'footer footer'
 }
 
 header {
   grid-area: header;
+  border: solid red;
 }
 
 nav {
   padding-top: 0.5%;
   text-align: center;
+  border: solid green;
 }
 
 .articles {
   grid-area: articles;
+  border: solid blue
 }
+
+.add-article {
+  grid-area: add-article;
+  border: solid orange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 footer {
   grid-area: footer;
