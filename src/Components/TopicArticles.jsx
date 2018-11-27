@@ -30,7 +30,6 @@ class TopicArticles extends Component {
   componentDidMount() {
     getArticles()
       .then(articles => {
-        console.log(articles)
         this.setState({
           articles: articles.filter(article => article.belongs_to === this.props.topic_slug),
           loading: false

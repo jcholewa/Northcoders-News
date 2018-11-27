@@ -19,7 +19,7 @@ class App extends Component {
       <div>
         <Nav />
         <div className="App">
-          <Login login={this.login} user={this.state.user}>
+          <Login userLogin={this.userLogin} user={this.state.user}>
             <Router>
               <Home path='/' user={this.state.user} />
               <Home path='/articles' user={this.state.user} />
@@ -34,17 +34,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    login(this.state.user)
+    this.userLogin(this.state.user)
   }
 
   componentDidUpdate() {
-    login(this.state.user)
+    this.userLogin(this.state.user)
   }
 
-  login = (user) => {
-    this.setState({
-      user
-    })
+  userLogin = (user) => {
+    login(user)
+      .then(user => {
+        this.setState({
+          user
+        })
+      })
   }
 
 }

@@ -32,7 +32,7 @@ class Login extends Component {
     event.preventDefault();
     login(this.state.username)
       .then(user => {
-        this.props.login(user)
+        this.props.userLogin(user.username)
       })
   }
 }
