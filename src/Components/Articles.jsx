@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from '@reach/router';
 
-const Articles = ({ articles }) => {
+const Articles = ({ articles, newArticle, newArticleTitle, handleSubmit, handleChange, handleChangeTitle }) => {
   return (
     <div className='articles'>
-      <button>Add an article</button>
+      <input type='text' placeholder='Add an article title...' onChange={handleChangeTitle} value={newArticleTitle} />
+      <input type='text' placeholder='Add an article...' onChange={handleChange} value={newArticle} />
+      <button onClick={handleSubmit}>Add an article</button>
       <ul>
         {articles.map(article => {
           return (

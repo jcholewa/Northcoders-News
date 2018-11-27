@@ -35,3 +35,8 @@ export const alterVotes = async (id, direction) => {
   const { data } = await axios.patch(`${BASE_URL}/comments/${id}?${direction}`);
   return data.comment;
 }
+
+export const postArticle = async (title, article, slug) => {
+  const { data } = await axios.post(`${BASE_URL}/topics/${slug}/articles`, { title: title, body: article, belongs_to: slug, created_by: '5be85a535d030509c9e9ca8e' });
+  return data.article;
+}
