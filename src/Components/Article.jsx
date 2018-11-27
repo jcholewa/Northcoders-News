@@ -10,7 +10,8 @@ class Article extends Component {
     loading: true,
     showComments: false,
     comments: [],
-    comment: ''
+    comment: '',
+    postedComment: false
   }
 
   render() {
@@ -72,7 +73,7 @@ class Article extends Component {
     postComment(this.state.comment, this.state.article._id)
       .then(comment => {
         this.setState(state => {
-          return { comments: [comment, ...state.comments] }
+          return { comments: [comment, ...state.comments], showComments: true }
         })
       })
       .then(() => {
