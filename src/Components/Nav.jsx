@@ -16,10 +16,8 @@ class Nav extends Component {
           <nav>
             <Link to='/'>Home</Link>
             {'   |   '}
-            {this.state.topics.map((topic,index) => {
-              return <> <Link to={`/topics/${topic.slug}/articles`} key={index}>{topic.title}</Link>
-              { '   |   ' }
-              </>
+            {this.state.topics.map((topic, index) => {
+              return <Link to={`/topics/${topic.slug}/articles`} key={index}>{topic.title}</Link>
             })}
           </nav>
         </div>
@@ -34,6 +32,7 @@ class Nav extends Component {
           loading: false
         })
       })
+      .catch(console.log)
   }
 }
 
