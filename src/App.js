@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    this.userLogin(this.state.user)
+    this.userLogin(this.state.user.username)
   }
 
   userLogin = (user) => {
