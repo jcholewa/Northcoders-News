@@ -40,3 +40,8 @@ export const postArticle = async (title, article, slug) => {
   const { data } = await axios.post(`${BASE_URL}/topics/${slug}/articles`, { title: title, body: article, belongs_to: slug.toLowerCase(), created_by: '5be85a535d030509c9e9ca8e' });
   return data.article;
 }
+
+export const login = async (username) => {
+  const { data } = await axios.get(`${BASE_URL}/users/${username}`);
+  return data.user
+}

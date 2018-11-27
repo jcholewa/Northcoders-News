@@ -22,6 +22,7 @@ class Article extends Component {
           <h4>Topic: {this.state.article.belongs_to}</h4>
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
+          
           <ul className='commentsList'>
             <input type='text' placeholder='Add a comment...' onChange={this.handleChange} value={this.state.comment} />
             <button onClick={this.submitComment} id='postComment'>Post comment</button>
