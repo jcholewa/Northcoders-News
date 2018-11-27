@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getArticle, getComments, postComment, alterVotes } from '../api';
+import { getArticle, postComment } from '../api';
 import { Link } from '@reach/router';
 import '../Comments.css'
 import Comments from './Comments'
@@ -9,7 +9,6 @@ class Article extends Component {
     article: [],
     loading: true,
     showComments: false,
-    comments: [],
     comment: '',
   }
 
@@ -22,13 +21,13 @@ class Article extends Component {
           <h4>Topic: {this.state.article.belongs_to}</h4>
           <p>{this.state.article.body}</p>
           <p>Comment count: {this.state.article.comment_count}</p>
-          
+
           <ul className='commentsList'>
             <input type='text' placeholder='Add a comment...' onChange={this.handleChange} value={this.state.comment} />
             <button onClick={this.submitComment} id='postComment'>Post comment</button>
 
             {this.state.showComments ?
-              <Comments comments={this.state.comments} handleUpvote={this.handleUpvote} /> :
+              <Comments article_id={this.state.article._id}/> :
               <button onClick={this.displayComments}>View comments</button>}
             <Link to={'/'}>Back to Home</Link>
           </ul>
@@ -45,13 +44,6 @@ class Article extends Component {
           loading: false
         })
       })
-      .then(getComments(this.props.article_id)
-        .then(comments => {
-          this.setState({
-            comments,
-          })
-        })
-      )
       .catch(console.log)
   }
 
@@ -83,17 +75,7 @@ class Article extends Component {
       .catch(console.log)
   }
 
-  handleUpvote = event => {
-    const currentComment = this.state.comments[event]
-    alterVotes(this.state.comments[event]._id, 'up')
-      .then(comment => {
-        console.log(comment)
-        this.setState({
-          [currentComment]: comment
-        })
-      })
-      .catch(console.log)
-  }
+  
 
 }
 
