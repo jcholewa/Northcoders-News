@@ -20,7 +20,9 @@ class Article extends Component {
           Author: <Link to={`/users/${this.state.article.created_by.username}`}> {this.state.article.created_by.username}</Link>
           <h4>Topic: {this.state.article.belongs_to}</h4>
           <p>{this.state.article.body}</p>
-          <Votes id={this.state.article._id} votes={article.votes} />
+
+          <Votes id={this.state.article._id} votes={this.state.article.votes} work={'article'}/>
+
           <p>Comment count: {this.state.article.comment_count}</p>
 
           {this.state.showComments ?

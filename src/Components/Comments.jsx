@@ -21,7 +21,7 @@ class Comments extends Component {
           {this.state.comments.map(comment => {
             return <li className='commentsLI' key={comment._id}>{comment.body} <br />
               Author: {comment.created_by.username} <br />
-              <Votes id={comment._id} votes={comment.votes} />
+              <Votes id={comment._id} votes={comment.votes} work={'comment'} />
               {(comment.created_by.username === this.props.user.username) ? <button>Delete comment</button> : <> </>}
             </li>
           })}

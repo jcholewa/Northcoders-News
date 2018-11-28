@@ -25,6 +25,7 @@ class User extends Component {
   componentDidMount() {
     getUser(this.props.username)
       .then(user => {
+        console.log(user)
         this.setState({
           user,
           loading: false

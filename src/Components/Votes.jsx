@@ -17,10 +17,11 @@ class Votes extends Component {
   }
 
   handleVote = event => {
-    alterVotes(this.props.id, event.value)
-      .then(comment => {
+    console.log(event.target.value)
+    alterVotes(this.props.id, event.target.value, this.props.work)
+      .then(result => {
         this.setState({
-          votes: comment.votes
+          votes: result.votes
         })
       })
       .catch(console.log)
