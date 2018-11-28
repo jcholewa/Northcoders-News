@@ -2,6 +2,7 @@ import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import Votes from './Votes';
 import SortBy from './SortBy';
+import ArticleAdder from './ArticleAdder';
 import { getData, postArticle } from '../api';
 import { getDate } from '../utils';
 const _ = require('underscore');
@@ -13,7 +14,8 @@ class Articles extends Component {
     newArticle: '',
     newArticleTitle: '',
     topic: '',
-    sortBy: ''
+    sortBy: '',
+    addArticle: false
   }
 
   prevProps = this.props.prevProps;
@@ -21,41 +23,31 @@ class Articles extends Component {
   render() {
     return (
       <div>
-        <form className='add-article'>
-          <select onChange={this.changeTopic} defaultValue=''>
-            <option value={this.state.topic}>Choose a topic...</option>
-            <option value='coding'>Coding</option>
-            <option value='football'>Football</option>
-            <option value='cooking'>Cooking</option>
-          </select>
-
-          <input type='text' placeholder='Add an article title...' onChange={this.handleChangeTitle} value={this.state.newArticleTitle} />
-
-          <input type='text' placeholder='Add an article...' onChange={this.handleChange} value={this.state.newArticle} />
-
-          <button onClick={this.handleSubmit}>Add an article</button>
-        </form>
-
         {this.state.loading ? <p>Loading...</p> :
           <>
-            <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
-            <ul className='articles'>
-              {this.state.articles.map(article => {
-                let dayPosted = getDate(article.created_at)
-                {
-                  if (this.state.loading) return <p>Loading...</p>
-                  return (
-                    <li key={article._id}>
-                      <Link to={`/articles/${article._id}`}>{article.title}</Link>
-                      <p>by {article.created_by.name}</p>
-                      <p>Posted on: {dayPosted}</p>
-                      <p>{article.body.substring(0, 160)}...</p>
-                      <Votes id={article._id} votes={article.votes} type='articles' />
-                    </li>
-                  )
-                }
-              })}
-            </ul>
+            {this.state.addArticle ?
+              <ArticleAdder changeTopic={this.changeTopic} topic={this.state.topic} handleChangeTitle={this.handleChangeTitle} newArticleTitle={this.state.newArticleTitle} newArticle={this.state.newArticle} handleSubmit={this.handleSubmit} handleChange={this.handleChange} /> :
+              <>
+                <button onClick={this.showArticleAdder}>Click here to add an article</button>
+                <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
+                <ul className='articles'>
+                  {this.state.articles.map(article => {
+                    let dayPosted = getDate(article.created_at)
+                    {
+                      if (this.state.loading) return <p>Loading...</p>
+                      return (
+                        <li key={article._id}>
+                          <Link to={`/articles/${article._id}`}>{article.title}</Link>
+                          <p>by {article.created_by.name}</p>
+                          <p>Posted on: {dayPosted}</p>
+                          <p>{article.body.substring(0, 160)}...</p>
+                          <Votes id={article._id} votes={article.votes} type='articles' />
+                        </li>
+                      )
+                    }
+                  })}
+                </ul>
+              </>}
           </>}
       </div>
     )
@@ -79,11 +71,18 @@ class Articles extends Component {
         .then(articles => {
           this.setState({
             articles,
-            loading: false
+            loading: false,
           })
         })
         .catch(console.log)
     }
+  }
+
+  showArticleAdder = event => {
+    event.preventDefault();
+    this.setState({
+      addArticle: true
+    })
   }
 
   handleChange = event => {
@@ -116,7 +115,8 @@ class Articles extends Component {
         this.setState({
           newArticle: '',
           newArticleTitle: '',
-          topic: null
+          topic: null,
+          addArticle: false
         })
       })
       .catch(console.log)
