@@ -44,5 +44,10 @@ export const postArticle = async (title, article, slug, userID) => {
 
 export const login = async (username) => {
   const { data } = await axios.get(`${BASE_URL}/users/${username}`);
-  return data.user
+  return data.user;
+}
+
+export const deleteItem = async (id) => {
+  const { data } = await axios.delete(`${BASE_URL}/comments/${id}`);
+  return data.message;
 }

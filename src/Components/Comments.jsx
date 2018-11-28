@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getComments, postComment } from '../api';
+import { getComments, postComment, deleteItem } from '../api';
 import Votes from './Votes';
 
 class Comments extends Component {
@@ -22,7 +22,7 @@ class Comments extends Component {
               return <li className='commentsLI' key={comment._id}>{comment.body} <br />
                 Author: {comment.created_by.username} <br />
                 <Votes id={comment._id} votes={comment.votes} type='comments' />
-                {(comment.created_by.username === this.props.user.username) ? <button>Delete comment</button> : <> </>}
+                {(comment.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(comment._id))}>Delete comment</button> : <> </>}
               </li>
             })}
           </ul>
@@ -61,6 +61,15 @@ class Comments extends Component {
         })
       })
       .catch(console.log)
+  }
+
+  handleDelete = (id) => {
+    deleteItem(id)
+      .then(message => {
+        this.setState({
+          comments: this.state.comments.filter(comment => comment._id !== id)
+        })
+      })
   }
 }
 
