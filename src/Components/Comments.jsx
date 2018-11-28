@@ -94,7 +94,7 @@ class Comments extends Component {
     console.log(this.state.comments)
     this.setState(state => {
       return {
-        comments: state.sortBy === 'votes' ? _.sortBy(state.comments, 'votes').reverse() : _.sortBy(state.comments, 'created_at').reverse()
+        comments: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? _.sortBy(state.comments, 'votes').reverse() : _.sortBy(state.comments, 'votes') : state.sortBy === 'time-desc' ? _.sortBy(state.comments, 'created_at').reverse() : _.sortBy(state.comments, 'created_at')
       }
     }, () => { console.log(this.state.comments) })
   }
