@@ -17,6 +17,8 @@ class App extends Component {
     return (
       <div>
         <Nav />
+        {this.state.user.username ?
+          <button onClick={this.userLogout}>Log Out</button> : <> </>}
         <div className="App">
           <Login userLogin={this.userLogin} user={this.state.user}>
             <Router>
@@ -48,6 +50,12 @@ class App extends Component {
         })
       })
       .catch(console.log)
+  }
+
+  userLogout = () => {
+    this.setState({
+      user: {}
+    })
   }
 
 }
