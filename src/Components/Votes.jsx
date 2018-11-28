@@ -8,11 +8,12 @@ class Votes extends Component {
 
   render() {
     return (
-      <div>
-        Votes: {this.props.votes + this.state.voteMod} <br />
-        <button onClick={(() => this.handleVote('up'))} >Upvote</button>
-        <button onClick={(() => this.handleVote('down'))} >Downvote</button>
-      </div>
+      this.state.err ? <p>Something went wrong</p> :
+        <div>
+          Votes: {this.props.votes + this.state.voteMod} <br />
+          <button onClick={(() => this.handleVote('up'))} >Upvote</button>
+          <button onClick={(() => this.handleVote('down'))} >Downvote</button>
+        </div>
     );
   }
 
