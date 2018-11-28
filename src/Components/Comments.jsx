@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { getComments, postComment, deleteItem } from '../api';
 import Votes from './Votes';
+import SortBy from './SortBy';
+const _ = require('underscore');
 
 class Comments extends Component {
   state = {
@@ -8,7 +10,6 @@ class Comments extends Component {
     comment: '',
     loading: true,
   }
-
 
   render() {
     return (
@@ -18,9 +19,17 @@ class Comments extends Component {
           <input type='text' placeholder='Add a comment...' onChange={this.handleChange} value={this.state.comment} />
           <button onClick={this.submitComment} id='postComment'>Post comment</button>
           <ul className='commentsList'>
+
+            <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} />
+
             {this.state.comments.map(comment => {
+              let date = new Date(comment.created_at)
+              let day = date.getDay()
+              let month = date.getMonth()
+              let year = date.getFullYear()
               return <li className='commentsLI' key={comment._id}>{comment.body} <br />
                 Author: {comment.created_by.username} <br />
+                <p>Posted on: {day}/{month}/{year}</p>
                 <Votes id={comment._id} votes={comment.votes} type='comments' />
                 {(comment.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(comment._id))}>Delete comment</button> : <> </>}
               </li>
@@ -71,6 +80,25 @@ class Comments extends Component {
         })
       })
   }
+
+  // This will be the onChange for the select element:
+  handleChangeSort = event => {
+    this.setState({
+      sortBy: event.target.value
+    })
+  }
+
+  // This will be the onClick for the whole form element:
+  handleSortBySubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state.comments)
+    this.setState(state => {
+      return {
+        comments: state.sortBy === 'votes' ? _.sortBy(state.comments, 'votes').reverse() : _.sortBy(state.comments, 'created_at').reverse()
+      }
+    }, () => { console.log(this.state.comments) })
+  }
+
 }
 
 export default Comments;
