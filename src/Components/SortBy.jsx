@@ -8,7 +8,7 @@ const SortBy = ({ handleChangeSort, handleSortBySubmit }) => {
         <select id='sort-select' onChange={handleChangeSort} defaultValue=''>
           <option>Choose a filter...</option>
           <option value='votes'>Number of votes descending</option>
-          <option value='time'>Time posted</option>
+          <option value='time'>Time posted, newest-oldest</option>
         </select>
         <button onClick={handleSortBySubmit}>Sort</button>
       </form>
