@@ -16,10 +16,6 @@ class Login extends Component {
             <label htmlFor='username'>Username: </label>
             <input type='text' id='username' onChange={this.handleChange} value={this.state.username} />
           </div>
-          <div>
-            <label htmlFor='password'>Password: </label>
-            <input type='password' id='password' onChange={this.handleChange} />
-          </div>
           <button>Log in</button>
         </form>
       </div >
