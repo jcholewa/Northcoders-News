@@ -77,3 +77,13 @@ li {
   padding-right: 2%;
   font-size: 0.9em;
 }
+
+button {
+  border-radius: 25px;
+  background-color: #125B07;
+  color: white;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
