@@ -58,7 +58,7 @@ class Articles extends Component {
             </ul>
           </>}
       </div>
-    );
+    )
   }
 
   componentDidMount() {
