@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { getArticle} from '../api';
+import { getArticle } from '../api';
 import { Link } from '@reach/router';
 import '../Comments.css'
-import Comments from './Comments'
+import Comments from './Comments';
+import Votes from './Votes';
 
 class Article extends Component {
   state = {
@@ -19,10 +20,11 @@ class Article extends Component {
           Author: <Link to={`/users/${this.state.article.created_by.username}`}> {this.state.article.created_by.username}</Link>
           <h4>Topic: {this.state.article.belongs_to}</h4>
           <p>{this.state.article.body}</p>
+          <Votes id={this.state.article._id} votes={article.votes} />
           <p>Comment count: {this.state.article.comment_count}</p>
 
           {this.state.showComments ?
-            <Comments article_id={this.state.article._id} comment={this.state.comment} user={this.props.user}/> :
+            <Comments article_id={this.state.article._id} comment={this.state.comment} user={this.props.user} /> :
             <button onClick={this.displayComments}>View comments</button>}
           <Link to={'/'}>Back to Home</Link>
 
