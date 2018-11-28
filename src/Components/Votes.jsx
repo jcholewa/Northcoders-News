@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { alterVotes } from '../api';
+import { alterVoteMod } from '../utils';
 
 class Votes extends Component {
   state = {
@@ -22,7 +23,7 @@ class Votes extends Component {
       .catch(err => { this.setState({ err }) })
     this.setState(state => {
       return {
-        voteMod: direction === 'up' ? 1 : -1
+        voteMod: alterVoteMod(state.voteMod, direction)
       }
     })
   }
