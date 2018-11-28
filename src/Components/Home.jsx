@@ -18,7 +18,7 @@ class Home extends Component {
             <header>
               <h1>Northcoders News</h1>
             </header>}
-          <Articles topic_slug={this.props.topic_slug} />
+          <Articles user={this.props.user} topic_slug={this.props.topic_slug} />
           <footer>Footer</footer>
         </div>
     );
