@@ -3,7 +3,9 @@ const BASE_URL = "https://jc-northcoders-news.herokuapp.com/api";
 
 export const getData = async (id, topic) => {
   const url =
+  // if ID isn't an empty string (i.e. we're searching for an individual article), get article by ID
     id !== '' ? `articles/${id}` :
+    // else if topic isn't equal to 'all', get articles by topic, else if topics (is equal to all) get topics -- else get all articles.
       topic ? topic !== 'all' ? `topics/${topic}/articles` : `topics` : 'articles'
   const { data } = await axios.get(`${BASE_URL}/${url}`);
   return id !== '' ? data.article : topic === 'all' ? data.topics : data.articles;
