@@ -1,6 +1,6 @@
 import { Link } from '@reach/router';
 import React, { Component } from 'react';
-import { getTopics } from '../api';
+import { getData } from '../api';
 
 class Nav extends Component {
   state = {
@@ -28,7 +28,7 @@ class Nav extends Component {
   }
 
   componentDidMount() {
-    getTopics()
+    getData('', 'all')
       .then(topics => {
         this.setState({
           topics,

@@ -4,14 +4,9 @@ const BASE_URL = "https://jc-northcoders-news.herokuapp.com/api";
 export const getData = async (id, topic) => {
   const url =
     id !== '' ? `articles/${id}` :
-      topic ? `topics/${topic}/articles` : 'articles'
+      topic ? topic !== 'all' ? `topics/${topic}/articles` : `topics` : 'articles'
   const { data } = await axios.get(`${BASE_URL}/${url}`);
-  return id !== '' ? data.article : data.articles;
-}
-
-export const getTopics = async () => {
-  const { data } = await axios.get(`${BASE_URL}/topics`);
-  return data.topics;
+  return id !== '' ? data.article : topic === 'all' ? data.topics : data.articles;
 }
 
 export const getUser = async (username) => {
