@@ -6,7 +6,7 @@ class Comments extends Component {
   state = {
     comments: [],
     comment: '',
-    loading: true
+    loading: true,
   }
 
 
