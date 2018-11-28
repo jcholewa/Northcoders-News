@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import Articles from './Articles';
-import { getArticles, postArticle } from '../api';
 
 class Home extends Component {
   state = {
-    articles: [],
     loading: true,
-    newArticle: '',
-    newArticleTitle: '',
-    topic: '',
   }
 
   render() {
@@ -23,7 +18,7 @@ class Home extends Component {
             <header>
               <h1>Northcoders News</h1>
             </header>}
-          <Articles articles={this.state.articles} newArticle={this.state.newArticle} newArticleTitle={this.state.newArticleTitle} topic={this.state.topic} handleChange={this.handleChange} handleChangeTitle={this.handleChangeTitle} handleSubmit={this.handleSubmit} changeTopic={this.changeTopic} />
+          <Articles topic_slug={this.props.topic_slug} />
           <footer>Footer</footer>
         </div>
     );
@@ -31,64 +26,11 @@ class Home extends Component {
 
   componentDidMount() {
     console.log('mounting')
-    getArticles(this.props.topic_slug)
-      .then(articles => {
-        this.setState({
-          articles,
-          loading: false
-        })
-      })
-      .catch(console.log)
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.topic_slug !== this.props.topic_slug) {
-      getArticles(this.props.topic_slug)
-        .then(articles => {
-          this.setState({
-            articles,
-            loading: false
-          })
-        })
-        .catch(console.log)
-    }
-  }
-
-  handleChange = event => {
     this.setState({
-      newArticle: event.target.value
+      loading: false
     })
   }
 
-  handleChangeTitle = event => {
-    this.setState({
-      newArticleTitle: event.target.value
-    })
-  }
-
-  changeTopic = event => {
-    this.setState({
-      topic: event.target.value
-    })
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    postArticle(this.state.newArticleTitle, this.state.newArticle, this.state.topic, this.props.user._id)
-      .then(article => {
-        this.setState(state => {
-          return { articles: [article, ...state.articles] }
-        })
-      })
-      .then(() => {
-        this.setState({
-          newArticle: '',
-          newArticleTitle: '',
-          topic: null
-        })
-      })
-      .catch(console.log)
-  }
 }
 
 export default Home;
