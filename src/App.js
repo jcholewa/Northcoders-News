@@ -18,7 +18,11 @@ class App extends Component {
       <div>
         <Nav />
         {this.state.user.username ?
-          <button onClick={this.userLogout}>Log Out</button> : <> </>}
+        <>
+          <p>Current user: {this.state.user.username}</p>
+          <button onClick={this.userLogout}>Log Out</button>
+          </>
+          : <> </>}
         <div className="App">
           <Login userLogin={this.userLogin} user={this.state.user}>
             <Router>
