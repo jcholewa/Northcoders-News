@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Votes from './Votes';
 import SortBy from './SortBy';
 import { getArticles, postArticle } from '../api';
+import { getDate } from '../utils';
 const _ = require('underscore');
 
 class Articles extends Component {
@@ -40,17 +41,14 @@ class Articles extends Component {
             <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
             <ul className='articles'>
               {this.state.articles.map(article => {
-                let date = new Date(article.created_at)
-                let day = date.getDay()
-                let month = date.getMonth()
-                let year = date.getFullYear()
+                let dayPosted = getDate(article.created_at)
                 {
                   if (this.state.loading) return <p>Loading...</p>
                   return (
                     <li key={article._id}>
                       <Link to={`/articles/${article._id}`}>{article.title}</Link>
                       <p>by {article.created_by.name}</p>
-                      <p>Posted on: {day}/{month}/{year}</p>
+                      <p>Posted on: {dayPosted}</p>
                       <p>{article.body.substring(0, 160)}...</p>
                       <Votes id={article._id} votes={article.votes} type='articles' />
                     </li>
@@ -135,7 +133,6 @@ class Articles extends Component {
   // This will be the onClick for the whole form element:
   handleSortBySubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.articles)
     this.setState(state => {
       return {
         articles: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? _.sortBy(state.articles, 'votes').reverse() : _.sortBy(state.articles, 'votes') : state.sortBy === 'time-desc' ? _.sortBy(state.articles, 'created_at').reverse() : _.sortBy(state.articles, 'created_at')

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getComments, postComment, deleteItem } from '../api';
 import Votes from './Votes';
 import SortBy from './SortBy';
+import { getDate } from '../utils';
 const _ = require('underscore');
 
 class Comments extends Component {
@@ -21,15 +22,11 @@ class Comments extends Component {
           <ul className='commentsList'>
 
             <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'comments'} />
-
             {this.state.comments.map(comment => {
-              let date = new Date(comment.created_at)
-              let day = date.getDay()
-              let month = date.getMonth()
-              let year = date.getFullYear()
+              let dayPosted = getDate(comment.created_at)
               return <li className='commentsLI' key={comment._id}>{comment.body} <br />
                 Author: {comment.created_by.username} <br />
-                <p>Posted on: {day}/{month}/{year}</p>
+                <p>Posted on: {dayPosted}</p>
                 <Votes id={comment._id} votes={comment.votes} type='comments' />
                 {(comment.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(comment._id))}>Delete comment</button> : <> </>}
               </li>
@@ -91,12 +88,11 @@ class Comments extends Component {
   // This will be the onClick for the whole form element:
   handleSortBySubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.comments)
     this.setState(state => {
       return {
         comments: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? _.sortBy(state.comments, 'votes').reverse() : _.sortBy(state.comments, 'votes') : state.sortBy === 'time-desc' ? _.sortBy(state.comments, 'created_at').reverse() : _.sortBy(state.comments, 'created_at')
       }
-    }, () => { console.log(this.state.comments) })
+    })
   }
 
 }

@@ -6,3 +6,12 @@ exports.alterVoteMod = (voteMod, direction) => {
   }
   return voteMod;
 }
+
+exports.getDate = (dateObj) => {
+  let date = new Date(dateObj)
+  let day = date.getDate()
+  let month = date.getMonth()
+  let year = date.getFullYear()
+  let fullDay = `${day}/${month + 1}/${year}`;
+  return fullDay;
+}
