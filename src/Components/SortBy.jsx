@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const SortBy = ({ handleChangeSort, handleSortBySubmit, value }) => {
   return (
@@ -18,5 +19,10 @@ const SortBy = ({ handleChangeSort, handleSortBySubmit, value }) => {
   );
 
 };
+
+SortBy.propTypes = {
+  handleChangeSort: propTypes.func.isRequired,
+  handleSortBySubmit: propTypes.func.isRequired
+}
 
 export default SortBy;
