@@ -71,3 +71,8 @@ li {
   height: 250px;
   overflow: hidden;
 }
+
+.logged-in {
+  text-align: right;
+  padding-right: 2%;
+}

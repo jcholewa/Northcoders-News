@@ -16,13 +16,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Nav />
-        {this.state.user.username ?
-        <>
-          <p>Current user: {this.state.user.username}</p>
-          <button onClick={this.userLogout}>Log Out</button>
-          </>
-          : <> </>}
+        <Nav user={this.state.user} userLogout={this.userLogout} />
         <div className="App">
           <Login userLogin={this.userLogin} user={this.state.user}>
             <Router>

@@ -12,6 +12,7 @@ class Nav extends Component {
   render() {
     return (
       this.state.loading ? <p>Loading...</p> :
+      <>
         <div className="nav">
           <nav>
             <Link to='/'>Home</Link>
@@ -24,6 +25,11 @@ class Nav extends Component {
             })}
           </nav>
         </div>
+        {this.props.user.username ? <div className='logged-in'>
+        <p>Current user: {this.props.user.username}</p>
+        <button onClick={this.props.userLogout}>Log Out</button>
+      </div> : <> </>}
+      </>
     );
   }
 
