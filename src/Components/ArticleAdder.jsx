@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Link } from '@reach/router';
 
-const ArticleAdder = ({ changeTopic, topic, handleChangeTitle, newArticleTitle, newArticle, handleSubmit, handleChange, showAdder }) => {
+const ArticleAdder = ({ changeTopic, topic, handleChangeTitle, newArticleTitle, newArticle, handleSubmit, handleChange, showArticleAdder }) => {
   return (
     <div>
       <form className='add-article'>
@@ -19,13 +19,20 @@ const ArticleAdder = ({ changeTopic, topic, handleChangeTitle, newArticleTitle, 
 
         <button onClick={handleSubmit}>Post article</button>
       </form>
-      <Link to={'/'} onClick={showAdder}>Back to Home</Link>
+      <Link to={'/'} onClick={showArticleAdder}>Back to Home</Link>
     </div>
   );
 };
 
 ArticleAdder.propTypes = {
-
+  changeTopic: propTypes.func.isRequired,
+  handleChangeTitle: propTypes.func.isRequired,
+  handleChange: propTypes.func.isRequired,
+  handleSubmit: propTypes.func.isRequired,
+  showArticleAdder: propTypes.func.isRequired,
+  topic: propTypes.string.isRequired,
+  newArticleTitle: propTypes.string.isRequired,
+  newArticle: propTypes.string.isRequired
 }
 
 export default ArticleAdder;
