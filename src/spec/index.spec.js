@@ -1,3 +1,12 @@
 describe('utils functions', () => {
-  it('returns')
+  describe('getDate()', () => {
+    it('returns x', () => {
+
+    });
+  });
+  describe('alterVoteMod()', () => {
+    it('returns x', () => {
+
+    });
+  });
 });
