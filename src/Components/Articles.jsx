@@ -11,6 +11,7 @@ class Articles extends Component {
     newArticle: '',
     newArticleTitle: '',
     topic: '',
+    sortBy: ''
   }
 
   prevProps = this.props.prevProps;
@@ -35,27 +36,27 @@ class Articles extends Component {
 
         {this.state.loading ? <p>Loading...</p> :
           <>
-          <SortBy />
-          <ul className='articles'>
-            {this.state.articles.map(article => {
-              let date = new Date(article.created_at)
-              let day = date.getDay()
-              let month = date.getMonth()
-              let year = date.getFullYear()
-              {
-                if (this.state.loading) return <p>Loading...</p>
-                return (
-                  <li key={article._id}>
-                    <Link to={`/articles/${article._id}`}>{article.title}</Link>
-                    <p>by {article.created_by.name}</p>
-                    <p>Posted on: {day}/{month}/{year}</p>
-                    <p>{article.body.substring(0, 160)}...</p>
-                    <Votes id={article._id} votes={article.votes} type='articles' />
-                  </li>
-                )
-              }
-            })}
-          </ul>
+            <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} />
+            <ul className='articles'>
+              {this.state.articles.map(article => {
+                let date = new Date(article.created_at)
+                let day = date.getDay()
+                let month = date.getMonth()
+                let year = date.getFullYear()
+                {
+                  if (this.state.loading) return <p>Loading...</p>
+                  return (
+                    <li key={article._id}>
+                      <Link to={`/articles/${article._id}`}>{article.title}</Link>
+                      <p>by {article.created_by.name}</p>
+                      <p>Posted on: {day}/{month}/{year}</p>
+                      <p>{article.body.substring(0, 160)}...</p>
+                      <Votes id={article._id} votes={article.votes} type='articles' />
+                    </li>
+                  )
+                }
+              })}
+            </ul>
           </>}
       </div>
     );
@@ -121,6 +122,27 @@ class Articles extends Component {
       })
       .catch(console.log)
   }
+
+
+  // This will be the onChange for the select element:
+  handleChangeSort = event => {
+    this.setState({
+      sortBy: event.target.value
+    })
+  }
+
+  // This will be the onClick for the whole form element:
+  handleSortBySubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state.articles)
+    this.setState(state => {
+      return {
+        articles: state.articles.sort(function (a, b) { return state.articles.votes[a] - state.articles.votes[b] })
+      }
+    }, () => {console.log(this.state.articles)})
+  }
+
+
 }
 
 export default Articles;
