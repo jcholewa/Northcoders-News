@@ -1,5 +1,6 @@
 import { Link } from '@reach/router';
 import React, { Component } from 'react';
+import Votes from './Votes';
 import { getArticles, postArticle } from '../api';
 
 class Articles extends Component {
@@ -45,6 +46,7 @@ class Articles extends Component {
                   <p>by {article.created_by.name}</p>
                   <p>Posted on: {day}/{month}/{year}</p>
                   <p>{article.body.substring(0, 160)}...</p>
+                  <Votes id={article._id} votes={article.votes} type='articles' />
                 </li>
               )
             }
