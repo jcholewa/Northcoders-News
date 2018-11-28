@@ -138,9 +138,9 @@ class Articles extends Component {
     console.log(this.state.articles)
     this.setState(state => {
       return {
-        articles: state.sortBy === 'votes' ? _.sortBy(state.articles, 'votes').reverse() : _.sortBy(state.articles, 'created_at').reverse()
+        articles: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? _.sortBy(state.articles, 'votes').reverse() : _.sortBy(state.articles, 'votes') : state.sortBy === 'time-desc' ? _.sortBy(state.articles, 'created_at').reverse() : _.sortBy(state.articles, 'created_at')
       }
-    }, () => { console.log(this.state.articles) })
+    })
   }
 
 
