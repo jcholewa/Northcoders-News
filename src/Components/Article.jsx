@@ -21,7 +21,7 @@ class Article extends Component {
           <h4>Topic: {this.state.article.belongs_to}</h4>
           <p>{this.state.article.body}</p>
 
-          <Votes id={this.state.article._id} votes={this.state.article.votes} type='article'/>
+          <Votes id={this.state.article._id} votes={this.state.article.votes} type='articles'/>
 
           <p>Comment count: {this.state.article.comment_count}</p>
 

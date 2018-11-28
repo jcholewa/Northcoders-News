@@ -3,13 +3,13 @@ import { alterVotes } from '../api';
 
 class Votes extends Component {
   state = {
-    votes: this.props.votes
+    voteMod: 0
   }
 
   render() {
     return (
       <div>
-        Votes: {this.state.votes} <br />
+        Votes: {this.props.votes + this.state.voteMod} <br />
         <button onClick={(() => this.handleVote('up'))} >Upvote</button>
         <button onClick={(() => this.handleVote('down'))} >Downvote</button>
       </div>
@@ -17,14 +17,13 @@ class Votes extends Component {
   }
 
   handleVote = (direction) => {
-    console.log(direction)
     alterVotes(this.props.id, direction, this.props.type)
-      .then(result => {
-        this.setState({
-          votes: result.votes
-        })
-      })
-      .catch(console.log)
+      .catch(err => { this.setState({ err }) })
+    this.setState(state => {
+      return {
+        voteMod: direction === 'up' ? 1 : -1
+      }
+    })
   }
 
 }

@@ -33,7 +33,7 @@ export const postComment = async (comment, id, userID) => {
 }
 
 export const alterVotes = async (id, direction, work) => {
-  const { data } = await axios.patch(`${BASE_URL}/${work}s/${id}?vote=${direction}`)
+  const { data } = await axios.patch(`${BASE_URL}/${work}/${id}?vote=${direction}`)
   return data[work];
 }
 
