@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SortBy = ({ handleChangeSort, handleSortBySubmit }) => {
+const SortBy = ({ handleChangeSort, handleSortBySubmit, value }) => {
   return (
     <div>
       <form >
-        <label htmlFor='sort-select'>Sort articles by: </label>
+        <label htmlFor='sort-select'>Sort {value} by: </label>
         <select id='sort-select' onChange={handleChangeSort} defaultValue=''>
           <option>Choose a filter...</option>
           <option value='votes'>Number of votes descending</option>

@@ -20,7 +20,7 @@ class Comments extends Component {
           <button onClick={this.submitComment} id='postComment'>Post comment</button>
           <ul className='commentsList'>
 
-            <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} />
+            <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'comments'} />
 
             {this.state.comments.map(comment => {
               let date = new Date(comment.created_at)

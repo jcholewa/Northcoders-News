@@ -37,7 +37,7 @@ class Articles extends Component {
 
         {this.state.loading ? <p>Loading...</p> :
           <>
-            <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} />
+            <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
             <ul className='articles'>
               {this.state.articles.map(article => {
                 let date = new Date(article.created_at)
