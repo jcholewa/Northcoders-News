@@ -1,15 +1,12 @@
 import axios from 'axios';
 const BASE_URL = "https://jc-northcoders-news.herokuapp.com/api";
 
-export const getArticles = async (topic) => {
-  const url = topic ? `topics/${topic}/articles` : 'articles'
+export const getData = async (id, topic) => {
+  const url =
+    id !== '' ? `articles/${id}` :
+      topic ? `topics/${topic}/articles` : 'articles'
   const { data } = await axios.get(`${BASE_URL}/${url}`);
-  return data.articles;
-}
-
-export const getArticle = async (id) => {
-  const { data } = await axios.get(`${BASE_URL}/articles/${id}`);
-  return data.article;
+  return id !== '' ? data.article : data.articles;
 }
 
 export const getTopics = async () => {

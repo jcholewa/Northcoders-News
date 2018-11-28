@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getArticle } from '../api';
+import { getData } from '../api';
 import { Link } from '@reach/router';
 import '../Comments.css'
 import Comments from './Comments';
@@ -21,7 +21,7 @@ class Article extends Component {
           <h4>Topic: {this.state.article.belongs_to}</h4>
           <p>{this.state.article.body}</p>
 
-          <Votes id={this.state.article._id} votes={this.state.article.votes} type='articles'/>
+          <Votes id={this.state.article._id} votes={this.state.article.votes} type='articles' />
 
           <p>Comment count: {this.state.article.comment_count}</p>
 
@@ -36,8 +36,9 @@ class Article extends Component {
 
   componentDidMount() {
     console.log('mounting');
-    getArticle(this.props.article_id)
+    getData(this.props.article_id)
       .then(article => {
+        console.log(article)
         this.setState({
           article,
           loading: false

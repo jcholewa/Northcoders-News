@@ -2,7 +2,7 @@ import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import Votes from './Votes';
 import SortBy from './SortBy';
-import { getArticles, postArticle } from '../api';
+import { getData, postArticle } from '../api';
 import { getDate } from '../utils';
 const _ = require('underscore');
 
@@ -63,7 +63,7 @@ class Articles extends Component {
 
   componentDidMount() {
     console.log('mounting')
-    getArticles(this.props.topic_slug)
+    getData('', this.props.topic_slug)
       .then(articles => {
         this.setState({
           articles,
@@ -75,7 +75,7 @@ class Articles extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.topic_slug !== this.props.topic_slug) {
-      getArticles(this.props.topic_slug)
+      getData('', this.props.topic_slug)
         .then(articles => {
           this.setState({
             articles,
