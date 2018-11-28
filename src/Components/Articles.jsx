@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Votes from './Votes';
 import SortBy from './SortBy';
 import { getArticles, postArticle } from '../api';
+const _ = require('underscore');
 
 class Articles extends Component {
   state = {
@@ -137,7 +138,7 @@ class Articles extends Component {
     console.log(this.state.articles)
     this.setState(state => {
       return {
-        articles: state.articles.sort(function (a, b) { return state.articles.votes[a] - state.articles.votes[b] })
+        articles: _.sortBy(state.articles, 'votes').reverse()
       }
     }, () => {console.log(this.state.articles)})
   }
