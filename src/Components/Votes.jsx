@@ -10,15 +10,15 @@ class Votes extends Component {
     return (
       <div>
         Votes: {this.state.votes} <br />
-        <button onClick={this.handleVote} value='up'>Upvote</button>
-        <button onClick={this.handleVote} value='down'>Downvote</button>
+        <button onClick={(() => this.handleVote('up'))} >Upvote</button>
+        <button onClick={(() => this.handleVote('down'))} >Downvote</button>
       </div>
     );
   }
 
-  handleVote = event => {
-    console.log(event.target.value)
-    alterVotes(this.props.id, event.target.value, this.props.work)
+  handleVote = (direction) => {
+    console.log(direction)
+    alterVotes(this.props.id, direction, this.props.type)
       .then(result => {
         this.setState({
           votes: result.votes
