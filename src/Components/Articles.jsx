@@ -26,7 +26,7 @@ class Articles extends Component {
         {this.state.loading ? <p>Loading...</p> :
           <>
             {this.state.addArticle ?
-              <ArticleAdder changeTopic={this.changeTopic} topic={this.state.topic} handleChangeTitle={this.handleChangeTitle} newArticleTitle={this.state.newArticleTitle} newArticle={this.state.newArticle} handleSubmit={this.handleSubmit} handleChange={this.handleChange} /> :
+              <ArticleAdder changeTopic={this.changeTopic} topic={this.state.topic} handleChangeTitle={this.handleChangeTitle} newArticleTitle={this.state.newArticleTitle} newArticle={this.state.newArticle} handleSubmit={this.handleSubmit} handleChange={this.handleChange} showAdder={this.showAdder} /> :
               <>
                 <button onClick={this.showArticleAdder}>Click here to add an article</button>
                 <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
@@ -80,8 +80,8 @@ class Articles extends Component {
 
   showArticleAdder = event => {
     event.preventDefault();
-    this.setState({
-      addArticle: true
+    this.setState(state => {
+      return { addArticle: state.addArticle === true ? false : true }
     })
   }
 
