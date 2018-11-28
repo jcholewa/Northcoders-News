@@ -11,7 +11,8 @@ class Login extends Component {
     if (this.props.user.username) return this.props.children
     return (
       <div className='login'>
-        <form onSubmit={this.handleSubmit} >
+      <h3>Sign in to Northcoder's News</h3>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor='username'>Username: </label>
             <input type='text' id='username' onChange={this.handleChange} value={this.state.username} />

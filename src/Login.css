@@ -1,6 +1,11 @@
 .login form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding-top: 
+}
+
+.login {
+  /* border: solid black; */
+  padding-top: 20px;
+  margin: auto;
 }
