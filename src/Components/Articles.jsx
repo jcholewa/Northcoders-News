@@ -1,6 +1,7 @@
 import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import Votes from './Votes';
+import SortBy from './SortBy';
 import { getArticles, postArticle } from '../api';
 
 class Articles extends Component {
@@ -33,6 +34,8 @@ class Articles extends Component {
         </form>
 
         {this.state.loading ? <p>Loading...</p> :
+          <>
+          <SortBy />
           <ul className='articles'>
             {this.state.articles.map(article => {
               let date = new Date(article.created_at)
@@ -52,7 +55,8 @@ class Articles extends Component {
                 )
               }
             })}
-          </ul>}
+          </ul>
+          </>}
       </div>
     );
   }
