@@ -30,11 +30,11 @@ class Articles extends Component {
     return (
       <div>
         <>
-          <input type='text' placeholder='Search for articles..' onChange={this.onSearchChange} value={this.state.searchTerm} /><button onClick={this.onSearchSubmit}>Search</button><br />
+          <div className='searchBox'><input type='text' placeholder='Search for articles..' onChange={this.onSearchChange} value={this.state.searchTerm} /><button onClick={this.onSearchSubmit}>Search</button></div><br />
           {this.state.addArticle ?
             <ArticleAdder topic={this.state.topic} title={this.state.title} article={this.state.article} handleSubmit={this.handleSubmit} handleChange={this.handleChange} showArticleAdder={this.showArticleAdder} changeTopic={this.changeTopic} handleChangeTitle={this.handleChangeTitle} /> :
             <>
-              <button onClick={this.showArticleAdder}>Click here to add an article</button>
+              <button className='add-article-button' onClick={this.showArticleAdder}>Click here to add an article</button>
               <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
               <ul className='articles'>
                 {articles.map(article => {
@@ -45,10 +45,10 @@ class Articles extends Component {
                       <li key={article._id}>
                         <Link to={`/articles/${article._id}`}>{article.title}</Link>
                         {' by'} <Link to={`/users/${article.created_by.username}`}> {article.created_by.username}</Link>
-                        <p>Posted on: {dayPosted}</p>
                         <p>{article.body.substring(0, 160)}...</p>
                         <hr />
-                        <Votes id={article._id} votes={article.votes} type='articles' />
+                        <p>Posted on: {dayPosted}
+                        <Votes id={article._id} votes={article.votes} type='articles' /></p>
 
                         {(article.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(article._id))}>Delete article</button> : <> </>}
                       </li>
