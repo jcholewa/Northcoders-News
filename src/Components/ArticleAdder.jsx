@@ -24,13 +24,13 @@ const ArticleAdder = ({ topic, title, article, handleSubmit, handleChange, chang
   );
 };
 
-// ArticleAdder.propTypes = {
-//   handleChange: propTypes.func.isRequired,
-//   handleSubmit: propTypes.func.isRequired,
-//   showArticleAdder: propTypes.func.isRequired,
-//   topic: propTypes.string.isRequired,
-//   title: propTypes.string.isRequired,
-//   article: propTypes.string.isRequired
-// }
+ArticleAdder.propTypes = {
+  handleChange: propTypes.func.isRequired,
+  handleSubmit: propTypes.func.isRequired,
+  showArticleAdder: propTypes.func.isRequired,
+  topic: propTypes.string.isRequired,
+  title: propTypes.string.isRequired,
+  article: propTypes.string.isRequired
+}
 
 export default ArticleAdder;

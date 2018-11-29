@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Articles from './Articles';
-import User from './User';
 import { getData } from '../api';
-const _ = require('underscore');
 
 class Home extends Component {
   state = {
