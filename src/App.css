@@ -86,4 +86,9 @@ button {
   padding-right: 1%;
   padding-top: 0.5%;
   padding-bottom: 0.5%;
+  cursor: pointer;
+}
+
+select:hover {
+  cursor: pointer;
 }
