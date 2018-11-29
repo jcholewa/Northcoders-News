@@ -29,12 +29,9 @@ class User extends Component {
                   let dayPosted = getDate(article.created_at)
                   {
                     return (
-                      <li key={article._id}>
+                      <div className='user-articles'>
                         <Link to={`/articles/${article._id}`}>{article.title}</Link>
-                        <p>Posted on: {dayPosted}</p>
-                        <p>{article.body.substring(0, 160)}...</p>
-                        <Votes id={article._id} votes={article.votes} type='articles' />
-                      </li>
+                      </div>
                     )
                   }
                 })}
