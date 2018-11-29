@@ -9,6 +9,7 @@ class User extends Component {
   }
 
   render() {
+    console.log(this.props.articles)
     return (
       this.state.loading ? <p>Loading...</p> :
         <div>
@@ -16,8 +17,13 @@ class User extends Component {
           <p>Username: {this.state.user.username}</p>
           <p>Name: {this.state.user.name}</p>
           <section>
-            User's feed, displaying their latest articles written, comments made etc.
-        </section>
+            <ul>
+              {/* {this.props.articles.filter(article => {
+                console.log(article.created_by)
+                return <li>Article by user</li>
+              })} */}
+            </ul>
+          </section>
         </div>
     );
   }
@@ -25,7 +31,6 @@ class User extends Component {
   componentDidMount() {
     getUser(this.props.username)
       .then(user => {
-        console.log(user)
         this.setState({
           user,
           loading: false
@@ -33,6 +38,20 @@ class User extends Component {
       })
       .catch(console.log)
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.username !== this.props.username) {
+      getUser(this.props.username)
+        .then(user => {
+          this.setState({
+            user,
+            loading: false
+          })
+        })
+        .catch(console.log)
+    }
+  }
 }
+
 
 export default User;
