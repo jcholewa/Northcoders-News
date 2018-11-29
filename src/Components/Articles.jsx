@@ -42,7 +42,7 @@ class Articles extends Component {
                       return (
                         <li key={article._id}>
                           <Link to={`/articles/${article._id}`}>{article.title}</Link>
-                          <p>by <Link to={`/users/${article.created_by.username}`}> {article.created_by.username}</Link></p>
+                           by <Link to={`/users/${article.created_by.username}`}> {article.created_by.username}</Link>
                           <p>Posted on: {dayPosted}</p>
                           <p>{article.body.substring(0, 160)}...</p>
                           <Votes id={article._id} votes={article.votes} type='articles' />

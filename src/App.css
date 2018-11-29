@@ -65,9 +65,8 @@ ul {
 li {
   width: 50%;
   border-style: solid;
-  margin-bottom: 2%;
   padding: 1%;
-  height: 250px;
+  height: auto;
   overflow: hidden;
 }
 
