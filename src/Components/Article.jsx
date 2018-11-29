@@ -28,6 +28,7 @@ class Article extends Component {
           {this.state.showComments ?
             <Comments article_id={this.state.article._id} comment={this.state.comment} user={this.props.user} /> :
             <button onClick={this.displayComments}>View comments</button>}
+          <br />
           <Link to={'/'}>Back to Home</Link>
 
         </div >
