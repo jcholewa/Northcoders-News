@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Articles from './Articles';
 import User from './User';
-import { getData, postArticle } from '../api';
-import { getDate } from '../utils';
+import { getData } from '../api';
 const _ = require('underscore');
 
 class Home extends Component {
@@ -23,8 +22,7 @@ class Home extends Component {
             <header>
               <h1>Northcoders News</h1>
             </header>}
-          {this.props.username ? <User /> :
-            <Articles user={this.props.user} articles={this.state.articles} />}
+            <Articles user={this.props.user} articles={this.state.articles} />
           <footer>Footer</footer>
         </div>
     );

@@ -55,6 +55,7 @@ class Articles extends Component {
 
   componentDidMount() {
     console.log('mounting')
+    console.log('in Articles component: ', this.props.articles)
     this.setState({
       loading: false,
       articles: this.props.articles

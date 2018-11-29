@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { getUser } from '../api';
+import { getUser, getArticlesForUser } from '../api';
+import {getDate} from '../utils';
+import Votes from '../Components/Votes';
+import {Link} from '@reach/router';
+
 
 class User extends Component {
 
   state = {
     user: {},
-    loading: true
+    loading: true,
+    userArticles: []
   }
 
   render() {
-    console.log(this.props.articles)
     return (
       this.state.loading ? <p>Loading...</p> :
         <div>
@@ -18,10 +22,21 @@ class User extends Component {
           <p>Name: {this.state.user.name}</p>
           <section>
             <ul>
-              {/* {this.props.articles.filter(article => {
-                console.log(article.created_by)
-                return <li>Article by user</li>
-              })} */}
+              {this.state.userArticles.map(article => {
+                let dayPosted = getDate(article.created_at)
+                {
+                  if (this.state.loading) return <p>Loading...</p>
+                  return (
+                    <li key={article._id}>
+                      <Link to={`/articles/${article._id}`}>{article.title}</Link>
+                      <p>by <Link to={`/users/${article.created_by.username}`}> {article.created_by.username}</Link></p>
+                      <p>Posted on: {dayPosted}</p>
+                      <p>{article.body.substring(0, 160)}...</p>
+                      <Votes id={article._id} votes={article.votes} type='articles' />
+                    </li>
+                  )
+                }
+              })}
             </ul>
           </section>
         </div>
@@ -35,6 +50,14 @@ class User extends Component {
           user,
           loading: false
         })
+      })
+      .then(() => {
+        getArticlesForUser(this.state.user.username)
+          .then(articles => {
+            this.setState({
+              userArticles: articles
+            })
+          })
       })
       .catch(console.log)
   }
