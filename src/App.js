@@ -4,7 +4,8 @@ import Nav from './Components/Nav';
 import Home from './Components/Home';
 import Article from './Components/Article';
 import User from './Components/User';
-import Login from './Components/Login'
+import Login from './Components/Login';
+import NotFound from './Components/NotFound';
 import { Router } from '@reach/router';
 import { login } from './api';
 
@@ -25,6 +26,7 @@ class App extends Component {
               <Home path='/topics/:topic_slug/articles' />
               <Article path='/articles/:article_id/*' user={this.state.user} />
               <User path='/users/:username' />
+              <NotFound default />
             </Router>
           </Login>
         </div>
