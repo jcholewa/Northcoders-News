@@ -4,11 +4,11 @@
   display: grid;
   height: 200vh;
   grid-template-rows: 1fr 10fr 1fr;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 4fr;
   grid-template-areas:
-    'header header'
-    'articles add-article'
-    'footer footer'
+    'header'
+    'articles'
+    'footer'
 }
 
 header {
@@ -42,7 +42,6 @@ nav a:visited {
 }
 
 .add-article {
-  grid-area: add-article;
   /* border: solid orange; */
   display: flex;
   flex-direction: column;
@@ -76,6 +75,12 @@ li {
   text-align: right;
   padding-right: 2%;
   font-size: 0.9em;
+  margin-top: 0px;
+}
+
+nav button {
+  margin-left: 1%;
+  margin-bottom: 2%
 }
 
 button {
