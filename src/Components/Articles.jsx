@@ -26,7 +26,7 @@ class Articles extends Component {
         {this.state.loading ? <p>Loading...</p> :
           <>
             {this.state.addArticle ?
-              <ArticleAdder topic={this.state.topic} title={this.state.title} article={this.state.article} handleSubmit={this.handleSubmit} handleChange={this.handleChange} showArticleAdder={this.showArticleAdder} /> :
+              <ArticleAdder topic={this.state.topic} title={this.state.title} article={this.state.article} handleSubmit={this.handleSubmit} handleChange={this.handleChange} showArticleAdder={this.showArticleAdder} changeTopic={this.changeTopic} handleChangeTitle={this.handleChangeTitle}/> :
               <>
                 <button onClick={this.showArticleAdder}>Click here to add an article</button>
                 <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
@@ -67,25 +67,32 @@ class Articles extends Component {
       return { addArticle: state.addArticle === true ? false : true }
     })
   }
+  
 
-  handleChange = (event) => {
-    console.log(event.target.topic)
+  handleChange = event => {
     this.setState({
-      topic: event.target.topic || '',
-      article: event.target.article || '',
-      title: event.target.title || ''
+      article: event.target.value
+     })
+   }
+ 
+   handleChangeTitle = event => {
+     this.setState({
+       title: event.target.value
+     })
+   }
+
+  changeTopic = event => {
+    this.setState({
+      topic: event.target.value
     })
   }
 
-  // changeTopic = event => {
-  //   this.setState({
-  //     topic: event.target.value
-  //   })
-  // }
-
   handleSubmit = (event) => {
+    console.log(this.state.title)
+    console.log(this.state.topic)
+    console.log(this.state.article)
     event.preventDefault()
-    postArticle(this.state.newArticleTitle, this.state.newArticle, this.state.topic, this.props.user._id)
+    postArticle(this.state.title, this.state.article, this.state.topic, this.props.user._id)
       .then(article => {
         this.setState(state => {
           return { articles: [article, ...state.articles] }
@@ -93,8 +100,8 @@ class Articles extends Component {
       })
       .then(() => {
         this.setState({
-          newArticle: '',
-          newArticleTitle: '',
+          article: '',
+          title: '',
           topic: null,
           addArticle: false
         })

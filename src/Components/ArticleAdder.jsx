@@ -2,18 +2,18 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Link } from '@reach/router';
 
-const ArticleAdder = ({ topic, title, article, handleSubmit, handleChange, showArticleAdder }) => {
+const ArticleAdder = ({ topic, title, article, handleSubmit, handleChange, changeTopic, showArticleAdder, handleChangeTitle }) => {
   return (
     <div>
       <form className='add-article'>
-        <select onChange={handleChange} defaultValue='' name='topic'>
+        <select onChange={changeTopic} defaultValue='' name='topic'>
           <option value={topic}>Choose a topic...</option>
           <option value='coding' >Coding</option>
           <option value='football'>Football</option>
           <option value='cooking'>Cooking</option>
         </select>
 
-        <input type='text' placeholder='Add an article title...' onChange={handleChange} name='title' />
+        <input type='text' placeholder='Add an article title...' onChange={handleChangeTitle} name='title' />
 
         <input type='text' placeholder='Add an article...' onChange={handleChange} name='article' />
 
@@ -24,13 +24,13 @@ const ArticleAdder = ({ topic, title, article, handleSubmit, handleChange, showA
   );
 };
 
-ArticleAdder.propTypes = {
-  handleChange: propTypes.func.isRequired,
-  handleSubmit: propTypes.func.isRequired,
-  showArticleAdder: propTypes.func.isRequired,
-  topic: propTypes.string.isRequired,
-  title: propTypes.string.isRequired,
-  article: propTypes.string.isRequired
-}
+// ArticleAdder.propTypes = {
+//   handleChange: propTypes.func.isRequired,
+//   handleSubmit: propTypes.func.isRequired,
+//   showArticleAdder: propTypes.func.isRequired,
+//   topic: propTypes.string.isRequired,
+//   title: propTypes.string.isRequired,
+//   article: propTypes.string.isRequired
+// }
 
 export default ArticleAdder;
