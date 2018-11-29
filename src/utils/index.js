@@ -8,6 +8,7 @@ exports.alterVoteMod = (voteMod, direction) => {
 }
 
 exports.getDate = (dateObj) => {
+  if (typeof dateObj !== 'string') throw new Error('Only numbers please')
   let date = new Date(dateObj)
   let day = date.getDate()
   let month = date.getMonth()
