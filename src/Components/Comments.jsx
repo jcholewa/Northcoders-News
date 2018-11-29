@@ -76,6 +76,9 @@ class Comments extends Component {
           comments: this.state.comments.filter(comment => comment._id !== id)
         })
       })
+      .then(() => {
+        window.alert('Comment deleted!')
+      })
   }
 
   // This will be the onChange for the select element:
