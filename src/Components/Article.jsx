@@ -23,11 +23,9 @@ class Article extends Component {
 
           <Votes id={this.state.article._id} votes={this.state.article.votes} type='articles' />
 
-          <p>Comment count: {this.state.article.comment_count}</p>
-
           {this.state.showComments ?
             <Comments article_id={this.state.article._id} comment={this.state.comment} user={this.props.user} /> :
-            <button onClick={this.displayComments}>View comments</button>}
+            <button onClick={this.displayComments}>View {this.state.article.comment_count} comments</button>}
           <br />
           <Link to={'/'}>Back to Home</Link>
 
