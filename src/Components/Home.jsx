@@ -9,6 +9,8 @@ class Home extends Component {
     loading: true,
   }
 
+  prevProps = this.props.prevProps;
+
   render() {
     console.log('rendering')
     if (this.state.loading) return <Loading />
