@@ -37,11 +37,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (this.state.user.username) this.userLogin(this.state.user.username)
+    const savedData = JSON.parse(localStorage.getItem('user'));
+    if (this.state.user.username || savedData) this.userLogin(this.state.user.username || savedData.username)
   }
 
   componentDidUpdate() {
     // if (this.state.user.username === this.props.username) this.userLogin(this.state.user.username)
+    this.saveData()
   }
 
   userLogin = (user) => {
@@ -58,6 +60,9 @@ class App extends Component {
     this.setState({
       user: {}
     })
+  }
+  saveData = () => {
+    localStorage.setItem('user', JSON.stringify(this.state.user))
   }
 
 }
