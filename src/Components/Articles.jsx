@@ -15,7 +15,8 @@ class Articles extends Component {
     title: '',
     topic: '',
     sortBy: '',
-    addArticle: false
+    addArticle: false,
+    searchTerm: ''
   }
 
   prevProps = this.props.prevProps;
@@ -25,6 +26,7 @@ class Articles extends Component {
       <div>
         {this.state.loading ? <p>Loading...</p> :
           <>
+            <input type='text' placeholder='Search for articles..' onChange={this.onSearchChange} value={this.state.searchTerm} /><button onClick={this.onSearchSubmit}>Search</button><br />
             {this.state.addArticle ?
               <ArticleAdder topic={this.state.topic} title={this.state.title} article={this.state.article} handleSubmit={this.handleSubmit} handleChange={this.handleChange} showArticleAdder={this.showArticleAdder} changeTopic={this.changeTopic} handleChangeTitle={this.handleChangeTitle} /> :
               <>
@@ -69,6 +71,20 @@ class Articles extends Component {
     })
   }
 
+  onSearchChange = event => {
+    this.setState({
+      searchTerm: event.target.value,
+      articles: this.props.articles !== this.state.articles ? this.props.articles : this.state.articles
+    })
+  }
+
+  onSearchSubmit = event => {
+    event.preventDefault();
+    this.setState({
+      articles: this.state.articles.filter(article => article.body.toLowerCase().includes(this.state.searchTerm) || article.title.toLowerCase().includes(this.state.searchTerm)),
+      searchTerm: ''
+    })
+  }
 
   handleChange = event => {
     this.setState({
