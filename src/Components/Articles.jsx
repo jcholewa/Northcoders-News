@@ -47,6 +47,7 @@ class Articles extends Component {
                         {' by'} <Link to={`/users/${article.created_by.username}`}> {article.created_by.username}</Link>
                         <p>Posted on: {dayPosted}</p>
                         <p>{article.body.substring(0, 160)}...</p>
+                        <hr />
                         <Votes id={article._id} votes={article.votes} type='articles' />
 
                         {(article.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(article._id))}>Delete article</button> : <> </>}
