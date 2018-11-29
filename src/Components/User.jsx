@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getUser, getArticlesForUser } from '../api';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import Loading from './Loading';
 
 class User extends Component {
@@ -13,6 +13,7 @@ class User extends Component {
   }
 
   render() {
+    if (this.state.err) return <p>{this.state.err}</p>
     if (this.state.loading) return <Loading />
     return (
       <div>
@@ -56,7 +57,13 @@ class User extends Component {
             })
           })
       })
-      .catch(console.log)
+      .catch(err => {
+        navigate('/error', {
+          replace: true, state: {
+            code: err.response.status
+          }
+        })
+      })
   }
 
   componentDidUpdate(prevProps) {
