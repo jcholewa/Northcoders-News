@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { getUser, getArticlesForUser } from '../api';
-import { getDate } from '../utils';
-import Votes from '../Components/Votes';
 import { Link } from '@reach/router';
 
 
