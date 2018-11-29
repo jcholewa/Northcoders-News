@@ -1,4 +1,4 @@
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import React, { Component } from 'react';
 import Votes from './Votes';
 import SortBy from './SortBy';
@@ -26,6 +26,7 @@ class Articles extends Component {
     const articles = this.state.articles.filter(article => article.body.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || article.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())) || this.state.articles;
 
     if (this.state.loading) return <Loading />
+    if (this.state.err) return <p>{this.state.err}</p>
 
     return (
       <div>
@@ -55,7 +56,7 @@ class Articles extends Component {
               </ul>
               <a href='#top'>Back to Top</a>
             </>}
-        </>}
+        </>
       </div>
     )
   }
@@ -120,7 +121,13 @@ class Articles extends Component {
           addArticle: false
         })
       })
-      .catch(console.log)
+      .catch(err => {
+        navigate('/error', {
+          replace: true, state: {
+            code: err.response.status,
+          }
+        })
+      })
   }
 
   // This will be the onChange for the select element:
