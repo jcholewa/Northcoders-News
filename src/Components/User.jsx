@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getUser, getArticlesForUser } from '../api';
 import { Link } from '@reach/router';
-
+import Loading from './Loading';
 
 class User extends Component {
 
@@ -13,30 +13,30 @@ class User extends Component {
   }
 
   render() {
+    if (this.state.loading) return <Loading />
     return (
-      this.state.loading ? <p>Loading...</p> :
-        <div>
-          <img src={this.state.user.avatar_url} alt="user's avatar"></img>
-          <p>Username: {this.state.user.username}</p>
-          <p>Name: {this.state.user.name}</p>
-          {this.state.showArticles ?
-            <section>
-              <h4>Articles by {this.state.user.username}:</h4>
-              <ul>
-                {this.state.userArticles.map(article => {
-                  {
-                    return (
-                      <div className='user-articles'>
-                        <Link to={`/articles/${article._id}`}>{article.title}</Link>
-                      </div>
-                    )
-                  }
-                })}
-              </ul>
-            </section> : <button onClick={this.displayArticles}>View articles by {this.state.user.username}</button>}
-          <br />
-          <Link to={'/'}>Back to Home</Link>
-        </div>
+      <div>
+        <img src={this.state.user.avatar_url} alt="user's avatar"></img>
+        <p>Username: {this.state.user.username}</p>
+        <p>Name: {this.state.user.name}</p>
+        {this.state.showArticles ?
+          <section>
+            <h4>Articles by {this.state.user.username}:</h4>
+            <ul>
+              {this.state.userArticles.map(article => {
+                {
+                  return (
+                    <div className='user-articles'>
+                      <Link to={`/articles/${article._id}`}>{article.title}</Link>
+                    </div>
+                  )
+                }
+              })}
+            </ul>
+          </section> : <button onClick={this.displayArticles}>View articles by {this.state.user.username}</button>}
+        <br />
+        <Link to={'/'}>Back to Home</Link>
+      </div>
     );
   }
 
