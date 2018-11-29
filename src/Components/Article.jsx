@@ -39,7 +39,6 @@ class Article extends Component {
     console.log('mounting');
     getData(this.props.article_id)
       .then(article => {
-        console.log(article)
         this.setState({
           article,
           loading: false
