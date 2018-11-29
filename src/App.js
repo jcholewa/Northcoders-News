@@ -24,7 +24,7 @@ class App extends Component {
               <Home path='/articles' user={this.state.user} />
               <Home path='/topics/:topic_slug/articles' />
               <Article path='/articles/:article_id/*' user={this.state.user} />
-              <User path='/users/:username' />
+              <Home path='/users/:username' />
             </Router>
           </Login>
         </div>
