@@ -23,10 +23,9 @@ class User extends Component {
           <p>Name: {this.state.user.name}</p>
           {this.state.showArticles ?
             <section>
-              <h3>Articles by {this.state.user.username}:</h3>
+              <h4>Articles by {this.state.user.username}:</h4>
               <ul>
                 {this.state.userArticles.map(article => {
-                  let dayPosted = getDate(article.created_at)
                   {
                     return (
                       <div className='user-articles'>
