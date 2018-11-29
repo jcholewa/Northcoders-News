@@ -9,9 +9,11 @@ exports.alterVoteMod = (voteMod, direction) => {
 
 exports.getDate = (dateObj) => {
   let date = new Date(dateObj)
+  console.log(date)
   let day = date.getDate()
   let month = date.getMonth()
   let year = date.getFullYear()
   let fullDay = `${day}/${month + 1}/${year}`;
+  console.log(fullDay)
   return fullDay;
 }
