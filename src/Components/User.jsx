@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { getUser, getArticlesForUser } from '../api';
-import {getDate} from '../utils';
+import { getDate } from '../utils';
 import Votes from '../Components/Votes';
-import {Link} from '@reach/router';
+import { Link } from '@reach/router';
 
 
 class User extends Component {
@@ -21,15 +21,14 @@ class User extends Component {
           <p>Username: {this.state.user.username}</p>
           <p>Name: {this.state.user.name}</p>
           <section>
+            <h3>Articles by {this.state.user.username}:</h3>
             <ul>
               {this.state.userArticles.map(article => {
                 let dayPosted = getDate(article.created_at)
                 {
-                  if (this.state.loading) return <p>Loading...</p>
                   return (
                     <li key={article._id}>
                       <Link to={`/articles/${article._id}`}>{article.title}</Link>
-                      <p>by <Link to={`/users/${article.created_by.username}`}> {article.created_by.username}</Link></p>
                       <p>Posted on: {dayPosted}</p>
                       <p>{article.body.substring(0, 160)}...</p>
                       <Votes id={article._id} votes={article.votes} type='articles' />
