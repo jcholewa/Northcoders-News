@@ -10,7 +10,8 @@ class User extends Component {
   state = {
     user: {},
     loading: true,
-    userArticles: []
+    userArticles: [],
+    showArticles: false
   }
 
   render() {
@@ -20,24 +21,27 @@ class User extends Component {
           <img src={this.state.user.avatar_url} alt="user's avatar"></img>
           <p>Username: {this.state.user.username}</p>
           <p>Name: {this.state.user.name}</p>
-          <section>
-            <h3>Articles by {this.state.user.username}:</h3>
-            <ul>
-              {this.state.userArticles.map(article => {
-                let dayPosted = getDate(article.created_at)
-                {
-                  return (
-                    <li key={article._id}>
-                      <Link to={`/articles/${article._id}`}>{article.title}</Link>
-                      <p>Posted on: {dayPosted}</p>
-                      <p>{article.body.substring(0, 160)}...</p>
-                      <Votes id={article._id} votes={article.votes} type='articles' />
-                    </li>
-                  )
-                }
-              })}
-            </ul>
-          </section>
+          {this.state.showArticles ?
+            <section>
+              <h3>Articles by {this.state.user.username}:</h3>
+              <ul>
+                {this.state.userArticles.map(article => {
+                  let dayPosted = getDate(article.created_at)
+                  {
+                    return (
+                      <li key={article._id}>
+                        <Link to={`/articles/${article._id}`}>{article.title}</Link>
+                        <p>Posted on: {dayPosted}</p>
+                        <p>{article.body.substring(0, 160)}...</p>
+                        <Votes id={article._id} votes={article.votes} type='articles' />
+                      </li>
+                    )
+                  }
+                })}
+              </ul>
+            </section> : <button onClick={this.displayArticles}>View articles by {this.state.user.username}</button>}
+          <br />
+          <Link to={'/'}>Back to Home</Link>
         </div>
     );
   }
@@ -72,6 +76,12 @@ class User extends Component {
         })
         .catch(console.log)
     }
+  }
+
+  displayArticles = () => {
+    this.setState({
+      showArticles: true
+    })
   }
 }
 
