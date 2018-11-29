@@ -29,6 +29,7 @@ class Comments extends Component {
               Author: {comment.created_by.username} <br />
               <p>Posted on: {dayPosted}</p>
               <Votes id={comment._id} votes={comment.votes} type='comments' />
+
               {(comment.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(comment._id))}>Delete comment</button> : <> </>}
             </li>
           })}
@@ -73,7 +74,7 @@ class Comments extends Component {
   }
 
   handleDelete = (id) => {
-    deleteItem(id)
+    deleteItem(id, 'comments')
       .then(message => {
         this.setState({
           comments: this.state.comments.filter(comment => comment._id !== id)
@@ -82,6 +83,7 @@ class Comments extends Component {
       .then(() => {
         window.alert('Comment deleted!')
       })
+      .catch(console.log)
   }
 
   // This will be the onChange for the select element:

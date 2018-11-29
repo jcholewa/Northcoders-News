@@ -19,7 +19,7 @@ export const getUser = async (username) => {
 }
 
 export const getArticlesForUser = async (username) => {
-  const {data} = await axios.get(`${BASE_URL}/users/${username}/articles`);
+  const { data } = await axios.get(`${BASE_URL}/users/${username}/articles`);
   return data.articles
 }
 
@@ -48,7 +48,8 @@ export const login = async (username) => {
   return data.user;
 }
 
-export const deleteItem = async (id) => {
-  const { data } = await axios.delete(`${BASE_URL}/comments/${id}`);
+export const deleteItem = async (id, prop) => {
+  const { data } = await axios.delete(`${BASE_URL}/${prop}/${id}`);
   return data.message;
 }
+

@@ -4,7 +4,7 @@ import Votes from './Votes';
 import SortBy from './SortBy';
 import ArticleAdder from './ArticleAdder';
 import Loading from './Loading';
-import { postArticle } from '../api';
+import { postArticle, deleteItem } from '../api';
 import { getDate } from '../utils';
 const _ = require('underscore');
 
@@ -48,6 +48,8 @@ class Articles extends Component {
                         <p>Posted on: {dayPosted}</p>
                         <p>{article.body.substring(0, 160)}...</p>
                         <Votes id={article._id} votes={article.votes} type='articles' />
+
+                        {(article.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(article._id))}>Delete article</button> : <> </>}
                       </li>
                     )
                   }
@@ -62,6 +64,7 @@ class Articles extends Component {
 
   componentDidMount() {
     console.log('mounting')
+    console.log(this.props.user)
     this.setState({
       loading: false,
       articles: this.props.articles
@@ -151,6 +154,19 @@ class Articles extends Component {
         articles: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? _.sortBy(state.articles, 'votes').reverse() : _.sortBy(state.articles, 'votes') : state.sortBy === 'time-desc' ? _.sortBy(state.articles, 'created_at').reverse() : _.sortBy(state.articles, 'created_at')
       }
     })
+  }
+
+  handleDelete = (id) => {
+    deleteItem(id, 'articles')
+      .then(message => {
+        this.setState({
+          articles: this.state.articles.filter(article => article._id !== id)
+        })
+      })
+      .then(() => {
+        window.alert('Article deleted!')
+      })
+      .catch(console.log)
   }
 
 }

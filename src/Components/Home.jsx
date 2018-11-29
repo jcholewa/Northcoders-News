@@ -31,6 +31,7 @@ class Home extends Component {
 
   componentDidMount() {
     console.log('mounting')
+    console.log('in home', this.props)
     getData('', this.props.topic_slug)
       .then(articles => {
         this.setState({
