@@ -22,6 +22,8 @@ class Articles extends Component {
   prevProps = this.props.prevProps;
 
   render() {
+    const articles = this.state.articles.filter(article => article.body.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || article.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())) || this.state.articles;
+
     return (
       <div>
         {this.state.loading ? <p>Loading...</p> :
@@ -33,7 +35,7 @@ class Articles extends Component {
                 <button onClick={this.showArticleAdder}>Click here to add an article</button>
                 <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
                 <ul className='articles'>
-                  {this.state.articles.map(article => {
+                  {articles.map(article => {
                     let dayPosted = getDate(article.created_at)
                     {
                       if (this.state.loading) return <p>Loading...</p>
@@ -74,16 +76,12 @@ class Articles extends Component {
   onSearchChange = event => {
     this.setState({
       searchTerm: event.target.value,
-      articles: this.props.articles !== this.state.articles ? this.props.articles : this.state.articles
     })
   }
 
   onSearchSubmit = event => {
     event.preventDefault();
-    this.setState({
-      articles: this.state.articles.filter(article => article.body.toLowerCase().includes(this.state.searchTerm) || article.title.toLowerCase().includes(this.state.searchTerm)),
-      searchTerm: ''
-    })
+
   }
 
   handleChange = event => {
