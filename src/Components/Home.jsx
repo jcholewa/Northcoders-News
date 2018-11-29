@@ -20,7 +20,7 @@ class Home extends Component {
             <header>
               <h1>Northcoders News</h1>
             </header>}
-            <Articles user={this.props.user} articles={this.state.articles} />
+          <Articles user={this.props.user} articles={this.state.articles} />
           <footer>Footer</footer>
         </div>
     );

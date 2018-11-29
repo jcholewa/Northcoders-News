@@ -28,7 +28,7 @@ ArticleAdder.propTypes = {
   handleChange: propTypes.func.isRequired,
   handleSubmit: propTypes.func.isRequired,
   showArticleAdder: propTypes.func.isRequired,
-  topic: propTypes.string.isRequired,
+  topic: propTypes.string,
   title: propTypes.string.isRequired,
   article: propTypes.string.isRequired
 }
