@@ -12,7 +12,7 @@ class Home extends Component {
     console.log('rendering')
     return (
       this.state.loading === true ? <p>Loading...</p> :
-        <div className="home">
+        <div id='top' className="home">
           {this.props.topic_slug !== undefined ?
             <header>
               <h1>News about {this.props.topic_slug}</h1>

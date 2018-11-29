@@ -47,6 +47,7 @@ class Articles extends Component {
                     }
                   })}
                 </ul>
+                <a href='#top'>Back to Top</a>
               </>}
           </>}
       </div>
