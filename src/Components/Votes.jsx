@@ -12,8 +12,8 @@ class Votes extends Component {
       this.state.err ? <p>Something went wrong</p> :
         <div>
           Votes: {this.props.votes + this.state.voteMod} <br />
-          <button onClick={(() => this.handleVote('up'))} disabled={this.state.voteMod === 1} ><i class="far fa-thumbs-up"></i></button>
-          <button onClick={(() => this.handleVote('down'))} disabled={this.state.voteMod === -1}><i class="far fa-thumbs-down"></i></button>
+          <button onClick={(() => this.handleVote('up'))} disabled={this.state.voteMod === 1} ><i className="far fa-thumbs-up"></i></button>
+          <button onClick={(() => this.handleVote('down'))} disabled={this.state.voteMod === -1}><i className="far fa-thumbs-down"></i></button>
         </div>
     );
   }
