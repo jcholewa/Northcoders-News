@@ -11,8 +11,8 @@ class Articles extends Component {
   state = {
     articles: [],
     loading: true,
-    newArticle: '',
-    newArticleTitle: '',
+    article: '',
+    title: '',
     topic: '',
     sortBy: '',
     addArticle: false
@@ -26,7 +26,7 @@ class Articles extends Component {
         {this.state.loading ? <p>Loading...</p> :
           <>
             {this.state.addArticle ?
-              <ArticleAdder changeTopic={this.changeTopic} topic={this.state.topic} handleChangeTitle={this.handleChangeTitle} newArticleTitle={this.state.newArticleTitle} newArticle={this.state.newArticle} handleSubmit={this.handleSubmit} handleChange={this.handleChange} showArticleAdder={this.showArticleAdder} /> :
+              <ArticleAdder topic={this.state.topic} title={this.state.title} article={this.state.article} handleSubmit={this.handleSubmit} handleChange={this.handleChange} showArticleAdder={this.showArticleAdder} /> :
               <>
                 <button onClick={this.showArticleAdder}>Click here to add an article</button>
                 <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
@@ -55,7 +55,6 @@ class Articles extends Component {
 
   componentDidMount() {
     console.log('mounting')
-    console.log('in Articles component: ', this.props.articles)
     this.setState({
       loading: false,
       articles: this.props.articles
@@ -69,23 +68,20 @@ class Articles extends Component {
     })
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
+    console.log(event.target.topic)
     this.setState({
-      newArticle: event.target.value
+      topic: event.target.topic || '',
+      article: event.target.article || '',
+      title: event.target.title || ''
     })
   }
 
-  handleChangeTitle = event => {
-    this.setState({
-      newArticleTitle: event.target.value
-    })
-  }
-
-  changeTopic = event => {
-    this.setState({
-      topic: event.target.value
-    })
-  }
+  // changeTopic = event => {
+  //   this.setState({
+  //     topic: event.target.value
+  //   })
+  // }
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -106,7 +102,6 @@ class Articles extends Component {
       .catch(console.log)
   }
 
-
   // This will be the onChange for the select element:
   handleChangeSort = event => {
     this.setState({
@@ -123,7 +118,6 @@ class Articles extends Component {
       }
     })
   }
-
 
 }
 
