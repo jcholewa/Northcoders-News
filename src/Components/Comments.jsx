@@ -57,18 +57,19 @@ class Comments extends Component {
 
   submitComment = event => {
     event.preventDefault()
-    postComment(this.state.comment, this.props.article_id, this.props.user._id)
-      .then(comment => {
-        this.setState(state => {
-          return { comments: [comment, ...state.comments], showComments: true }
+    if (this.state.comment !== '')
+      postComment(this.state.comment, this.props.article_id, this.props.user._id)
+        .then(comment => {
+          this.setState(state => {
+            return { comments: [comment, ...state.comments], showComments: true }
+          })
         })
-      })
-      .then(() => {
-        this.setState({
-          comment: ''
+        .then(() => {
+          this.setState({
+            comment: ''
+          })
         })
-      })
-      .catch(console.log)
+        .catch(console.log)
   }
 
   handleDelete = (id) => {
