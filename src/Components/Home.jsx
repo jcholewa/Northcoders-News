@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import Articles from './Articles';
 import User from './User';
+import { getData, postArticle } from '../api';
+import { getDate } from '../utils';
+const _ = require('underscore');
 
 class Home extends Component {
   state = {
+    articles: [],
     loading: true,
   }
 
@@ -20,7 +24,7 @@ class Home extends Component {
               <h1>Northcoders News</h1>
             </header>}
           {this.props.username ? <User /> :
-            <Articles user={this.props.user} topic_slug={this.props.topic_slug} />}
+            <Articles user={this.props.user} articles={this.state.articles} />}
           <footer>Footer</footer>
         </div>
     );
@@ -28,9 +32,27 @@ class Home extends Component {
 
   componentDidMount() {
     console.log('mounting')
-    this.setState({
-      loading: false
-    })
+    getData('', this.props.topic_slug)
+      .then(articles => {
+        this.setState({
+          articles,
+          loading: false
+        })
+      })
+      .catch(console.log)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.topic_slug !== this.props.topic_slug) {
+      getData('', this.props.topic_slug)
+        .then(articles => {
+          this.setState({
+            articles,
+            loading: false,
+          })
+        })
+        .catch(console.log)
+    }
   }
 
 }

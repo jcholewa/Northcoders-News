@@ -55,27 +55,10 @@ class Articles extends Component {
 
   componentDidMount() {
     console.log('mounting')
-    getData('', this.props.topic_slug)
-      .then(articles => {
-        this.setState({
-          articles,
-          loading: false
-        })
-      })
-      .catch(console.log)
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.topic_slug !== this.props.topic_slug) {
-      getData('', this.props.topic_slug)
-        .then(articles => {
-          this.setState({
-            articles,
-            loading: false,
-          })
-        })
-        .catch(console.log)
-    }
+    this.setState({
+      loading: false,
+      articles: this.props.articles
+    })
   }
 
   showArticleAdder = event => {
