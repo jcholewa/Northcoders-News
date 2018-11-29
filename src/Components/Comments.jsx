@@ -16,7 +16,7 @@ class Comments extends Component {
     return (
       this.state.loading ? <p>Loading...</p> :
         <div>
-          <h4>Comments</h4>
+          <h4 id='top'>Comments</h4>
           <input type='text' placeholder='Add a comment...' onChange={this.handleChange} value={this.state.comment} />
           <button onClick={this.submitComment} id='postComment'>Post comment</button>
           <ul className='commentsList'>
@@ -32,6 +32,7 @@ class Comments extends Component {
               </li>
             })}
           </ul>
+          <a href='#top'>Back to Top</a>
         </div>
     );
   }
