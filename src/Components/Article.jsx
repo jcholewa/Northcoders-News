@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getData } from '../api';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import '../Comments.css'
 import Comments from './Comments';
 import Votes from './Votes';
@@ -13,7 +13,9 @@ class Article extends Component {
   }
 
   render() {
+    if (this.state.err) return <p>{this.state.err}</p>
     return (
+
       this.state.loading === true ? <p>Loading...</p> :
         <div>
           <h1>{this.state.article.title}</h1>
@@ -42,7 +44,12 @@ class Article extends Component {
           loading: false
         })
       })
-      .catch(console.log)
+      .catch(err => {
+        navigate('/error', {replace: true, state: {
+          code: err.response.status,
+          // could add message here too.
+        }})
+      })
   }
 
   displayComments = () => {
