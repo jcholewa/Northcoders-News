@@ -6,16 +6,16 @@ const ArticleAdder = ({ topic, title, article, handleSubmit, handleChange, chang
   return (
     <div>
       <form className='add-article'>
-        <select onChange={changeTopic} defaultValue='' name='topic'>
+        <select onChange={changeTopic} defaultValue='' name='topic' className='required'>
           <option value={topic}>Choose a topic...</option>
           <option value='coding' >Coding</option>
           <option value='football'>Football</option>
           <option value='cooking'>Cooking</option>
         </select>
 
-        <input type='text' placeholder='Add an article title...' onChange={handleChangeTitle} name='title' />
+        <input type='text' placeholder='Add an article title...' onChange={handleChangeTitle} name='title' className='required'/>
 
-        <input type='text' placeholder='Add an article...' onChange={handleChange} name='article' />
+        <input type='text' placeholder='Add an article...' onChange={handleChange} name='article' className='required' />
 
         <button onClick={handleSubmit}>Post article</button>
       </form>

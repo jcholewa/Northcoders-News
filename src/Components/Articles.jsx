@@ -88,46 +88,53 @@ class Articles extends Component {
   }
 
   handleChange = event => {
+    if (event.target.value === '') event.target.classList.add('required');
+    event.target.classList.remove('required')
     this.setState({
       article: event.target.value
     })
   }
 
   handleChangeTitle = event => {
+    if (event.target.value === '') event.target.classList.add('required');
+    else event.target.classList.remove('required')
     this.setState({
       title: event.target.value
     })
   }
 
   changeTopic = event => {
+    if (event.target.value === '') event.target.classList.add('required');
+    else event.target.classList.remove('required')
     this.setState({
-      topic: event.target.value
+      topic: event.target.value,
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    postArticle(this.state.title, this.state.article, this.state.topic, this.props.user._id)
-      .then(article => {
-        this.setState(state => {
-          return { articles: [article, ...state.articles] }
+    if (this.state.title && this.state.article && this.state.topic !== '')
+      postArticle(this.state.title, this.state.article, this.state.topic, this.props.user._id)
+        .then(article => {
+          this.setState(state => {
+            return { articles: [article, ...state.articles] }
+          })
         })
-      })
-      .then(() => {
-        this.setState({
-          article: '',
-          title: '',
-          topic: null,
-          addArticle: false
+        .then(() => {
+          this.setState({
+            article: '',
+            title: '',
+            topic: null,
+            addArticle: false
+          })
         })
-      })
-      .catch(err => {
-        navigate('/error', {
-          replace: true, state: {
-            code: err.response.status,
-          }
+        .catch(err => {
+          navigate('/error', {
+            replace: true, state: {
+              code: err.response.status,
+            }
+          })
         })
-      })
   }
 
   // This will be the onChange for the select element:
