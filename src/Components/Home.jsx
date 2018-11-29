@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Articles from './Articles';
+import User from './User';
 
 class Home extends Component {
   state = {
@@ -18,7 +19,8 @@ class Home extends Component {
             <header>
               <h1>Northcoders News</h1>
             </header>}
-          <Articles user={this.props.user} topic_slug={this.props.topic_slug} />
+          {this.props.username ? <User /> :
+            <Articles user={this.props.user} topic_slug={this.props.topic_slug} />}
           <footer>Footer</footer>
         </div>
     );
