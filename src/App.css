@@ -93,9 +93,12 @@ a,
 
 .up {
   color: green;
-  background-color: orange;
 }
 
 .down {
   color: red;
+}
+
+.neutral {
+  color: black;
 }

@@ -6,7 +6,9 @@ class Votes extends Component {
   state = {
     voteMod: 0,
     up: false,
-    down: false
+    down: false,
+    upClicked: false,
+    downClicked: false
   };
 
   render() {
@@ -17,7 +19,7 @@ class Votes extends Component {
         {this.props.votes + this.state.voteMod} {" votes "}
         <button
           aria-label="upvote"
-          className={this.state.up && "up"}
+          className={this.state.up && this.state.upClicked ? "up" : "neutral"}
           onClick={() => this.handleVote("up")}
           disabled={this.state.voteMod === 1}
         >
@@ -25,6 +27,9 @@ class Votes extends Component {
         </button>
         <button
           aria-label="downvote"
+          className={
+            this.state.down && this.state.downClicked ? "down" : "netural"
+          }
           onClick={() => this.handleVote("down")}
           disabled={this.state.voteMod === -1}
         >
@@ -35,23 +40,15 @@ class Votes extends Component {
   }
 
   handleVote = direction => {
-    // if (direction === 'up') {
-    //   this.setState(state => {
-    //     up: state.up === true ? false : true
-    //   })
-    // }
-
-    // up.classList.toggle('up')
-    // toggle green
-    // } else if (direction === 'down') {
-    //   // toggle red
-    // }
+    const clicked = `${direction}Clicked`;
     alterVotes(this.props.id, direction, this.props.type).catch(err => {
       this.setState({ err });
     });
     this.setState(state => {
       return {
-        voteMod: alterVoteMod(state.voteMod, direction)
+        voteMod: alterVoteMod(state.voteMod, direction),
+        [direction]: this.state[direction] ? false : true,
+        [clicked]: this.state[clicked] ? false : true
       };
     });
   };
