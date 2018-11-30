@@ -20,7 +20,9 @@ header {
 
 .searchBox {
   text-align: left;
-  margin-left: 5%;
+  margin-left: 1%;
+  margin-top: 1%;
+  width: 40%;
 }
 
 .nav {
@@ -40,7 +42,6 @@ header {
 
 .nc-news {
   grid-area: heading;
-  align-items: center;
 }
 
 .logged-in {
@@ -83,8 +84,11 @@ nav a:visited {
 }
 
 .add-article-button {
-  align-items: left;
-  margin-left: 5%;
+  text-align: left;
+}
+
+.sort-by {
+  text-align: left;
 }
 
 footer {

@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 const SortBy = ({ handleChangeSort, handleSortBySubmit, value }) => {
   return (
-    <div>
+    <div className='sort-by'>
       <form >
         <label htmlFor='sort-select'>Sort {value} by: </label>
         <select id='sort-select' onChange={handleChangeSort} defaultValue=''>
