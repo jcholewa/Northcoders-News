@@ -47,9 +47,9 @@ class Articles extends Component {
                       <li key={article._id}>
                         <Link to={`/articles/${article._id}`}>{article.title}</Link>
                         {' by'} <Link to={`/users/${article.created_by.username}`}> {article.created_by.username}</Link> {' on '}{dayPosted} <br />
-                        <p>{article.body.substring(0, 160)}...</p>
                         <p>Topic: {article.belongs_to}</p>
                         <p>
+                          <p>{article.body.substring(0, 160)}...</p>
                           {article.comment_count} {article.comment_count === 1 ? ' comment' : ' comments'}
                           <Votes id={article._id} votes={article.votes} type='articles' /></p>
 
