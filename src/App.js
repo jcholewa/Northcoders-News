@@ -38,7 +38,7 @@ class App extends Component {
 
   componentDidMount() {
     const savedData = JSON.parse(localStorage.getItem('user'));
-    if (this.state.user.username || savedData) this.userLogin(this.state.user.username || savedData.username)
+    if (savedData) this.userLogin(savedData.username)
   }
 
   componentDidUpdate() {
