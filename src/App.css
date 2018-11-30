@@ -1,6 +1,7 @@
-header, nav {
-  background-color: #125B07;
-  color: white
+header,
+nav {
+  background-color: #125b07;
+  color: white;
 }
 
 .nav-ul {
@@ -32,7 +33,7 @@ header, nav {
   background-color: #111;
 }
 
-input[type=text]{
+input[type="text"] {
   padding-top: 1%;
   margin-left: 1.5%;
   border: none;
@@ -43,7 +44,14 @@ input[type=text]{
   width: 30%;
 }
 
-.articles, .sort-by, .add-article-button, h1, .back-to-top, .loading, .article, label {
+.articles,
+.sort-by,
+.add-article-button,
+h1,
+.back-to-top,
+.loading,
+.article,
+label {
   margin-left: 1.5%;
   margin-right: 1.5%;
 }
@@ -61,20 +69,33 @@ ul {
   padding-top: 0.5%;
 }
 
-h1, h2 {
+h1,
+h2 {
   padding-top: 1.5%;
 }
 
-.user-logged-in:active, .user-logged-in {
+.user-logged-in:active,
+.user-logged-in {
   color: white;
   text-decoration: none;
   margin-right: 0.5%;
 }
 
-button, a, .link {
+button,
+a,
+.link {
   cursor: pointer;
 }
 
 .loading {
   text-align: center;
+}
+
+.up {
+  color: green;
+  background-color: orange;
+}
+
+.down {
+  color: red;
 }
