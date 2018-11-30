@@ -20,8 +20,6 @@ class Articles extends Component {
     searchTerm: ''
   }
 
-  prevProps = this.props.prevProps;
-
   render() {
     const articles = this.state.articles.filter(article => article.body.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || article.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())) || this.state.articles;
 
