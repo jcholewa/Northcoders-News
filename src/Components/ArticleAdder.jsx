@@ -46,7 +46,7 @@ const ArticleAdder = ({
 
         <button onClick={handleSubmit}>Post article</button>
       </form>
-      <Link to={"/"} onClick={showArticleAdder}>
+      <Link to={"/articles"} onClick={showArticleAdder}>
         Back to Home
       </Link>
     </div>

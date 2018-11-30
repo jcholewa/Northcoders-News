@@ -29,7 +29,7 @@ class Article extends Component {
           <Comments article_id={this.state.article._id} comment={this.state.comment} user={this.props.user} /> :
           <button onClick={this.displayComments}>View {this.state.article.comment_count} comments</button>}
         <br />
-        <Link to={'/'}>Back to Home</Link>
+        <Link to={'/articles'}>Back to Home</Link>
 
       </div >
     );
