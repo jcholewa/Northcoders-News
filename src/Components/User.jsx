@@ -12,7 +12,6 @@ class User extends Component {
   };
 
   render() {
-    if (this.state.err) return <p>{this.state.err}</p>;
     if (this.state.loading) return <Loading />;
     return (
       <div>
@@ -66,7 +65,8 @@ class User extends Component {
         navigate("/error", {
           replace: true,
           state: {
-            code: err.response.status
+            code: err.response.status,
+            message: 'Username does not exist'
           }
         });
       });

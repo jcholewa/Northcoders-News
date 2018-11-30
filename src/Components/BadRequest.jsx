@@ -1,11 +1,12 @@
-import React from 'react';
-import { Link } from '@reach/router';
+import React from "react";
+import { Link } from "@reach/router";
 
-const BadRequest = (props) => {
+const BadRequest = props => {
   return (
     <div>
-      <h1>{props.location.code} Bad Request</h1>
-      <Link to={'/'}>Back to Home</Link>
+      <h1>{props.location.state.code} Bad Request</h1>
+      <p>{props.location.state.message}</p>
+      <Link to={"/"}>Back to Home</Link>
     </div>
   );
 };
