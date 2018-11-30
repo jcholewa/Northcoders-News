@@ -18,9 +18,9 @@ class App extends Component {
   render() {
     console.log('in App', this.state.user)
     return (
-      <div>
+      <div className="App">
         <Nav user={this.state.user} userLogout={this.userLogout} />
-        <div className="App">
+        <div >
           <Login userLogin={this.userLogin} user={this.state.user}>
             <Router>
               <Home path='/' user={this.state.user} />

@@ -16,19 +16,15 @@ class Nav extends Component {
       <>
         <div className="nav">
           <h2 className='nc-news'>Northcoders News</h2>
-          <nav>
-            <Link to='/'>Home</Link>
-            {'     |     '}
+          <ul className='nav-ul'>
+            <li className='nav-li'><Link className='link' to='/'>Home</Link></li>
             {this.state.topics.map((topic, index) => {
-              if (index !== this.state.topics.length - 1)
-                return <Link to={`/topics/${topic.slug}/articles`} key={index}>{topic.title}
-                  {'     |     '} </Link>
-              else return <Link to={`/topics/${topic.slug}/articles`} key={index}>{topic.title} </Link>
+              return <li className='nav-li'><Link className='link' to={`/topics/${topic.slug}/articles`} key={index}>{topic.title} </Link></li>
             })}
-          </nav>
+          </ul>
           {this.props.user.username ? <div className='logged-in'>
-            <Link to={`/users/${this.props.user.username}`}>Current user: {this.props.user.username}</Link>
-            <button onClick={this.props.userLogout}>Log Out</button>
+            <li ><Link  to={`/users/${this.props.user.username}`}>Current user: {this.props.user.username}</Link>
+              <button onClick={this.props.userLogout}>Log Out</button> </li>
           </div> : <> </>}
         </div>
       </>
