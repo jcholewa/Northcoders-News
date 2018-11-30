@@ -1,42 +1,48 @@
-import React, { Component } from 'react';
-import { getUser, getArticlesForUser } from '../api';
-import { Link, navigate } from '@reach/router';
-import Loading from './Loading';
+import React, { Component } from "react";
+import { getUser, getArticlesForUser } from "../api";
+import { Link, navigate } from "@reach/router";
+import Loading from "./Loading";
 
 class User extends Component {
-
   state = {
     user: {},
     loading: true,
     userArticles: [],
     showArticles: false
-  }
+  };
 
   render() {
-    if (this.state.err) return <p>{this.state.err}</p>
-    if (this.state.loading) return <Loading />
+    if (this.state.err) return <p>{this.state.err}</p>;
+    if (this.state.loading) return <Loading />;
     return (
       <div>
-        <img src={this.state.user.avatar_url} alt="user's avatar"></img>
+        <img src={this.state.user.avatar_url} alt="user's avatar" />
         <p>Username: {this.state.user.username}</p>
         <p>Name: {this.state.user.name}</p>
-        {this.state.showArticles ?
+        {this.state.showArticles ? (
           <section>
             <h4>Articles by {this.state.user.username}:</h4>
             <ul>
               {this.state.userArticles.map(article => {
                 {
                   return (
-                    <div className='user-articles'>
-                      <Link to={`/articles/${article._id}`}>{article.title}</Link>
+                    <div className="user-articles">
+                      <Link to={`/articles/${article._id}`}>
+                        {article.title}
+                      </Link>
                     </div>
-                  )
+                  );
                 }
               })}
             </ul>
-          </section> : <button onClick={this.displayArticles}>View list of articles by {this.state.user.username}</button>}
+          </section>
+        ) : (
+          <button onClick={this.displayArticles}>
+            View list of articles by {this.state.user.username}
+          </button>
+        )}
         <br />
-        <Link to={'/articles'}>Back to Home</Link>
+        <Link to={"/articles"}>Back to Home</Link>
       </div>
     );
   }
@@ -47,23 +53,23 @@ class User extends Component {
         this.setState({
           user,
           loading: false
-        })
+        });
       })
       .then(() => {
-        getArticlesForUser(this.state.user.username)
-          .then(articles => {
-            this.setState({
-              userArticles: articles
-            })
-          })
+        getArticlesForUser(this.state.user.username).then(articles => {
+          this.setState({
+            userArticles: articles
+          });
+        });
       })
       .catch(err => {
-        navigate('/error', {
-          replace: true, state: {
+        navigate("/error", {
+          replace: true,
+          state: {
             code: err.response.status
           }
-        })
-      })
+        });
+      });
   }
 
   componentDidUpdate(prevProps) {
@@ -73,18 +79,17 @@ class User extends Component {
           this.setState({
             user,
             loading: false
-          })
+          });
         })
-        .catch(console.log)
+        .catch(console.log);
     }
   }
 
   displayArticles = () => {
     this.setState({
       showArticles: true
-    })
-  }
+    });
+  };
 }
-
 
 export default User;
