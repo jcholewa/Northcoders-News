@@ -20,6 +20,7 @@ class Articles extends Component {
     searchTerm: ''
   }
 
+  prevProps = this.props.prevProps;
 
   render() {
     const articles = this.state.articles.filter(article => article.body.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || article.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())) || this.state.articles;
@@ -49,7 +50,7 @@ class Articles extends Component {
                         {/* <hr /> */}
                         <p>
                           {/* Posted on: {dayPosted} */}
-                        <Votes id={article._id} votes={article.votes} type='articles' /></p>
+                          <Votes id={article._id} votes={article.votes} type='articles' /></p>
 
                         {(article.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(article._id))}>Delete article</button> : <> </>}
                       </li>
@@ -66,11 +67,19 @@ class Articles extends Component {
 
   componentDidMount() {
     console.log('mounting')
-    console.log(this.props.user)
     this.setState({
       loading: false,
       articles: this.props.articles
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.articles !== this.props.articles) {
+      this.setState({
+        loading: false,
+        articles: this.props.articles
+      })
+    }
   }
 
   showArticleAdder = event => {

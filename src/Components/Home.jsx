@@ -14,41 +14,41 @@ class Home extends Component {
   render() {
     console.log('rendering')
     if (this.state.loading) return <Loading />
-    if (this.props.topic_slug !== undefined) return <header>
-      <h1>News about {this.props.topic_slug}</h1>
-    </header>
     return (
       <div id='top' className="home">
-        <Articles user={this.props.user} articles={this.state.articles} />
+        {this.props.topic_slug !== undefined ? <header>
+          <h1>News about {this.props.topic_slug}</h1>
+        </header> : <></>}
+          <Articles user={this.props.user} articles={this.state.articles} />
       </div>
-    );
-  }
-
+      );
+    }
+  
   componentDidMount() {
-    console.log('mounting')
+          console.log('mounting')
     getData('', this.props.topic_slug)
       .then(articles => {
-        this.setState({
-          articles,
-          loading: false
-        })
-      })
-      .catch(console.log)
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.topic_slug !== this.props.topic_slug) {
-      getData('', this.props.topic_slug)
-        .then(articles => {
           this.setState({
             articles,
-            loading: false,
+            loading: false
           })
         })
         .catch(console.log)
     }
-  }
-
-}
-
+  
+  componentDidUpdate(prevProps) {
+    if (prevProps.topic_slug !== this.props.topic_slug) {
+          getData('', this.props.topic_slug)
+            .then(articles => {
+              this.setState({
+                articles,
+                loading: false,
+              })
+            })
+            .catch(console.log)
+        }
+        }
+      
+      }
+      
 export default Home;
