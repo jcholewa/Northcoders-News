@@ -36,7 +36,6 @@ class Article extends Component {
   }
 
   componentDidMount() {
-    console.log('mounting');
     getData(this.props.article_id)
       .then(article => {
         this.setState({

@@ -12,7 +12,6 @@ class Home extends Component {
   prevProps = this.props.prevProps;
 
   render() {
-    console.log('rendering')
     if (this.state.loading) return <Loading />
     return (
       <div id='top' className="home">
@@ -25,7 +24,6 @@ class Home extends Component {
     }
   
   componentDidMount() {
-          console.log('mounting')
     getData('', this.props.topic_slug)
       .then(articles => {
           this.setState({

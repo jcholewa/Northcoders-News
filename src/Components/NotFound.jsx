@@ -5,7 +5,6 @@ const NotFound = () => {
   return (
     <div>
       <h1>Nothing to see here</h1>
-      {/* add image? */}
       <Link to={'/'}>Back to Home</Link>
     </div>
   );

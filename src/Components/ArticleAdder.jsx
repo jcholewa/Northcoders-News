@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Link } from '@reach/router';
 
-const ArticleAdder = ({ topic, title, article, handleSubmit, handleChange, changeTopic, showArticleAdder, handleChangeTitle }) => {
+const ArticleAdder = ({ topic, handleSubmit, handleChange, changeTopic, showArticleAdder, handleChangeTitle }) => {
   return (
     <div>
       <label htmlFor='add-article'>Please complete all fields</label>

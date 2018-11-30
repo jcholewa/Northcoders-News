@@ -4,7 +4,7 @@ import Votes from './Votes';
 import SortBy from './SortBy';
 import Loading from './Loading';
 import { getDate } from '../utils';
-const _ = require('underscore');
+import { sortBy } from 'underscore';
 
 class Comments extends Component {
   state = {
@@ -98,7 +98,7 @@ class Comments extends Component {
     event.preventDefault();
     this.setState(state => {
       return {
-        comments: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? _.sortBy(state.comments, 'votes').reverse() : _.sortBy(state.comments, 'votes') : state.sortBy === 'time-desc' ? _.sortBy(state.comments, 'created_at').reverse() : _.sortBy(state.comments, 'created_at')
+        comments: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? sortBy(state.comments, 'votes').reverse() : sortBy(state.comments, 'votes') : state.sortBy === 'time-desc' ? sortBy(state.comments, 'created_at').reverse() : sortBy(state.comments, 'created_at')
       }
     })
   }

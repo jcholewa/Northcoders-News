@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    // if (this.state.user.username === this.props.username) this.userLogin(this.state.user.username)
     this.saveData()
   }
 
