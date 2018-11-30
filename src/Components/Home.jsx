@@ -17,7 +17,7 @@ class Home extends Component {
     return (
       <div id='top' className="home">
         {this.props.topic_slug !== undefined ? <header>
-          <h1>News about {this.props.topic_slug}</h1>
+          <h3>News about {this.props.topic_slug}</h3>
         </header> : <></>}
           <Articles user={this.props.user} articles={this.state.articles} />
       </div>

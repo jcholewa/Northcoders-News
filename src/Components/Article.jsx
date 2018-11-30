@@ -17,8 +17,8 @@ class Article extends Component {
     if (this.state.err) return <p>{this.state.err}</p>
     if (this.state.loading) return <Loading />
     return (
-      <div>
-        <h1>{this.state.article.title}</h1>
+      <div className='article'> 
+        <h2>{this.state.article.title}</h2>
         Author: <Link to={`/users/${this.state.article.created_by.username}`}> {this.state.article.created_by.username}</Link>
         <h4>Topic: {this.state.article.belongs_to}</h4>
         <p>{this.state.article.body}</p>

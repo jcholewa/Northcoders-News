@@ -3,17 +3,20 @@ header, nav {
   color: white
 }
 
-nav-ul {
+.nav-ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  
 }
 
-nav-li {
+.nav-li {
   float: left;
-  color: white
+  color: white;
+}
+
+.nav-li-right {
+  float: right;
 }
 
 .link {
@@ -27,4 +30,40 @@ nav-li {
 /* Change the link color to #111 (black) on hover */
 .link:hover {
   background-color: #111;
+}
+
+input[type=text]{
+  padding-top: 1%;
+  margin-left: 1.5%;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.searchBar {
+  width: 30%;
+}
+
+.articles, .sort-by, .add-article-button, h1, .back-to-top, .loading, .article {
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.articles li {
+  border-width: thin;
+  border: black solid 1px;
+  margin-bottom: 1%;
+}
+
+h1, h2 {
+  padding-top: 1.5%;
+}
+
+.user-logged-in:active, .user-logged-in {
+  color: white;
+  text-decoration: none;
+  margin-right: 0.5%;
 }

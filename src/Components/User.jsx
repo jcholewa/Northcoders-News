@@ -34,7 +34,7 @@ class User extends Component {
                 }
               })}
             </ul>
-          </section> : <button onClick={this.displayArticles}>View articles by {this.state.user.username}</button>}
+          </section> : <button onClick={this.displayArticles}>View list of articles by {this.state.user.username}</button>}
         <br />
         <Link to={'/'}>Back to Home</Link>
       </div>
