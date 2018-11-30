@@ -51,6 +51,7 @@ class Articles extends Component {
             <>
               <div className="searchBox">
                 <input
+                  aria-label='search box'
                   className="searchBar"
                   type="text"
                   placeholder="Search for articles..."
