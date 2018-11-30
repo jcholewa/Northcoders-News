@@ -13,21 +13,24 @@ class Nav extends Component {
   render() {
     if (this.state.loading) return <Loading />
     return (
-      <>
-        <div className="nav">
+      <header>
+        <div className='logo'>
           <h2 className='nc-news'>Northcoders News</h2>
+        </div>
+        <nav>
           <ul className='nav-ul'>
             <li className='nav-li'><Link className='link' to='/'>Home</Link></li>
             {this.state.topics.map((topic, index) => {
               return <li className='nav-li'><Link className='link' to={`/topics/${topic.slug}/articles`} key={index}>{topic.title} </Link></li>
             })}
+
+            {this.props.user.username ? <div className='logged-in'>
+              <li ><Link to={`/users/${this.props.user.username}`}>Current user: {this.props.user.username}</Link>
+                <button onClick={this.props.userLogout}>Log Out</button> </li>
+            </div> : <> </>}
           </ul>
-          {this.props.user.username ? <div className='logged-in'>
-            <li ><Link  to={`/users/${this.props.user.username}`}>Current user: {this.props.user.username}</Link>
-              <button onClick={this.props.userLogout}>Log Out</button> </li>
-          </div> : <> </>}
-        </div>
-      </>
+        </nav>
+      </header>
     );
   }
 
