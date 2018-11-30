@@ -35,7 +35,7 @@ class Articles extends Component {
             <>
               <div className='searchBox'><input className='searchBar' type='text' placeholder='Search for articles...' onChange={this.onSearchChange} value={this.state.searchTerm} /><button onClick={this.onSearchSubmit}>Search</button></div><br />
               <button className='add-article-button' onClick={this.showArticleAdder}>Add an article</button>
-              <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
+              <SortBy handleChangeSort={this.handleChangeSort} value={'articles'} />
               <ul className='articles'>
                 {articles.map(article => {
                   let dayPosted = getDate(article.created_at)
@@ -144,17 +144,11 @@ class Articles extends Component {
 
   // This will be the onChange for the select element:
   handleChangeSort = event => {
-    this.setState({
-      sortBy: event.target.value
-    })
-  }
+    const sortByValue = event.target.value
 
-  // This will be the onClick for the whole form element:
-  handleSortBySubmit = (event) => {
-    event.preventDefault();
     this.setState(state => {
       return {
-        articles: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? sortBy(state.articles, 'votes').reverse() : sortBy(state.articles, 'votes') : state.sortBy === 'time-desc' ? sortBy(state.articles, 'created_at').reverse() : sortBy(state.articles, 'created_at')
+        articles: sortByValue.includes('votes') ? sortByValue === 'votes-desc' ? sortBy(state.articles, 'votes').reverse() : sortBy(state.articles, 'votes') : sortByValue === 'time-desc' ? sortBy(state.articles, 'created_at').reverse() : sortBy(state.articles, 'created_at')
       }
     })
   }

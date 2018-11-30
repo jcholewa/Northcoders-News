@@ -22,7 +22,7 @@ class Comments extends Component {
         <button onClick={this.submitComment} id='postComment'>Post comment</button>
         <ul className='commentsList'>
 
-          <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'comments'} />
+          <SortBy handleChangeSort={this.handleChangeSort} value={'comments'} />
           {this.state.comments.map(comment => {
             let dayPosted = getDate(comment.created_at)
             return <li className='commentsLI' key={comment._id}>{comment.body} <br />
@@ -88,17 +88,11 @@ class Comments extends Component {
 
   // This will be the onChange for the select element:
   handleChangeSort = event => {
-    this.setState({
-      sortBy: event.target.value
-    })
-  }
+    const sortByValue = event.target.value
 
-  // This will be the onClick for the whole form element:
-  handleSortBySubmit = (event) => {
-    event.preventDefault();
     this.setState(state => {
       return {
-        comments: state.sortBy.includes('votes') ? state.sortBy === 'votes-desc' ? sortBy(state.comments, 'votes').reverse() : sortBy(state.comments, 'votes') : state.sortBy === 'time-desc' ? sortBy(state.comments, 'created_at').reverse() : sortBy(state.comments, 'created_at')
+        comments: sortByValue.includes('votes') ? sortByValue === 'votes-desc' ? sortBy(state.comments, 'votes').reverse() : sortBy(state.comments, 'votes') : sortByValue === 'time-desc' ? sortBy(state.comments, 'created_at').reverse() : sortBy(state.comments, 'created_at')
       }
     })
   }
