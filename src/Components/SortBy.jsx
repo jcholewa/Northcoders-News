@@ -5,7 +5,7 @@ const SortBy = ({ handleChangeSort, handleSortBySubmit, value }) => {
   return (
     <div className='sort-by'>
       <form >
-        <label htmlFor='sort-select'>Sort {value} by: </label>
+        <label htmlFor='sort-select'>Sort {value} by:</label>
         <select id='sort-select' onChange={handleChangeSort} defaultValue=''>
           <option>Choose a filter...</option>
           <option value='votes-desc'>Number of votes descending</option>
