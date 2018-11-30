@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Nav from './Components/Nav';
-import Home from './Components/Home';
-import Article from './Components/Article';
-import User from './Components/User';
-import Login from './Components/Login';
-import NotFound from './Components/NotFound';
-import BadRequest from './Components/BadRequest';
+import Nav from './components/Nav';
+import Home from './components/Home';
+import Article from './components/Article';
+import User from './components/User';
+import Login from './components/Login';
+import NotFound from './components/NotFound';
+import BadRequest from './components/BadRequest';
 import { Router } from '@reach/router';
 import { login } from './api';
 
