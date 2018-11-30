@@ -35,12 +35,12 @@ class Articles extends Component {
           {this.state.addArticle ?
             <ArticleAdder topic={this.state.topic} title={this.state.title} article={this.state.article} handleSubmit={this.handleSubmit} handleChange={this.handleChange} showArticleAdder={this.showArticleAdder} changeTopic={this.changeTopic} handleChangeTitle={this.handleChangeTitle} /> :
             <>
-              <div className='searchBox'><input className='searchBar' type='text' placeholder='Search for articles..' onChange={this.onSearchChange} value={this.state.searchTerm} /><button onClick={this.onSearchSubmit}>Search</button></div><br />
+              <div className='searchBox'><input className='searchBar' type='text' placeholder='Search for articles...' onChange={this.onSearchChange} value={this.state.searchTerm} /><button onClick={this.onSearchSubmit}>Search</button></div><br />
               <button className='add-article-button' onClick={this.showArticleAdder}>Click here to add an article</button>
               <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
               <ul className='articles'>
                 {articles.map(article => {
-                  // let dayPosted = getDate(article.created_at)
+                  let dayPosted = getDate(article.created_at)
                   {
                     if (this.state.loading) return <p>Loading...</p>
                     return (
@@ -50,7 +50,7 @@ class Articles extends Component {
                         <p>{article.body.substring(0, 160)}...</p>
                         {/* <hr /> */}
                         <p>
-                          {/* Posted on: {dayPosted} */}
+                          {dayPosted} <br/>
                           {article.comment_count} comments
                           <Votes id={article._id} votes={article.votes} type='articles' /></p>
 
@@ -103,24 +103,18 @@ class Articles extends Component {
   }
 
   handleChange = event => {
-    if (event.target.value === '') event.target.classList.add('required');
-    event.target.classList.remove('required')
     this.setState({
       article: event.target.value
     })
   }
 
   handleChangeTitle = event => {
-    if (event.target.value === '') event.target.classList.add('required');
-    else event.target.classList.remove('required')
     this.setState({
       title: event.target.value
     })
   }
 
   changeTopic = event => {
-    if (event.target.value === '') event.target.classList.add('required');
-    else event.target.classList.remove('required')
     this.setState({
       topic: event.target.value,
     })

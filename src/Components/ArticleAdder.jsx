@@ -5,6 +5,7 @@ import { Link } from '@reach/router';
 const ArticleAdder = ({ topic, title, article, handleSubmit, handleChange, changeTopic, showArticleAdder, handleChangeTitle }) => {
   return (
     <div>
+      <label htmlFor='add-article'>Please complete all fields</label>
       <form className='add-article'>
         <select onChange={changeTopic} defaultValue='' name='topic' className='required'>
           <option value={topic}>Choose a topic...</option>
@@ -15,7 +16,7 @@ const ArticleAdder = ({ topic, title, article, handleSubmit, handleChange, chang
 
         <input type='text' placeholder='Add an article title...' onChange={handleChangeTitle} name='title' className='required'/>
 
-        <input type='text' placeholder='Add an article...' onChange={handleChange} name='article' className='required' />
+        <input type='text' placeholder='Type your article here...' onChange={handleChange} name='article' className='required' />
 
         <button onClick={handleSubmit}>Post article</button>
       </form>
