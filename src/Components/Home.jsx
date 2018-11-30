@@ -19,11 +19,6 @@ class Home extends Component {
     </header>
     return (
       <div id='top' className="home">
-        {/* {this.props.topic_slug !== undefined ?
-           :
-          <header>
-            <h1>Northcoders News</h1>
-          </header>} */}
         <Articles user={this.props.user} articles={this.state.articles} />
       </div>
     );
