@@ -90,10 +90,8 @@ class Articles extends Component {
                         <p>Topic: {article.belongs_to}</p>
                         <p>
                           <p>{article.body.substring(0, 160)}...</p>
-                          {article.comment_count}{" "}
-                          {article.comment_count === 1
-                            ? " comment"
-                            : " comments"}
+                          {article.comment_count}{" comments "}
+                          
                           <Votes
                             id={article._id}
                             votes={article.votes}
