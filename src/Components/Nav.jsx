@@ -15,6 +15,7 @@ class Nav extends Component {
     return (
       <>
         <div className="nav">
+          <h2 className='nc-news'>Northcoders News</h2>
           <nav>
             <Link to='/'>Home</Link>
             {'     |     '}
@@ -24,11 +25,11 @@ class Nav extends Component {
                   {'     |     '} </Link>
               else return <Link to={`/topics/${topic.slug}/articles`} key={index}>{topic.title} </Link>
             })}
-            {this.props.user.username ? <div className='logged-in'>
-              <Link to={`/users/${this.props.user.username}`}>Current user: {this.props.user.username}</Link>
-              <button onClick={this.props.userLogout}>Log Out</button>
-            </div> : <> </>}
           </nav>
+          {this.props.user.username ? <div className='logged-in'>
+            <Link to={`/users/${this.props.user.username}`}>Current user: {this.props.user.username}</Link>
+            <button onClick={this.props.userLogout}>Log Out</button>
+          </div> : <> </>}
         </div>
       </>
     );

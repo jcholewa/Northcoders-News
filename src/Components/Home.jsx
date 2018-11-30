@@ -14,15 +14,16 @@ class Home extends Component {
   render() {
     console.log('rendering')
     if (this.state.loading) return <Loading />
+    if (this.props.topic_slug !== undefined) return <header>
+    <h1>News about {this.props.topic_slug}</h1>
+  </header>
     return (
       <div id='top' className="home">
-        {this.props.topic_slug !== undefined ?
-          <header>
-            <h1>News about {this.props.topic_slug}</h1>
-          </header> :
+        {/* {this.props.topic_slug !== undefined ?
+           :
           <header>
             <h1>Northcoders News</h1>
-          </header>}
+          </header>} */}
         <Articles user={this.props.user} articles={this.state.articles} />
         <footer>Footer</footer>
       </div>

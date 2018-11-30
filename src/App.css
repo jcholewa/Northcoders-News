@@ -31,6 +31,33 @@ header {
   height: 50px;
   padding-top: 20px;
   /* padding-bottom: 20px; */
+  display: grid;
+  grid-template-columns: 2fr 4fr 2fr;
+  grid-template-rows: 3fr;
+  grid-template-areas:
+    'heading nav logged-in'
+}
+
+.nc-news {
+  grid-area: heading;
+  align-items: center;
+}
+
+.logged-in {
+  text-align: right;
+  padding-right: 2%;
+  font-size: 0.9em;
+  margin-top: 0px;
+  grid-area: logged-in;
+}
+
+nav {
+  grid-template-areas: nav;
+}
+
+nav button {
+  margin-left: 1%;
+  margin-bottom: 2%
 }
 
 nav a:link {
@@ -80,18 +107,6 @@ li {
   padding: 1%;
   height: auto;
   overflow: hidden;
-}
-
-.logged-in {
-  text-align: right;
-  padding-right: 2%;
-  font-size: 0.9em;
-  margin-top: 0px;
-}
-
-nav button {
-  margin-left: 1%;
-  margin-bottom: 2%
 }
 
 button {
