@@ -17,7 +17,7 @@ class Comments extends Component {
     if (this.state.loading) return <Loading />;
     return (
       <div>
-        <h4 id="top">Comments</h4>
+        <h4>Comments</h4>
         <input
           aria-label="add a comment"
           type="text"
