@@ -38,7 +38,7 @@ class Articles extends Component {
               <SortBy handleChangeSort={this.handleChangeSort} handleSortBySubmit={this.handleSortBySubmit} value={'articles'} />
               <ul className='articles'>
                 {articles.map(article => {
-                  let dayPosted = getDate(article.created_at)
+                  // let dayPosted = getDate(article.created_at)
                   {
                     if (this.state.loading) return <p>Loading...</p>
                     return (
@@ -46,9 +46,9 @@ class Articles extends Component {
                         <Link to={`/articles/${article._id}`}>{article.title}</Link>
                         {' by'} <Link to={`/users/${article.created_by.username}`}> {article.created_by.username}</Link>
                         <p>{article.body.substring(0, 160)}...</p>
-                        <hr />
+                        {/* <hr />
                         <p>Posted on: {dayPosted}
-                        <Votes id={article._id} votes={article.votes} type='articles' /></p>
+                        <Votes id={article._id} votes={article.votes} type='articles' /></p> */}
 
                         {(article.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(article._id))}>Delete article</button> : <> </>}
                       </li>
