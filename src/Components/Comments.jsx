@@ -30,7 +30,7 @@ class Comments extends Component {
               <p>Posted on: {dayPosted}</p>
               <Votes id={comment._id} votes={comment.votes} type='comments' />
 
-              {(comment.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(comment._id))}>Delete comment</button> : <> </>}
+              {(comment.created_by.username === this.props.user.username) && <button onClick={(() => this.handleDelete(comment._id))}>Delete comment</button>}
             </li>
           })}
         </ul>

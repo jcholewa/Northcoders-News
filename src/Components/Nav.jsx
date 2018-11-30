@@ -24,10 +24,10 @@ class Nav extends Component {
               return <li className='nav-li'><Link className='link' to={`/topics/${topic.slug}/articles`} key={index}>{topic.title} </Link></li>
             })}
 
-            {this.props.user.username ? <div className='logged-in'>
+            {this.props.user.username && <div className='logged-in'>
               <li className='nav-li-right'><Link className='user-logged-in' to={`/users/${this.props.user.username}`}>{this.props.user.username} is logged in</Link>
                 <button onClick={this.props.userLogout}>Log Out</button> </li>
-            </div> : <> </>}
+            </div>}
           </ul>
         </nav>
       </header>

@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('in App', this.state.user)
     return (
       <div className="App">
         <Nav user={this.state.user} userLogout={this.userLogout} />

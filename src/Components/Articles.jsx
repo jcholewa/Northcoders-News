@@ -53,7 +53,7 @@ class Articles extends Component {
                           {article.comment_count} {article.comment_count === 1 ? ' comment' : ' comments'}
                           <Votes id={article._id} votes={article.votes} type='articles' /></p>
 
-                        {(article.created_by.username === this.props.user.username) ? <button onClick={(() => this.handleDelete(article._id))}>Delete article</button> : <> </>}
+                        {(article.created_by.username === this.props.user.username) && <button onClick={(() => this.handleDelete(article._id))}>Delete article</button>}
                       </li>
                     )
                   }
