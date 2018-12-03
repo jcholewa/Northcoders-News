@@ -9,10 +9,31 @@ class Login extends Component {
   };
 
   render() {
-    const { username } = this.state;
+    const { username, err } = this.state;
 
     if (this.props.user.username) return this.props.children;
-    return (
+    return err ? (
+      <div>
+        {" "}
+        <p>User not found for this username. Please try again</p>
+        <div classNae="login">
+          <h3>Sign in to Northcoders News</h3>
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <label htmlFor="username">Username: </label>
+              <input
+                aria-label="username"
+                type="text"
+                id="username"
+                onChange={this.handleChange}
+                value={username}
+              />
+            </div>
+            <button>Log in</button>
+          </form>
+        </div>
+      </div>
+    ) : (
       <div className="login">
         <h3>Sign in to Northcoders News</h3>
         <form onSubmit={this.handleSubmit}>
@@ -41,11 +62,22 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    login(this.state.username)
-      .then(user => {
-        this.props.userLogin(user.username);
-      })
-      .catch(console.log);
+    if (this.state.username !== "") {
+      login(this.state.username)
+        .then(user => {
+          this.props.userLogin(user.username);
+        })
+        .then(() => {
+          this.setState({
+            successfulLogin: true
+          });
+        })
+        .catch(err => {
+          this.setState({
+            err: true
+          });
+        });
+    }
   };
 }
 

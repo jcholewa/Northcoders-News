@@ -49,13 +49,13 @@ class App extends Component {
   }
 
   userLogin = user => {
-    login(user)
-      .then(user => {
+    if (user !== undefined) {
+      login(user).then(user => {
         this.setState({
           user
         });
-      })
-      .catch(console.log);
+      });
+    }
   };
 
   userLogout = () => {

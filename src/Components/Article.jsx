@@ -55,15 +55,7 @@ class Article extends Component {
           loading: false
         });
       })
-      .catch(err => {
-        navigate("/error", {
-          replace: true,
-          state: {
-            code: err.response.status
-            // could add message here too.
-          }
-        });
-      });
+      .catch(console.log);
   }
 
   displayComments = () => {
