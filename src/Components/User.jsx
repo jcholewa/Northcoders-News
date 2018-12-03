@@ -17,7 +17,8 @@ class User extends Component {
     if (loading) return <Loading />;
     return (
       <div>
-        <img src={user.avatar_url} alt="user's avatar" />
+        <img src={user.avatar_url} alt={`${user.username}'s avatar`} onError="this.onError=null; this.src='xyz'"/>
+        {/* onError={this.onError=null this.src='imagefound.gif';} */}
         <p>Username: {user.username}</p>
         <p>Name: {user.name}</p>
         {showArticles ? (
@@ -93,6 +94,7 @@ class User extends Component {
       showArticles: true
     });
   };
+
 }
 
 export default User;
