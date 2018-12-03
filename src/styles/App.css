@@ -89,7 +89,7 @@ a,
 
 .loading {
   text-align: center;
-  margin-top: 5em
+  margin-top: 5em;
 }
 
 .up {
@@ -125,4 +125,9 @@ a,
 
 h4 {
   margin-top: 0.5em;
+}
+
+.no-articles-topic {
+  text-align: center;
+  margin-top: 5em;
 }

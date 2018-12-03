@@ -34,7 +34,7 @@ class Articles extends Component {
     if (loading) return <Loading />;
     if (err) return <p>{this.state.err}</p>;
     if (this.state.articles.length === 0)
-      return <p>There are no articles about {this.props.topic_slug}!</p>;
+      return <div className='no-articles-topic'><p>There are no articles about {this.props.topic_slug}!</p> <Link to={'/'}>Back to Home</Link> </div>;
 
     return (
       <div>
