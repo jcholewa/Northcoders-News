@@ -16,12 +16,17 @@ class Comments extends Component {
   };
 
   render() {
-    const {loading, comments, comment, completed} = this.state;
+    const { loading, comments, comment, completed, deleted } = this.state;
     if (loading) return <Loading />;
     return (
       <div>
+        {deleted && <p className='deleted'> Comment deleted! </p>}
         <h4>Comments</h4>
-        {completed === false && <p className='missing-fields'>Please write a comment before trying to post a comment</p>}
+        {completed === false && (
+          <p className="missing-fields">
+            Please write a comment before trying to post a comment
+          </p>
+        )}
         <input
           aria-label="add a comment"
           type="text"
@@ -38,8 +43,10 @@ class Comments extends Component {
             let dayPosted = getDate(comment.created_at);
             return (
               <li className="commentsLI" key={comment._id}>
-                <p className='comment-body'>{comment.body}</p>
-                <p className='comment-author'>{comment.created_by.username} posted this on {dayPosted}</p>
+                <p className="comment-body">{comment.body}</p>
+                <p className="comment-author">
+                  {comment.created_by.username} posted this on {dayPosted}
+                </p>
                 <Votes id={comment._id} votes={comment.votes} type="comments" />
                 {comment.created_by.username === this.props.user.username && (
                   <button onClick={() => this.handleDelete(comment._id)}>
@@ -77,9 +84,8 @@ class Comments extends Component {
     if (!this.state.comment) {
       this.setState({
         completed: false
-      })
-    }
-    else if (this.state.comment !== "")
+      });
+    } else if (this.state.comment !== "")
       postComment(
         this.state.comment,
         this.props.article_id,
@@ -105,11 +111,12 @@ class Comments extends Component {
     deleteItem(id, "comments")
       .then(message => {
         this.setState({
-          comments: this.state.comments.filter(comment => comment._id !== id)
+          comments: this.state.comments.filter(comment => comment._id !== id),
+          deleted: true
         });
       })
       .then(() => {
-        window.alert("Comment deleted!");
+        window.scroll(0, 0);
       })
       .catch(console.log);
   };
@@ -135,6 +142,6 @@ class Comments extends Component {
 Comments.propTypes = {
   article_id: propTypes.string.isRequired,
   user: propTypes.object
-}
+};
 
 export default Comments;

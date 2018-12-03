@@ -162,3 +162,8 @@ h4 {
   padding-top: 0.5em;
   padding-left: 0.5em;
 }
+
+.deleted {
+  color: green;
+  font-weight: bold;
+}
