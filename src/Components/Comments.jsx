@@ -11,15 +11,17 @@ class Comments extends Component {
   state = {
     comments: [],
     comment: "",
-    loading: true
+    loading: true,
+    completed: true
   };
 
   render() {
-    const {loading, comments, comment} = this.state;
+    const {loading, comments, comment, completed} = this.state;
     if (loading) return <Loading />;
     return (
       <div>
         <h4>Comments</h4>
+        {completed === false && <p className='missing-fields'>Please write a comment before trying to post a comment</p>}
         <input
           aria-label="add a comment"
           type="text"
@@ -72,7 +74,12 @@ class Comments extends Component {
 
   submitComment = event => {
     event.preventDefault();
-    if (this.state.comment !== "")
+    if (!this.state.comment) {
+      this.setState({
+        completed: false
+      })
+    }
+    else if (this.state.comment !== "")
       postComment(
         this.state.comment,
         this.props.article_id,
