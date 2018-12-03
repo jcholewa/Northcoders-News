@@ -5,7 +5,8 @@
 } */
 
 .login,
-.login-form {
+.login-form,
+.wrong-user {
   padding-top: 20px;
   margin: auto;
   text-align: center;
@@ -14,4 +15,9 @@
 .login-form input {
   width: 15%;
   padding-left: 0.5em;
+}
+
+.wrong-user {
+  color: red;
+  font-weight: bold;
 }

@@ -15,10 +15,10 @@ class Login extends Component {
     return err ? (
       <div>
         {" "}
-        <p>User not found for this username. Please try again</p>
-        <div classNae="login">
+        <p className='wrong-user'>User not found for this username. Please try again</p>
+        <div className="login">
           <h3>Sign in to Northcoders News</h3>
-          <form onSubmit={this.handleSubmit}>
+          <form className="login-form" onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="username">Username: </label>
               <input
@@ -69,7 +69,8 @@ class Login extends Component {
         })
         .then(() => {
           this.setState({
-            successfulLogin: true
+            successfulLogin: true,
+            err: false
           });
         })
         .catch(err => {
