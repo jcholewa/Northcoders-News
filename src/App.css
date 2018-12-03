@@ -110,9 +110,18 @@ a,
 
 .indiv-article-body {
   margin-bottom: 0.5em;
+  margin-top: 0.5em;
 }
 
 .article-comment-count,
 .article-topic {
+  margin-top: 0.5em;
+}
+
+.article {
+  text-align: center;
+}
+
+h4 {
   margin-top: 0.5em;
 }

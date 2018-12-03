@@ -19,9 +19,13 @@ input {
 }
 
 button {
-  margin-bottom: 1%;
+  margin-bottom: 0.5em;
 }
 
 .comment-body {
   font-weight: bold;
+}
+
+.comment-author {
+  margin-top: 0.5em;
 }

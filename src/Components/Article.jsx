@@ -21,7 +21,7 @@ class Article extends Component {
     return (
       <div className="article">
         <h2>{article.title}</h2>
-        Author:{" "}
+        by{" "}
         <Link to={`/users/${article.created_by.username}`}>
           {" "}
           {article.created_by.username}
