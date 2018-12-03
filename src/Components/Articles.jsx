@@ -18,11 +18,11 @@ class Articles extends Component {
     topic: "",
     sortBy: "",
     addArticle: false,
-    searchTerm: "",
+    searchTerm: ""
   };
 
   render() {
-    const { loading, addArticle, searchTerm, err } = this.state;
+    const { loading, addArticle, searchTerm, err, deleted } = this.state;
 
     const articles =
       this.state.articles.filter(
@@ -76,6 +76,7 @@ class Articles extends Component {
                 handleChangeSort={this.handleChangeSort}
                 value={"articles"}
               />
+              {deleted && <p className="deleted"> Article deleted! </p>}
               <ul className="articles">
                 {articles.map(article => {
                   let dayPosted = getDate(article.created_at);
@@ -243,11 +244,12 @@ class Articles extends Component {
     deleteItem(id, "articles")
       .then(message => {
         this.setState({
-          articles: this.state.articles.filter(article => article._id !== id)
+          articles: this.state.articles.filter(article => article._id !== id),
+          deleted: true
         });
       })
       .then(() => {
-        window.alert("Article deleted!");
+        window.scroll(0, 0);
       })
       .catch(console.log);
   };
