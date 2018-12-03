@@ -1,10 +1,17 @@
-.login form {
+/* .login form {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
+} */
 
-.login {
+.login,
+.login-form {
   padding-top: 20px;
   margin: auto;
+  text-align: center;
+}
+
+.login-form input {
+  width: 15%;
+  padding-left: 0.5em;
 }
