@@ -60,7 +60,6 @@ class Articles extends Component {
                 />
                 <button onClick={this.onSearchSubmit}>Search</button>
               </div>
-              <br />
               <button
                 className="add-article-button"
                 onClick={this.showArticleAdder}
@@ -87,7 +86,7 @@ class Articles extends Component {
                           {article.created_by.username}
                         </Link>{" "}
                         {" on "}
-                        {dayPosted} <br />
+                        {dayPosted} 
                         {!this.props.topic_slug && (
                           <p className='article-topic'>Topic: {article.belongs_to}</p>
                         )}

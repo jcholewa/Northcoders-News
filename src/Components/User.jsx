@@ -42,8 +42,9 @@ class User extends Component {
             View list of articles by {user.username}
           </button>
         )}
-        <br />
-        <Link to={"/articles"}>Back to Home</Link>
+        <div>
+          <Link to={"/articles"}>Back to Home</Link>
+        </div>
       </div>
     );
   }

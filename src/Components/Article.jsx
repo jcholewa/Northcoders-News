@@ -40,8 +40,9 @@ class Article extends Component {
             View {article.comment_count} comments
           </button>
         )}
-        <br />
-        <Link to={"/articles"}>Back to Home</Link>
+        <div>
+          <Link to={"/articles"}>Back to Home</Link>
+        </div>
       </div>
     );
   }
