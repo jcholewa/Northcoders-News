@@ -88,9 +88,13 @@ class Articles extends Component {
                         </Link>{" "}
                         {" on "}
                         {dayPosted} <br />
-                        <p>Topic: {article.belongs_to}</p>
+                        {!this.props.topic_slug && (
+                          <p>Topic: {article.belongs_to}</p>
+                        )}
                         <p>
-                          <p>{article.body.substring(0, 160)}...</p>
+                          <p className="article-body">
+                            {article.body.substring(0, 160)}...
+                          </p>
                           {article.comment_count}
                           {" comments "}
 

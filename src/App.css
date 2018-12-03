@@ -102,3 +102,7 @@ a,
 .neutral {
   color: black;
 }
+
+.article-body {
+  font-weight: bold;
+}
