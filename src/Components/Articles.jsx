@@ -89,7 +89,7 @@ class Articles extends Component {
                         {" on "}
                         {dayPosted} <br />
                         {!this.props.topic_slug && (
-                          <p>Topic: {article.belongs_to}</p>
+                          <p className='article-topic'>Topic: {article.belongs_to}</p>
                         )}
                         <p className="article-body">
                           {article.body.substring(0, 160)}...

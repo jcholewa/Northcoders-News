@@ -105,12 +105,14 @@ a,
 
 .article-body {
   font-weight: bold;
+  margin-top: 0.5em;
 }
 
 .indiv-article-body {
-  margin-bottom: 0.5em 
+  margin-bottom: 0.5em;
 }
 
-.article-comment-count {
-  margin-top: 0.5em
+.article-comment-count,
+.article-topic {
+  margin-top: 0.5em;
 }
