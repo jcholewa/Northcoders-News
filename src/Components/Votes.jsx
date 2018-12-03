@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { alterVotes } from "../api";
 import { alterVoteMod } from "../utils";
+import propTypes from "prop-types";
 
 class Votes extends Component {
   state = {
@@ -53,5 +54,11 @@ class Votes extends Component {
     });
   };
 }
+
+Votes.propTypes = {
+  votes: propTypes.number.isRequired,
+  id: propTypes.string.isRequired,
+  type: propTypes.string.isRequired
+};
 
 export default Votes;

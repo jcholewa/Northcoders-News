@@ -5,6 +5,7 @@ import "../Comments.css";
 import Comments from "./Comments";
 import Loading from "./Loading";
 import Votes from "./Votes";
+import propTypes from "prop-types";
 
 class Article extends Component {
   state = {
@@ -70,5 +71,9 @@ class Article extends Component {
     });
   };
 }
+
+Article.propTypes = {
+  user: propTypes.object.isRequired
+};
 
 export default Article;

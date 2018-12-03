@@ -7,6 +7,7 @@ import Loading from "./Loading";
 import { postArticle, deleteItem } from "../api";
 import { getDate } from "../utils";
 import { sortBy } from "underscore";
+import propTypes from "prop-types";
 
 class Articles extends Component {
   state = {
@@ -21,16 +22,7 @@ class Articles extends Component {
   };
 
   render() {
-    const {
-      loading,
-      article,
-      title,
-      topic,
-      sortBy,
-      addArticle,
-      searchTerm,
-      err
-    } = this.state;
+    const { loading, addArticle, searchTerm, err } = this.state;
 
     const articles =
       this.state.articles.filter(
@@ -244,5 +236,10 @@ class Articles extends Component {
       .catch(console.log);
   };
 }
+
+Articles.propTypes = {
+  articles: propTypes.array.isRequired,
+  user: propTypes.object
+};
 
 export default Articles;

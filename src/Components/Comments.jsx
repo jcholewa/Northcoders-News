@@ -5,6 +5,7 @@ import SortBy from "./SortBy";
 import Loading from "./Loading";
 import { getDate } from "../utils";
 import { sortBy } from "underscore";
+import propTypes from "prop-types";
 
 class Comments extends Component {
   state = {
@@ -123,6 +124,11 @@ class Comments extends Component {
       };
     });
   };
+}
+
+Comments.propTypes = {
+  article_id: propTypes.string.isRequired,
+  user: propTypes.object
 }
 
 export default Comments;

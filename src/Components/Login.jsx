@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { login } from "../api";
 import "../Login.css";
+import propTypes from "prop-types";
 
 class Login extends Component {
   state = {
@@ -47,5 +48,10 @@ class Login extends Component {
       .catch(console.log);
   };
 }
+
+Login.propTypes = {
+  userLogin: propTypes.func.isRequired,
+  user: propTypes.object.isRequired
+};
 
 export default Login;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Articles from "./Articles";
 import Loading from "./Loading";
 import { getData } from "../api";
+import propTypes from "prop-types";
 
 class Home extends Component {
   state = {
@@ -53,5 +54,10 @@ class Home extends Component {
     }
   }
 }
+
+Home.propTypes = {
+  topic_slug: propTypes.string,
+  user: propTypes.object.isRequired
+};
 
 export default Home;
