@@ -55,7 +55,15 @@ class Article extends Component {
           loading: false
         });
       })
-      .catch(console.log);
+      .catch(err => {
+        navigate('/error', {
+          replace: true,
+          state: {
+            code: err.response.status,
+            message: 'Article not found. Check the URL above in case you searched for the wrong link.'
+          }
+        })
+      })
   }
 
   displayComments = () => {
