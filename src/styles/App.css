@@ -131,3 +131,34 @@ h4 {
   text-align: center;
   margin-top: 5em;
 }
+
+.missing-fields {
+  color: red;
+}
+
+.add-article-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+  padding: 1em;
+}
+
+.topic-dropdown,
+.post-article-button {
+  width: 20%;
+}
+
+.add-article {
+  text-align: center;
+}
+
+#input-body {
+  border-style: 5px solid grey;
+  height: 250px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+}

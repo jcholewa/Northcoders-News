@@ -18,7 +18,7 @@ class Articles extends Component {
     topic: "",
     sortBy: "",
     addArticle: false,
-    searchTerm: ""
+    searchTerm: "",
   };
 
   render() {
@@ -34,7 +34,12 @@ class Articles extends Component {
     if (loading) return <Loading />;
     if (err) return <p>{this.state.err}</p>;
     if (this.state.articles.length === 0)
-      return <div className='no-articles-topic'><p>There are no articles about {this.props.topic_slug}!</p> <Link to={'/'}>Back to Home</Link> </div>;
+      return (
+        <div className="no-articles-topic">
+          <p>There are no articles about {this.props.topic_slug}!</p>{" "}
+          <Link to={"/"}>Back to Home</Link>{" "}
+        </div>
+      );
 
     return (
       <div>
@@ -46,6 +51,7 @@ class Articles extends Component {
               showArticleAdder={this.showArticleAdder}
               changeTopic={this.changeTopic}
               handleChangeTitle={this.handleChangeTitle}
+              completed={this.state.completed}
             />
           ) : (
             <>
@@ -86,15 +92,20 @@ class Articles extends Component {
                           {article.created_by.username}
                         </Link>{" "}
                         {" on "}
-                        {dayPosted} 
+                        {dayPosted}
                         {!this.props.topic_slug && (
-                          <p className='article-topic'>Topic: {article.belongs_to}</p>
+                          <p className="article-topic">
+                            Topic: {article.belongs_to}
+                          </p>
                         )}
                         <p className="article-body">
                           {article.body.substring(0, 160)}...
                         </p>
-                        <p className="article-comment-count"> {article.comment_count}
-                        {" comments "} </p>
+                        <p className="article-comment-count">
+                          {" "}
+                          {article.comment_count}
+                          {" comments "}{" "}
+                        </p>
                         <Votes
                           id={article._id}
                           votes={article.votes}
@@ -176,6 +187,11 @@ class Articles extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    if (!this.state.title || !this.state.article || !this.state.topic) {
+      this.setState({
+        completed: false
+      });
+    }
     if (this.state.title && this.state.article && this.state.topic !== "")
       postArticle(
         this.state.title,
@@ -185,7 +201,7 @@ class Articles extends Component {
       )
         .then(article => {
           this.setState(state => {
-            return { articles: [article, ...state.articles] };
+            return { articles: [article, ...state.articles], completed: true };
           });
         })
         .then(() => {
