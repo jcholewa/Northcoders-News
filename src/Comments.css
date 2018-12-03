@@ -5,16 +5,23 @@
 
 .commentsLI {
   border: solid black 1px;
-  width: 50%;
   height: auto;
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 input {
   width: 50%;
   height: 20%;
-  margin-bottom: 1%;
+  margin-bottom: 0.5em;
 }
 
 button {
   margin-bottom: 1%;
+}
+
+.comment-body {
+  font-weight: bold;
 }

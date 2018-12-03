@@ -27,7 +27,7 @@ class Article extends Component {
           {article.created_by.username}
         </Link>
         <h4>Topic: {article.belongs_to}</h4>
-        <p>{article.body}</p>
+        <p className="indiv-article-body">{article.body}</p>
         <Votes id={article._id} votes={article.votes} type="articles" />
         {showComments ? (
           <Comments

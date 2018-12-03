@@ -36,9 +36,8 @@ class Comments extends Component {
             let dayPosted = getDate(comment.created_at);
             return (
               <li className="commentsLI" key={comment._id}>
-                {comment.body} <br />
-                Author: {comment.created_by.username} <br />
-                <p>Posted on: {dayPosted}</p>
+                <p className='comment-body'>{comment.body}</p>
+                <p className='comment-author'>{comment.created_by.username} posted this on {dayPosted}</p>
                 <Votes id={comment._id} votes={comment.votes} type="comments" />
                 {comment.created_by.username === this.props.user.username && (
                   <button onClick={() => this.handleDelete(comment._id)}>

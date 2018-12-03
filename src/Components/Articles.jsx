@@ -91,19 +91,16 @@ class Articles extends Component {
                         {!this.props.topic_slug && (
                           <p>Topic: {article.belongs_to}</p>
                         )}
-                        <p>
-                          <p className="article-body">
-                            {article.body.substring(0, 160)}...
-                          </p>
-                          {article.comment_count}
-                          {" comments "}
-
-                          <Votes
-                            id={article._id}
-                            votes={article.votes}
-                            type="articles"
-                          />
+                        <p className="article-body">
+                          {article.body.substring(0, 160)}...
                         </p>
+                        <p className="article-comment-count"> {article.comment_count}
+                        {" comments "} </p>
+                        <Votes
+                          id={article._id}
+                          votes={article.votes}
+                          type="articles"
+                        />
                         {article.created_by.username ===
                           this.props.user.username && (
                           <button
