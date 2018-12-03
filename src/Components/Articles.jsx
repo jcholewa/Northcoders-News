@@ -21,26 +21,34 @@ class Articles extends Component {
   };
 
   render() {
+    const {
+      loading,
+      article,
+      title,
+      topic,
+      sortBy,
+      addArticle,
+      searchTerm,
+      err
+    } = this.state;
+
     const articles =
       this.state.articles.filter(
         article =>
-          article.body
-            .toLowerCase()
-            .includes(this.state.searchTerm.toLowerCase()) ||
-          article.title
-            .toLowerCase()
-            .includes(this.state.searchTerm.toLowerCase())
+          article.body.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          article.title.toLowerCase().includes(searchTerm.toLowerCase())
       ) || this.state.articles;
 
-    if (this.state.loading) return <Loading />;
-    if (this.state.err) return <p>{this.state.err}</p>;
+    if (loading) return <Loading />;
+    if (err) return <p>{this.state.err}</p>;
+    if (this.state.articles.length === 0)
+      return <p>There are no articles about {this.props.topic_slug}!</p>;
 
     return (
       <div>
         <>
-          {this.state.addArticle ? (
+          {addArticle ? (
             <ArticleAdder
-              topic={this.state.topic}
               handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}
               showArticleAdder={this.showArticleAdder}
@@ -51,12 +59,12 @@ class Articles extends Component {
             <>
               <div className="searchBox">
                 <input
-                  aria-label='search box'
+                  aria-label="search box"
                   className="searchBar"
                   type="text"
                   placeholder="Search for articles..."
                   onChange={this.onSearchChange}
-                  value={this.state.searchTerm}
+                  value={searchTerm}
                 />
                 <button onClick={this.onSearchSubmit}>Search</button>
               </div>
@@ -75,7 +83,7 @@ class Articles extends Component {
                 {articles.map(article => {
                   let dayPosted = getDate(article.created_at);
                   {
-                    if (this.state.loading) return <p>Loading...</p>;
+                    if (loading) return <p>Loading...</p>;
                     return (
                       <li key={article._id}>
                         <Link to={`/articles/${article._id}`}>
@@ -91,8 +99,9 @@ class Articles extends Component {
                         <p>Topic: {article.belongs_to}</p>
                         <p>
                           <p>{article.body.substring(0, 160)}...</p>
-                          {article.comment_count}{" comments "}
-                          
+                          {article.comment_count}
+                          {" comments "}
+
                           <Votes
                             id={article._id}
                             votes={article.votes}

@@ -14,7 +14,8 @@ class Comments extends Component {
   };
 
   render() {
-    if (this.state.loading) return <Loading />;
+    const {loading, comments, comment} = this.state;
+    if (loading) return <Loading />;
     return (
       <div>
         <h4>Comments</h4>
@@ -23,14 +24,14 @@ class Comments extends Component {
           type="text"
           placeholder="Add a comment..."
           onChange={this.handleChange}
-          value={this.state.comment}
+          value={comment}
         />
         <button onClick={this.submitComment} id="postComment">
           Post comment
         </button>
         <ul className="commentsList">
           <SortBy handleChangeSort={this.handleChangeSort} value={"comments"} />
-          {this.state.comments.map(comment => {
+          {comments.map(comment => {
             let dayPosted = getDate(comment.created_at);
             return (
               <li className="commentsLI" key={comment._id}>

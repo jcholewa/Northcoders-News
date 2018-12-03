@@ -56,10 +56,7 @@ const ArticleAdder = ({
 ArticleAdder.propTypes = {
   handleChange: propTypes.func.isRequired,
   handleSubmit: propTypes.func.isRequired,
-  showArticleAdder: propTypes.func.isRequired,
-  topic: propTypes.string,
-  title: propTypes.string.isRequired,
-  article: propTypes.string.isRequired
+  showArticleAdder: propTypes.func.isRequired
 };
 
 export default ArticleAdder;

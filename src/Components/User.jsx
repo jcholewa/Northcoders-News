@@ -12,17 +12,19 @@ class User extends Component {
   };
 
   render() {
-    if (this.state.loading) return <Loading />;
+    const { loading, user, showArticles, userArticles } = this.state;
+
+    if (loading) return <Loading />;
     return (
       <div>
-        <img src={this.state.user.avatar_url} alt="user's avatar" />
-        <p>Username: {this.state.user.username}</p>
-        <p>Name: {this.state.user.name}</p>
-        {this.state.showArticles ? (
+        <img src={user.avatar_url} alt="user's avatar" />
+        <p>Username: {user.username}</p>
+        <p>Name: {user.name}</p>
+        {showArticles ? (
           <section>
-            <h4>Articles by {this.state.user.username}:</h4>
+            <h4>Articles by {user.username}:</h4>
             <ul>
-              {this.state.userArticles.map(article => {
+              {userArticles.map(article => {
                 {
                   return (
                     <div className="user-articles">
@@ -37,7 +39,7 @@ class User extends Component {
           </section>
         ) : (
           <button onClick={this.displayArticles}>
-            View list of articles by {this.state.user.username}
+            View list of articles by {user.username}
           </button>
         )}
         <br />
@@ -66,7 +68,7 @@ class User extends Component {
           replace: true,
           state: {
             code: err.response.status,
-            message: 'Username does not exist'
+            message: "Username does not exist"
           }
         });
       });

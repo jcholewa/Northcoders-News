@@ -8,6 +8,8 @@ class Login extends Component {
   };
 
   render() {
+    const { username } = this.state;
+
     if (this.props.user.username) return this.props.children;
     return (
       <div className="login">
@@ -20,7 +22,7 @@ class Login extends Component {
               type="text"
               id="username"
               onChange={this.handleChange}
-              value={this.state.username}
+              value={username}
             />
           </div>
           <button>Log in</button>

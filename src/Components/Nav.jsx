@@ -11,7 +11,9 @@ class Nav extends Component {
   }
 
   render() {
-    if (this.state.loading) return <Loading />
+    const {loading, topics} = this.state;
+
+    if (loading) return <Loading />
     return (
       <header>
         <div className='logo'>
@@ -20,7 +22,7 @@ class Nav extends Component {
         <nav>
           <ul className='nav-ul'>
             <li className='nav-li'><Link className='link' to='/'>Home</Link></li>
-            {this.state.topics.map((topic, index) => {
+            {topics.map((topic, index) => {
               return <li className='nav-li'><Link className='link' to={`/topics/${topic.slug}/articles`} key={index}>{topic.title} </Link></li>
             })}
 

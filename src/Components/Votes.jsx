@@ -12,26 +12,26 @@ class Votes extends Component {
   };
 
   render() {
-    return this.state.err ? (
+    const { err, voteMod, up, down, upClicked, downClicked } = this.state;
+
+    return err ? (
       <p>Something went wrong</p>
     ) : (
       <div className="votes">
-        {this.props.votes + this.state.voteMod} {" votes "}
+        {this.props.votes + voteMod} {" votes "}
         <button
           aria-label="upvote"
-          className={this.state.up && this.state.upClicked ? "up" : "neutral"}
+          className={up && upClicked ? "up" : "neutral"}
           onClick={() => this.handleVote("up")}
-          disabled={this.state.voteMod === 1}
+          disabled={voteMod === 1}
         >
           <i className="far fa-thumbs-up" />
         </button>
         <button
           aria-label="downvote"
-          className={
-            this.state.down && this.state.downClicked ? "down" : "netural"
-          }
+          className={down && downClicked ? "down" : "netural"}
           onClick={() => this.handleVote("down")}
-          disabled={this.state.voteMod === -1}
+          disabled={voteMod === -1}
         >
           <i className="far fa-thumbs-down" />
         </button>

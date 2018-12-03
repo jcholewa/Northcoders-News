@@ -1,37 +1,47 @@
-import React, { Component } from 'react';
-import { getData } from '../api';
-import { Link, navigate } from '@reach/router';
-import '../Comments.css'
-import Comments from './Comments';
-import Loading from './Loading';
-import Votes from './Votes';
+import React, { Component } from "react";
+import { getData } from "../api";
+import { Link, navigate } from "@reach/router";
+import "../Comments.css";
+import Comments from "./Comments";
+import Loading from "./Loading";
+import Votes from "./Votes";
 
 class Article extends Component {
   state = {
     article: [],
     loading: true,
-    showComments: false,
-  }
+    showComments: false
+  };
 
   render() {
-    if (this.state.err) return <p>{this.state.err}</p>
-    if (this.state.loading) return <Loading />
+    const { err, loading, article, comment, showComments } = this.state;
+    if (err) return <p>{err}</p>;
+    if (loading) return <Loading />;
     return (
-      <div className='article'> 
-        <h2>{this.state.article.title}</h2>
-        Author: <Link to={`/users/${this.state.article.created_by.username}`}> {this.state.article.created_by.username}</Link>
-        <h4>Topic: {this.state.article.belongs_to}</h4>
-        <p>{this.state.article.body}</p>
-
-        <Votes id={this.state.article._id} votes={this.state.article.votes} type='articles' />
-
-        {this.state.showComments ?
-          <Comments article_id={this.state.article._id} comment={this.state.comment} user={this.props.user} /> :
-          <button onClick={this.displayComments}>View {this.state.article.comment_count} comments</button>}
+      <div className="article">
+        <h2>{article.title}</h2>
+        Author:{" "}
+        <Link to={`/users/${article.created_by.username}`}>
+          {" "}
+          {article.created_by.username}
+        </Link>
+        <h4>Topic: {article.belongs_to}</h4>
+        <p>{article.body}</p>
+        <Votes id={article._id} votes={article.votes} type="articles" />
+        {showComments ? (
+          <Comments
+            article_id={article._id}
+            comment={comment}
+            user={this.props.user}
+          />
+        ) : (
+          <button onClick={this.displayComments}>
+            View {article.comment_count} comments
+          </button>
+        )}
         <br />
-        <Link to={'/articles'}>Back to Home</Link>
-
-      </div >
+        <Link to={"/articles"}>Back to Home</Link>
+      </div>
     );
   }
 
@@ -41,24 +51,24 @@ class Article extends Component {
         this.setState({
           article,
           loading: false
-        })
+        });
       })
       .catch(err => {
-        navigate('/error', {
-          replace: true, state: {
-            code: err.response.status,
+        navigate("/error", {
+          replace: true,
+          state: {
+            code: err.response.status
             // could add message here too.
           }
-        })
-      })
+        });
+      });
   }
 
   displayComments = () => {
     this.setState({
       showComments: true
-    })
-  }
-
+    });
+  };
 }
 
 export default Article;
