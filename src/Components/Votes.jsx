@@ -13,7 +13,7 @@ class Votes extends Component {
   };
 
   render() {
-    const { err, voteMod, up, down, upClicked, downClicked } = this.state;
+    const { err, voteMod, up, down } = this.state;
 
     return err ? (
       <p>Something went wrong</p>
@@ -22,7 +22,7 @@ class Votes extends Component {
         {this.props.votes + voteMod} {" votes "}
         <button
           aria-label="upvote"
-          className={up && upClicked ? "up" : "neutral"}
+          className={up ? "up" : "neutral"}
           onClick={() => this.handleVote("up")}
           disabled={voteMod === 1}
         >
@@ -30,7 +30,7 @@ class Votes extends Component {
         </button>
         <button
           aria-label="downvote"
-          className={down && downClicked ? "down" : "netural"}
+          className={down ? "down" : "netural"}
           onClick={() => this.handleVote("down")}
           disabled={voteMod === -1}
         >
@@ -41,7 +41,6 @@ class Votes extends Component {
   }
 
   handleVote = direction => {
-    const clicked = `${direction}Clicked`;
     alterVotes(this.props.id, direction, this.props.type).catch(err => {
       this.setState({ err });
     });
@@ -49,7 +48,6 @@ class Votes extends Component {
       return {
         voteMod: alterVoteMod(state.voteMod, direction),
         [direction]: this.state[direction] ? false : true,
-        [clicked]: this.state[clicked] ? false : true
       };
     });
   };
