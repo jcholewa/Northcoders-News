@@ -12,13 +12,20 @@ class User extends Component {
   };
 
   render() {
-    const { loading, user, showArticles, userArticles } = this.state;
+    const { loading, user, showArticles, userArticles, noImage } = this.state;
 
     if (loading) return <Loading />;
     return (
-      <div>
-        <img src={user.avatar_url} alt={`${user.username}'s avatar`} onError="this.onError=null; this.src='xyz'"/>
-        {/* onError={this.onError=null this.src='imagefound.gif';} */}
+      <div className="user">
+        {noImage ? (
+          <img
+            src={user.avatar_url}
+            alt={`${user.username}'s avatar`}
+            onError={this.handleError}
+          />
+        ) : (
+          <p className="no-image">No image to display</p>
+        )}
         <p>Username: {user.username}</p>
         <p>Name: {user.name}</p>
         {showArticles ? (
@@ -26,15 +33,11 @@ class User extends Component {
             <h4>Articles by {user.username}:</h4>
             <ul>
               {userArticles.map(article => {
-                {
-                  return (
-                    <div className="user-articles">
-                      <Link to={`/articles/${article._id}`}>
-                        {article.title}
-                      </Link>
-                    </div>
-                  );
-                }
+                return (
+                  <div className="user-articles">
+                    <Link to={`/articles/${article._id}`}>{article.title}</Link>
+                  </div>
+                );
               })}
             </ul>
           </section>
@@ -95,6 +98,11 @@ class User extends Component {
     });
   };
 
+  handleError = () => {
+    this.setState({
+      noImage: true
+    });
+  };
 }
 
 export default User;

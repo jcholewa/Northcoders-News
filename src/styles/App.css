@@ -87,7 +87,8 @@ a,
   cursor: pointer;
 }
 
-.loading {
+.loading,
+.user {
   text-align: center;
   margin-top: 5em;
 }
@@ -173,4 +174,8 @@ h4 {
   border: none;
   margin-left: 0.5em;
   font-size: 1em;
+}
+
+.no-image {
+  font-style: italic;
 }

@@ -80,49 +80,45 @@ class Articles extends Component {
               <ul className="articles">
                 {articles.map(article => {
                   let dayPosted = getDate(article.created_at);
-                  {
-                    if (loading) return <p>Loading...</p>;
-                    return (
-                      <li key={article._id}>
-                        <Link to={`/articles/${article._id}`}>
-                          {article.title}
-                        </Link>
-                        {" by"}{" "}
-                        <Link to={`/users/${article.created_by.username}`}>
-                          {" "}
-                          {article.created_by.username}
-                        </Link>{" "}
-                        {" on "}
-                        {dayPosted}
-                        {!this.props.topic_slug && (
-                          <p className="article-topic">
-                            Topic: {article.belongs_to}
-                          </p>
-                        )}
-                        <p className="article-body">
-                          {article.body.substring(0, 160)}...
+                  if (loading) return <p>Loading...</p>;
+                  return (
+                    <li key={article._id}>
+                      <Link to={`/articles/${article._id}`}>
+                        {article.title}
+                      </Link>
+                      {" by"}{" "}
+                      <Link to={`/users/${article.created_by.username}`}>
+                        {" "}
+                        {article.created_by.username}
+                      </Link>{" "}
+                      {" on "}
+                      {dayPosted}
+                      {!this.props.topic_slug && (
+                        <p className="article-topic">
+                          Topic: {article.belongs_to}
                         </p>
-                        <p className="article-comment-count">
-                          {" "}
-                          {article.comment_count}
-                          {" comments "}{" "}
-                        </p>
-                        <Votes
-                          id={article._id}
-                          votes={article.votes}
-                          type="articles"
-                        />
-                        {article.created_by.username ===
-                          this.props.user.username && (
-                          <button
-                            onClick={() => this.handleDelete(article._id)}
-                          >
-                            Delete article
-                          </button>
-                        )}
-                      </li>
-                    );
-                  }
+                      )}
+                      <p className="article-body">
+                        {article.body.substring(0, 160)}...
+                      </p>
+                      <p className="article-comment-count">
+                        {" "}
+                        {article.comment_count}
+                        {" comments "}{" "}
+                      </p>
+                      <Votes
+                        id={article._id}
+                        votes={article.votes}
+                        type="articles"
+                      />
+                      {article.created_by.username ===
+                        this.props.user.username && (
+                        <button onClick={() => this.handleDelete(article._id)}>
+                          Delete article
+                        </button>
+                      )}
+                    </li>
+                  );
                 })}
               </ul>
               <a className="back-to-top" href="#top">
