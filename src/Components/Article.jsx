@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getData } from "../api";
 import { Link, navigate } from "@reach/router";
 import "../styles/Comments.css";
-import Comments from "../components/Comments";
+import Comments from "./Comments";
 import Loading from "./Loading";
 import Votes from "./Votes";
 import propTypes from "prop-types";
@@ -56,14 +56,15 @@ class Article extends Component {
         });
       })
       .catch(err => {
-        navigate('/error', {
+        navigate("/error", {
           replace: true,
           state: {
             code: err.response.status,
-            message: 'Article not found. Check the URL above in case you searched for the wrong link.'
+            message:
+              "Article not found. Check the URL above in case you searched for the wrong link."
           }
-        })
-      })
+        });
+      });
   }
 
   displayComments = () => {
