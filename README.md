@@ -1,6 +1,6 @@
 ## Northcoders News
 
-This project uses endpoints that serve data about fake news articles, topics, users and article comments. You find it hosted on Heroku here: https://limitless-lake-47369.herokuapp.com/.
+This project uses endpoints that serve data about fake news articles, topics, users and article comments. You can find it hosted on Heroku here: https://limitless-lake-47369.herokuapp.com/.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -15,6 +15,7 @@ Navigate on your local machine's command line to the directory you want to clone
 ```
 git clone
 ```
+
 followed by the copied URL.
 
 Next, open the project in a text editor.
@@ -34,16 +35,34 @@ These can be installed by opening an integrated terminal and typing:
 npm i
 ```
 
+You can then start up the project by typing:
+
+```
+npm start
+```
+
+## Running the tests
+
+To run the automated tests for this system, type:
+
+```
+npm test
+```
+
+into the command line.
+
+To view the tests, view the index.test.js file inside the project's tests directory.
+
 ## Back End
 
 To view the back end hosted and GitHub pages for this project (created by the same author), please view the following links:
-[Hosted back-end](https://jc-northcoders-news.herokuapp.com/api)
-[GitHub back-end]()
+
+- [Hosted back-end](https://jc-northcoders-news.herokuapp.com/api)
+- [GitHub back-end]()
 
 ## Built With
 
-- [React](https://reactjs.org/) - Javascript UI library
-- [Heroku](https://heroku.com/) - hosting service
+- [React](https://reactjs.org/) - Javascript UI library \*[Heroku](https://heroku.com/) - hosting service
 
 ## Author
 
