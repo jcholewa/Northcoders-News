@@ -20,7 +20,7 @@ class Comments extends Component {
     if (loading) return <Loading />;
     return (
       <div>
-        {deleted && <p className='deleted'> Comment deleted! </p>}
+        {deleted && <p className="deleted"> Comment deleted! </p>}
         <h4>Comments</h4>
         {completed === false && (
           <p className="missing-fields">
