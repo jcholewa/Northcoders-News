@@ -219,7 +219,6 @@ class Articles extends Component {
         });
   };
 
-  // This will be the onChange for the select element:
   handleChangeSort = event => {
     const sortByValue = event.target.value;
 
