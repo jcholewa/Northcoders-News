@@ -15,7 +15,9 @@ class Login extends Component {
     return err ? (
       <div>
         {" "}
-        <p className='wrong-user'>User not found for this username. Please try again</p>
+        <p className="wrong-user">
+          User not found for this username. Please try again
+        </p>
         <div className="login">
           <h3>Sign in to Northcoders News</h3>
           <form className="login-form" onSubmit={this.handleSubmit}>

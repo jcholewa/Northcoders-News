@@ -47,7 +47,7 @@ class Votes extends Component {
     this.setState(state => {
       return {
         voteMod: alterVoteMod(state.voteMod, direction),
-        [direction]: this.state[direction] ? false : true,
+        [direction]: this.state[direction] ? false : true
       };
     });
   };

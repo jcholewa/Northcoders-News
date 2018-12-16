@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getData } from "../api";
 import { Link, navigate } from "@reach/router";
 import "../styles/Comments.css";
-import Comments from "./Comments";
+import Comments from "../components/Comments";
 import Loading from "./Loading";
 import Votes from "./Votes";
 import propTypes from "prop-types";

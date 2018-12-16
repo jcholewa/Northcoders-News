@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from '@reach/router';
+import React from "react";
+import { Link } from "@reach/router";
 
 const NotFound = () => {
   return (
     <div>
       <h1>Nothing to see here</h1>
-      <Link to={'/'}>Back to Home</Link>
+      <Link to={"/"}>Back to Home</Link>
     </div>
   );
 };

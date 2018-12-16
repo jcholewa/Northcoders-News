@@ -12,11 +12,13 @@ const ArticleAdder = ({
   completed
 }) => {
   return (
-    <div className='add-article'>
-      {completed === false && <p className='missing-fields'>Please complete all fields</p>}
+    <div className="add-article">
+      {completed === false && (
+        <p className="missing-fields">Please complete all fields</p>
+      )}
       <form className="add-article-form">
         <select
-          className='topic-dropdown'
+          className="topic-dropdown"
           onChange={changeTopic}
           defaultValue=""
           name="topic"
@@ -36,14 +38,16 @@ const ArticleAdder = ({
         />
 
         <textarea
-          id='input-body'
+          id="input-body"
           aria-label="Add article body"
           placeholder="Type your article here..."
           onChange={handleChange}
-          name="article"></textarea>
-        
+          name="article"
+        />
 
-        <button className='post-article-button' onClick={handleSubmit}>Post article</button>
+        <button className="post-article-button" onClick={handleSubmit}>
+          Post article
+        </button>
       </form>
       <Link to={"/articles"} onClick={showArticleAdder}>
         Back to Home
