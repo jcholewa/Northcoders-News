@@ -22,12 +22,12 @@ Next, open the project in a text editor.
 
 Within the project, the following npm packages are required:
 
-react
-@react/router
-axios
-prop-types
-underscore
-jest
+- react
+- @react/router
+- axios
+- prop-types
+- underscore
+- jest
 
 These can be installed by opening an integrated terminal and typing:
 
@@ -58,7 +58,7 @@ To view the tests, view the index.test.js file inside the project's tests direct
 To view the back end hosted and GitHub pages for this project (created by the same author), please view the following links:
 
 - [Hosted back-end](https://jc-northcoders-news.herokuapp.com/api)
-- [GitHub back-end]()
+- [GitHub back-end](https://github.com/jcholewa/Northcoders-News-back-end)
 
 ## Built With
 
