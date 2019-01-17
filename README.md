@@ -41,6 +41,8 @@ You can then start up the project by typing:
 npm start
 ```
 
+You can log into the site using the username 'jessjelly'.
+
 ## Running the tests
 
 To run the automated tests for this system, type:
@@ -51,7 +53,7 @@ npm test
 
 into the command line.
 
-To view the tests, view the index.test.js file inside the project's tests directory.
+See the index.test.js file inside the project's tests directory to view the tests.
 
 ## Back End
 
@@ -62,7 +64,8 @@ To view the back end hosted and GitHub pages for this project (created by the sa
 
 ## Built With
 
-- [React](https://reactjs.org/) - Javascript UI library \*[Heroku](https://heroku.com/) - hosting service
+- [React](https://reactjs.org/) - Javascript UI library
+- [Heroku](https://heroku.com/) - hosting service
 
 ## Author
 
@@ -70,6 +73,6 @@ Joanna Cholewa
 
 ## Acknowledgements
 
-Northcoders tutors
+[Northcoders](https://northcoders.com/) tutors
 
-Purple Booth provided a README template
+[Purple Booth](https://purplebooth.co.uk/) provided a [README template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
